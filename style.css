@@ -644,5 +644,178 @@ button {
 
     .closing h1 {
         font-size: 35px;
+        /* ==========================================
+   COMING SOON LOCK SCREEN
+========================================== */
+
+#comingSoonScreen {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+    padding: 20px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #3b0028 0%,
+            #160013 45%,
+            #050005 100%
+        );
+
+    color: white;
+    text-align: center;
+}
+
+.coming-soon-box {
+    width: 100%;
+    max-width: 700px;
+}
+
+.coming-lock {
+    font-size: 70px;
+    margin-bottom: 10px;
+
+    animation: lockPulse 1.5s infinite;
+}
+
+.coming-soon-box h1 {
+    margin: 0;
+
+    font-size: 48px;
+    letter-spacing: 5px;
+
+    color: #ff4fa3;
+
+    text-shadow:
+        0 0 10px #ff4fa3,
+        0 0 25px #ff1493,
+        0 0 50px #ff1493;
+}
+
+.coming-soon-box h2 {
+    margin: 15px 0;
+
+    font-size: 25px;
+}
+
+.coming-soon-box p {
+    color: #dddddd;
+}
+
+.coming-date {
+    margin: 20px 0;
+
+    font-size: 25px;
+    font-weight: bold;
+
+    color: #ff8acb;
+
+    text-shadow:
+        0 0 10px #ff1493;
+}
+
+.coming-countdown {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+
+    margin: 30px 0;
+}
+
+.time-box {
+    min-width: 85px;
+
+    padding: 15px 10px;
+
+    border: 1px solid #ff4fa3;
+    border-radius: 15px;
+
+    background: rgba(255, 20, 147, 0.12);
+
+    box-shadow:
+        0 0 15px rgba(255, 20, 147, 0.4);
+}
+
+.time-box span {
+    display: block;
+
+    font-size: 30px;
+    font-weight: bold;
+
+    color: white;
+}
+
+.time-box small {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #ff8acb;
+}
+
+.coming-wait {
+    margin-top: 25px;
+
+    font-size: 16px;
+
+    color: #ffb7dc !important;
+}
+
+@keyframes lockPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+    }
+}
+
+
+/* HP */
+
+@media (max-width: 600px) {
+
+    .coming-soon-box h1 {
+        font-size: 34px;
+        letter-spacing: 3px;
+    }
+
+    .coming-soon-box h2 {
+        font-size: 20px;
+    }
+
+    .coming-date {
+        font-size: 20px;
+    }
+
+    .coming-countdown {
+        gap: 6px;
+    }
+
+    .time-box {
+        min-width: 65px;
+        padding: 12px 5px;
+    }
+
+    .time-box span {
+        font-size: 22px;
+    }
+
+    .time-box small {
+        font-size: 10px;
+    }
+
+    .coming-lock {
+        font-size: 55px;
+    
     }
 }
