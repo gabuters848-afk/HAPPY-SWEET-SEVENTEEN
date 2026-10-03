@@ -843,5 +843,8 @@ body {
 
     .photo-card::after {
         font-size: 20px;
+        body {
+    border: 10px solid red !important;
+
     }
 }
