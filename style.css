@@ -615,3 +615,234 @@ body {
         padding: 15px 5px;
     }
 }
+/* =========================================
+   DEKORASI TAMBAHAN 💗✨🎀🌸🦋
+   ========================================= */
+
+/* FOTO UTAMA - FRAME PINK GLOW */
+.love-photo {
+    padding: 10px;
+    border: 4px solid #ff70ba;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #ff4fa3, #ffffff, #ff1493);
+    box-shadow:
+        0 0 15px #ff4fa3,
+        0 0 35px rgba(255, 79, 163, 0.7),
+        0 0 70px rgba(255, 20, 147, 0.4);
+}
+
+/* Hiasan di sekitar foto utama */
+.love-photo::before {
+    content: "🎀";
+    position: absolute;
+    top: -30px;
+    left: -25px;
+    font-size: 45px;
+    z-index: 10;
+    transform: rotate(-15deg);
+}
+
+.love-photo::after {
+    content: "✨ 💗 ✨";
+    position: absolute;
+    bottom: -25px;
+    right: -35px;
+    font-size: 25px;
+    z-index: 10;
+    white-space: nowrap;
+}
+
+/* FOTO GALLERY - FRAME POLAROID */
+.photo-card {
+    position: relative;
+    background: #fff;
+    padding: 10px 10px 35px;
+    border: 3px solid #ff70ba;
+    border-radius: 8px;
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.5),
+        0 0 15px rgba(255, 79, 163, 0.35);
+}
+
+/* Stiker berbeda di tiap foto */
+.photo-card::after {
+    position: absolute;
+    font-size: 25px;
+    bottom: 4px;
+    right: 8px;
+}
+
+.photo-card:nth-child(1)::after {
+    content: "💗";
+}
+
+.photo-card:nth-child(2)::after {
+    content: "✨";
+}
+
+.photo-card:nth-child(3)::after {
+    content: "🎀";
+}
+
+.photo-card:nth-child(4)::after {
+    content: "🌸";
+}
+
+.photo-card:nth-child(5)::after {
+    content: "🦋";
+}
+
+.photo-card:nth-child(6)::after {
+    content: "💕";
+}
+
+.photo-card:nth-child(7)::after {
+    content: "⭐";
+}
+
+.photo-card:nth-child(8)::after {
+    content: "💖";
+}
+
+/* Bingkai gambar */
+.photo-card img {
+    border: 2px solid #ffb6d9;
+    border-radius: 4px;
+}
+
+/* Efek hover foto */
+.photo-card:hover {
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.6),
+        0 0 30px rgba(255, 79, 163, 0.7);
+}
+
+/* DEKORASI JUDUL */
+.section h2::after {
+    content: " ✨";
+}
+
+.section h2::before {
+    content: "💗 ";
+}
+
+/* Judul hero */
+.hero h2::before {
+    content: "🎀 ";
+}
+
+.hero h2::after {
+    content: " 🎀";
+}
+
+/* Countdown */
+.time-box {
+    position: relative;
+}
+
+.time-box::after {
+    content: "✨";
+    position: absolute;
+    top: -12px;
+    right: -8px;
+    font-size: 18px;
+}
+
+/* Gift */
+.gift-section::before {
+    content: "💗 ✨ 🎀 ✨ 💗";
+    display: block;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+/* Pesan */
+.message-card {
+    position: relative;
+}
+
+.message-card::before {
+    content: "💌";
+    position: absolute;
+    top: -25px;
+    left: 20px;
+    font-size: 40px;
+}
+
+.message-card::after {
+    content: "🌸 ✨ 💗 ✨ 🌸";
+    position: absolute;
+    bottom: -20px;
+    right: 20px;
+    font-size: 20px;
+}
+
+/* Musik */
+.music-section::before {
+    content: "🎀 💗 🎵 💗 🎀";
+    display: block;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+/* Video */
+.video-section::before {
+    content: "🎬 ✨ 💗 ✨ 🎬";
+    display: block;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+/* Closing */
+.closing::before {
+    content: "✨ 💗 🌸 💗 ✨";
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.closing::after {
+    content: "🎀 🦋 💕 🦋 🎀";
+    font-size: 25px;
+    margin-top: 25px;
+}
+
+/* Animasi lembut untuk dekorasi */
+.love-photo::before,
+.love-photo::after,
+.photo-card::after {
+    animation: stickerFloat 2.5s ease-in-out infinite;
+}
+
+@keyframes stickerFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(-3deg);
+    }
+
+    50% {
+        transform: translateY(-7px) rotate(3deg);
+    }
+}
+
+/* HP */
+@media (max-width: 700px) {
+
+    .love-photo::before {
+        font-size: 35px;
+        top: -25px;
+        left: -15px;
+    }
+
+    .love-photo::after {
+        font-size: 20px;
+        right: -20px;
+    }
+
+    .photo-card {
+        padding: 7px 7px 28px;
+        border-width: 2px;
+    }
+
+    .photo-card::after {
+        font-size: 20px;
+    }
+}
