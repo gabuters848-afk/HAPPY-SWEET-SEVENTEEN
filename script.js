@@ -1,22 +1,290 @@
 // ==========================================
 // BIRTHDAY WEBSITE RARA
+// LOCKED UNTIL 22 OCTOBER 2026
 // ==========================================
 
 document.addEventListener("DOMContentLoaded", function () {
 
     // ==========================================
+    // TANGGAL WEBSITE DIBUKA
+    // ==========================================
+
+    const unlockDate = new Date(
+        2026,
+        9,   // Oktober = 9
+        22,
+        0,
+        0,
+        0
+    );
+
+
+    // ==========================================
+    // ELEMENT WEBSITE
+    // ==========================================
+
+    const passwordScreen =
+        document.getElementById("passwordScreen");
+
+    const website =
+        document.getElementById("website");
+
+
+    // ==========================================
+    // CEK WAKTU WEBSITE
+    // ==========================================
+
+    function isWebsiteUnlocked() {
+        return new Date() >= unlockDate;
+    }
+
+
+    // ==========================================
+    // BUAT HALAMAN COMING SOON
+    // ==========================================
+
+    function createComingSoon() {
+
+        const comingSoon =
+            document.createElement("div");
+
+        comingSoon.id = "comingSoonScreen";
+
+        comingSoon.innerHTML = `
+            <div class="coming-soon-box">
+
+                <div class="coming-lock">
+                    🔒
+                </div>
+
+                <h1>COMING SOON</h1>
+
+                <h2>
+                    Rara's Sweet Seventeen 🎂
+                </h2>
+
+                <p>
+                    Website spesial ini akan dibuka pada
+                </p>
+
+                <div class="coming-date">
+                    22 OKTOBER 2026
+                </div>
+
+                <div class="coming-countdown">
+
+                    <div class="time-box">
+                        <span id="lockDays">00</span>
+                        <small>HARI</small>
+                    </div>
+
+                    <div class="time-box">
+                        <span id="lockHours">00</span>
+                        <small>JAM</small>
+                    </div>
+
+                    <div class="time-box">
+                        <span id="lockMinutes">00</span>
+                        <small>MENIT</small>
+                    </div>
+
+                    <div class="time-box">
+                        <span id="lockSeconds">00</span>
+                        <small>DETIK</small>
+                    </div>
+
+                </div>
+
+                <p class="coming-wait">
+                    Tunggu sampai waktunya tiba 💗✨
+                </p>
+
+            </div>
+        `;
+
+        document.body.appendChild(comingSoon);
+    }
+
+
+    // ==========================================
+    // UPDATE COUNTDOWN LOCK
+    // ==========================================
+
+    function updateLockCountdown() {
+
+        const comingSoon =
+            document.getElementById("comingSoonScreen");
+
+        if (!comingSoon) return;
+
+        const now = new Date();
+
+        const difference =
+            unlockDate - now;
+
+
+        // Sudah waktunya
+        if (difference <= 0) {
+
+            unlockWebsite();
+
+            return;
+        }
+
+
+        const days =
+            Math.floor(
+                difference /
+                (1000 * 60 * 60 * 24)
+            );
+
+        const hours =
+            Math.floor(
+                (difference /
+                    (1000 * 60 * 60)) % 24
+            );
+
+        const minutes =
+            Math.floor(
+                (difference /
+                    (1000 * 60)) % 60
+            );
+
+        const seconds =
+            Math.floor(
+                (difference / 1000) % 60
+            );
+
+
+        const daysElement =
+            document.getElementById("lockDays");
+
+        const hoursElement =
+            document.getElementById("lockHours");
+
+        const minutesElement =
+            document.getElementById("lockMinutes");
+
+        const secondsElement =
+            document.getElementById("lockSeconds");
+
+
+        if (daysElement) {
+            daysElement.textContent =
+                String(days).padStart(2, "0");
+        }
+
+        if (hoursElement) {
+            hoursElement.textContent =
+                String(hours).padStart(2, "0");
+        }
+
+        if (minutesElement) {
+            minutesElement.textContent =
+                String(minutes).padStart(2, "0");
+        }
+
+        if (secondsElement) {
+            secondsElement.textContent =
+                String(seconds).padStart(2, "0");
+        }
+    }
+
+
+    // ==========================================
+    // BUKA WEBSITE SETELAH 22 OKTOBER
+    // ==========================================
+
+    function unlockWebsite() {
+
+        const comingSoon =
+            document.getElementById("comingSoonScreen");
+
+        if (comingSoon) {
+
+            comingSoon.remove();
+        }
+
+
+        if (passwordScreen) {
+
+            passwordScreen.style.display = "flex";
+        }
+
+
+        if (website) {
+
+            website.style.display = "none";
+        }
+
+
+        updateCountdown();
+        updateGiftStatus();
+    }
+
+
+    // ==========================================
+    // KUNCI WEBSITE
+    // ==========================================
+
+    if (!isWebsiteUnlocked()) {
+
+        // Sembunyikan website asli
+        if (passwordScreen) {
+            passwordScreen.style.display = "none";
+        }
+
+        if (website) {
+            website.style.display = "none";
+        }
+
+
+        // Tampilkan Coming Soon
+        createComingSoon();
+
+        updateLockCountdown();
+
+        setInterval(function () {
+
+            updateLockCountdown();
+
+        }, 1000);
+
+    } else {
+
+        // Kalau sudah 22 Oktober
+        unlockWebsite();
+    }
+
+
+    // ==========================================
     // PASSWORD
     // ==========================================
 
-    const passwordInput = document.getElementById("passwordInput");
-    const passwordButton = document.getElementById("passwordButton");
-    const passwordScreen = document.getElementById("passwordScreen");
-    const website = document.getElementById("website");
-    const wrongPassword = document.getElementById("wrongPassword");
+    const passwordInput =
+        document.getElementById("passwordInput");
+
+    const passwordButton =
+        document.getElementById("passwordButton");
+
+    const wrongPassword =
+        document.getElementById("wrongPassword");
+
 
     function openWebsite() {
-        passwordScreen.style.display = "none";
-        website.style.display = "block";
+
+        if (!isWebsiteUnlocked()) {
+            return;
+        }
+
+        if (passwordScreen) {
+            passwordScreen.style.display = "none";
+        }
+
+        if (website) {
+            website.style.display = "block";
+        }
+
 
         window.scrollTo({
             top: 0,
@@ -24,61 +292,111 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+
     function checkPassword() {
-        const password = passwordInput.value.trim();
+
+        // Jangan izinkan password sebelum waktunya
+        if (!isWebsiteUnlocked()) {
+            return;
+        }
+
+
+        const password =
+            passwordInput.value.trim();
+
 
         if (password === "2504") {
+
             openWebsite();
+
         } else {
-            wrongPassword.style.display = "block";
+
+            if (wrongPassword) {
+
+                wrongPassword.style.display =
+                    "block";
+
+            }
+
             passwordInput.value = "";
 
+
             setTimeout(function () {
-                wrongPassword.style.display = "none";
+
+                if (wrongPassword) {
+
+                    wrongPassword.style.display =
+                        "none";
+
+                }
+
             }, 2000);
         }
     }
 
-    passwordButton.addEventListener("click", checkPassword);
 
-    passwordInput.addEventListener("keydown", function (event) {
-        if (event.key === "Enter") {
-            checkPassword();
-        }
-    });
+    if (passwordButton) {
+
+        passwordButton.addEventListener(
+            "click",
+            checkPassword
+        );
+    }
+
+
+    if (passwordInput) {
+
+        passwordInput.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (event.key === "Enter") {
+
+                    checkPassword();
+
+                }
+
+            }
+        );
+    }
 
 
     // ==========================================
-    // COUNTDOWN 22 OKTOBER
+    // COUNTDOWN WEBSITE
     // ==========================================
 
     function getBirthdayDate() {
 
         const now = new Date();
 
-        let year = now.getFullYear();
+        let year =
+            now.getFullYear();
 
-        let birthday = new Date(
-            year,
-            9,
-            22,
-            0,
-            0,
-            0
-        );
 
-        // Kalau 22 Oktober tahun ini sudah lewat,
-        // hitung ke 22 Oktober tahun berikutnya.
-        if (now >= birthday) {
-            birthday = new Date(
-                year + 1,
+        let birthday =
+            new Date(
+                year,
                 9,
                 22,
                 0,
                 0,
                 0
             );
+
+
+        if (now >= birthday) {
+
+            birthday =
+                new Date(
+                    year + 1,
+                    9,
+                    22,
+                    0,
+                    0,
+                    0
+                );
         }
+
 
         return birthday;
     }
@@ -87,59 +405,97 @@ document.addEventListener("DOMContentLoaded", function () {
     function updateCountdown() {
 
         const now = new Date();
-        const birthday = getBirthdayDate();
 
-        const difference = birthday - now;
+        const birthday =
+            getBirthdayDate();
 
-        const days = document.getElementById("days");
-        const hours = document.getElementById("hours");
-        const minutes = document.getElementById("minutes");
-        const seconds = document.getElementById("seconds");
+
+        const difference =
+            birthday - now;
+
+
+        const days =
+            document.getElementById("days");
+
+        const hours =
+            document.getElementById("hours");
+
+        const minutes =
+            document.getElementById("minutes");
+
+        const seconds =
+            document.getElementById("seconds");
+
 
         if (!days) return;
 
-        const d = Math.floor(
-            difference / (1000 * 60 * 60 * 24)
-        );
 
-        const h = Math.floor(
-            (difference / (1000 * 60 * 60)) % 24
-        );
+        const d =
+            Math.floor(
+                difference /
+                (1000 * 60 * 60 * 24)
+            );
 
-        const m = Math.floor(
-            (difference / (1000 * 60)) % 60
-        );
 
-        const s = Math.floor(
-            (difference / 1000) % 60
-        );
+        const h =
+            Math.floor(
+                (difference /
+                    (1000 * 60 * 60)) % 24
+            );
 
-        days.textContent = String(d).padStart(2, "0");
-        hours.textContent = String(h).padStart(2, "0");
-        minutes.textContent = String(m).padStart(2, "0");
-        seconds.textContent = String(s).padStart(2, "0");
+
+        const m =
+            Math.floor(
+                (difference /
+                    (1000 * 60)) % 60
+            );
+
+
+        const s =
+            Math.floor(
+                (difference / 1000) % 60
+            );
+
+
+        days.textContent =
+            String(d).padStart(2, "0");
+
+        hours.textContent =
+            String(h).padStart(2, "0");
+
+        minutes.textContent =
+            String(m).padStart(2, "0");
+
+        seconds.textContent =
+            String(s).padStart(2, "0");
     }
 
+
     updateCountdown();
-    setInterval(updateCountdown, 1000);
+
+    setInterval(
+        updateCountdown,
+        1000
+    );
 
 
     // ==========================================
-    // CEK APAKAH SUDAH 22 OKTOBER
+    // CEK ULANG TAHUN
     // ==========================================
 
     function isBirthdayUnlocked() {
 
         const now = new Date();
 
-        const birthday = new Date(
-            now.getFullYear(),
-            9,
-            22,
-            0,
-            0,
-            0
-        );
+        const birthday =
+            new Date(
+                now.getFullYear(),
+                9,
+                22,
+                0,
+                0,
+                0
+            );
 
         return now >= birthday;
     }
@@ -149,37 +505,71 @@ document.addEventListener("DOMContentLoaded", function () {
     // GIFT / KADO
     // ==========================================
 
-    const giftBox = document.getElementById("giftBox");
-    const giftStatus = document.getElementById("giftStatus");
-    const giftInstruction = document.getElementById("giftInstruction");
+    const giftBox =
+        document.getElementById("giftBox");
+
+    const giftStatus =
+        document.getElementById("giftStatus");
+
+    const giftInstruction =
+        document.getElementById(
+            "giftInstruction"
+        );
 
     const birthdayReveal =
-        document.getElementById("birthdayReveal");
+        document.getElementById(
+            "birthdayReveal"
+        );
 
 
     function updateGiftStatus() {
 
         if (!giftBox) return;
 
+
         if (isBirthdayUnlocked()) {
 
-            giftBox.classList.remove("locked");
+            giftBox.classList.remove(
+                "locked"
+            );
 
-            giftStatus.textContent =
-                "🎉 Surprise sudah bisa dibuka!";
 
-            giftInstruction.textContent =
-                "Klik kado untuk membukanya 💗";
+            if (giftStatus) {
+
+                giftStatus.textContent =
+                    "🎉 Surprise sudah bisa dibuka!";
+
+            }
+
+
+            if (giftInstruction) {
+
+                giftInstruction.textContent =
+                    "Klik kado untuk membukanya 💗";
+
+            }
 
         } else {
 
-            giftBox.classList.add("locked");
+            giftBox.classList.add(
+                "locked"
+            );
 
-            giftStatus.textContent =
-                "🔒 Kado akan terbuka pada 22 Oktober";
 
-            giftInstruction.textContent =
-                "Tunggu sampai tanggal ulang tahun untuk membukanya 💗";
+            if (giftStatus) {
+
+                giftStatus.textContent =
+                    "🔒 Kado akan terbuka pada 22 Oktober";
+
+            }
+
+
+            if (giftInstruction) {
+
+                giftInstruction.textContent =
+                    "Tunggu sampai tanggal ulang tahun untuk membukanya 💗";
+
+            }
         }
     }
 
@@ -187,59 +577,109 @@ document.addEventListener("DOMContentLoaded", function () {
     updateGiftStatus();
 
 
-    giftBox.addEventListener("click", function () {
+    if (giftBox) {
 
-        // Belum waktunya
-        if (!isBirthdayUnlocked()) {
+        giftBox.addEventListener(
+            "click",
+            function () {
 
-            giftBox.animate(
-                [
-                    { transform: "translateX(0)" },
-                    { transform: "translateX(-8px)" },
-                    { transform: "translateX(8px)" },
-                    { transform: "translateX(-8px)" },
-                    { transform: "translateX(0)" }
-                ],
-                {
-                    duration: 400
+
+                // Belum waktunya
+                if (!isBirthdayUnlocked()) {
+
+                    giftBox.animate(
+                        [
+                            {
+                                transform:
+                                    "translateX(0)"
+                            },
+
+                            {
+                                transform:
+                                    "translateX(-8px)"
+                            },
+
+                            {
+                                transform:
+                                    "translateX(8px)"
+                            },
+
+                            {
+                                transform:
+                                    "translateX(-8px)"
+                            },
+
+                            {
+                                transform:
+                                    "translateX(0)"
+                            }
+                        ],
+                        {
+                            duration: 400
+                        }
+                    );
+
+
+                    if (giftStatus) {
+
+                        giftStatus.textContent =
+                            "🔒 Sabar ya... buka pada 22 Oktober 💗";
+
+                    }
+
+                    return;
                 }
-            );
-
-            giftStatus.textContent =
-                "🔒 Sabar ya... buka pada 22 Oktober 💗";
-
-            return;
-        }
 
 
-        // ======================================
-        // KADO TERBUKA
-        // ======================================
+                // KADO TERBUKA
 
-        giftBox.classList.add("opened");
-
-        giftStatus.textContent =
-            "🎉 Surprise terbuka! 🎉";
-
-        giftInstruction.textContent =
-            "Happy Sweet Seventeen, Rara! 💗";
+                giftBox.classList.add(
+                    "opened"
+                );
 
 
-        // Tampilkan birthday reveal
-        setTimeout(function () {
+                if (giftStatus) {
 
-            birthdayReveal.style.display = "block";
+                    giftStatus.textContent =
+                        "🎉 Surprise terbuka! 🎉";
 
-            birthdayReveal.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
+                }
 
-            createConfetti();
 
-        }, 700);
+                if (giftInstruction) {
 
-    });
+                    giftInstruction.textContent =
+                        "Happy Sweet Seventeen, Rara! 💗";
+
+                }
+
+
+                setTimeout(
+                    function () {
+
+                        if (birthdayReveal) {
+
+                            birthdayReveal.style.display =
+                                "block";
+
+
+                            birthdayReveal.scrollIntoView({
+                                behavior: "smooth",
+                                block: "start"
+                            });
+
+                        }
+
+
+                        createConfetti();
+
+                    },
+                    700
+                );
+
+            }
+        );
+    }
 
 
     // ==========================================
@@ -247,20 +687,34 @@ document.addEventListener("DOMContentLoaded", function () {
     // ==========================================
 
     const messageButton =
-        document.getElementById("messageButton");
+        document.getElementById(
+            "messageButton"
+        );
 
     const messageSection =
-        document.getElementById("messageSection");
+        document.getElementById(
+            "messageSection"
+        );
 
 
-    messageButton.addEventListener("click", function () {
+    if (messageButton) {
 
-        messageSection.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
+        messageButton.addEventListener(
+            "click",
+            function () {
 
-    });
+                if (messageSection) {
+
+                    messageSection.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+
+                }
+
+            }
+        );
+    }
 
 
     // ==========================================
@@ -270,22 +724,33 @@ document.addEventListener("DOMContentLoaded", function () {
     function createConfetti() {
 
         const container =
-            document.getElementById("confettiContainer");
+            document.getElementById(
+                "confettiContainer"
+            );
+
 
         if (!container) return;
+
 
         for (let i = 0; i < 80; i++) {
 
             const confetti =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
-            confetti.className = "confetti";
+
+            confetti.className =
+                "confetti";
+
 
             confetti.style.left =
                 Math.random() * 100 + "vw";
 
+
             confetti.style.animationDelay =
                 Math.random() * 2 + "s";
+
 
             confetti.style.background =
                 [
@@ -293,13 +758,26 @@ document.addEventListener("DOMContentLoaded", function () {
                     "#ff9aca",
                     "#ffffff",
                     "#ffd166"
-                ][Math.floor(Math.random() * 4)];
+                ][
+                    Math.floor(
+                        Math.random() * 4
+                    )
+                ];
 
-            container.appendChild(confetti);
 
-            setTimeout(function () {
-                confetti.remove();
-            }, 6000);
+            container.appendChild(
+                confetti
+            );
+
+
+            setTimeout(
+                function () {
+
+                    confetti.remove();
+
+                },
+                6000
+            );
         }
     }
 
@@ -309,29 +787,40 @@ document.addEventListener("DOMContentLoaded", function () {
     // ==========================================
 
     const music =
-        document.getElementById("birthdayMusic");
+        document.getElementById(
+            "birthdayMusic"
+        );
 
     const musicButton =
-        document.getElementById("musicButton");
+        document.getElementById(
+            "musicButton"
+        );
 
 
-    musicButton.addEventListener("click", function () {
+    if (musicButton && music) {
 
-        if (music.paused) {
+        musicButton.addEventListener(
+            "click",
+            function () {
 
-            music.play();
+                if (music.paused) {
 
-            musicButton.textContent = "🔊";
+                    music.play();
 
-        } else {
+                    musicButton.textContent =
+                        "🔊";
 
-            music.pause();
+                } else {
 
-            musicButton.textContent = "🔇";
+                    music.pause();
 
-        }
+                    musicButton.textContent =
+                        "🔇";
+                }
 
-    });
+            }
+        );
+    }
 
 
     // ==========================================
@@ -341,36 +830,72 @@ document.addEventListener("DOMContentLoaded", function () {
     function createHeart() {
 
         // Hanya setelah website terbuka
-        if (passwordScreen.style.display !== "none") {
+        if (
+            !passwordScreen ||
+            passwordScreen.style.display !== "none"
+        ) {
             return;
         }
 
+
+        if (!website ||
+            website.style.display === "none") {
+            return;
+        }
+
+
         const heart =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
-        heart.textContent = "💗";
 
-        heart.style.position = "fixed";
+        heart.textContent =
+            "💗";
+
+
+        heart.style.position =
+            "fixed";
+
+
         heart.style.left =
             Math.random() * 100 + "vw";
-        heart.style.bottom = "-30px";
+
+
+        heart.style.bottom =
+            "-30px";
+
+
         heart.style.fontSize =
-            (12 + Math.random() * 18) + "px";
-        heart.style.pointerEvents = "none";
-        heart.style.zIndex = "1";
+            (12 + Math.random() * 18) +
+            "px";
+
+
+        heart.style.pointerEvents =
+            "none";
+
+
+        heart.style.zIndex =
+            "1";
+
 
         heart.animate(
             [
                 {
-                    transform: "translateY(0)",
+                    transform:
+                        "translateY(0)",
                     opacity: 0
                 },
+
                 {
-                    transform: "translateY(-50vh)",
+                    transform:
+                        "translateY(-50vh)",
                     opacity: 1
                 },
+
                 {
-                    transform: "translateY(-110vh)",
+                    transform:
+                        "translateY(-110vh)",
                     opacity: 0
                 }
             ],
@@ -380,13 +905,26 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         );
 
-        document.body.appendChild(heart);
 
-        setTimeout(function () {
-            heart.remove();
-        }, 5000);
+        document.body.appendChild(
+            heart
+        );
+
+
+        setTimeout(
+            function () {
+
+                heart.remove();
+
+            },
+            5000
+        );
     }
 
-    setInterval(createHeart, 1200);
+
+    setInterval(
+        createHeart,
+        1200
+    );
 
 });
