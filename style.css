@@ -1,7 +1,7 @@
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 html {
@@ -10,7 +10,8 @@ html {
 
 body {
     font-family: Arial, sans-serif;
-    background: #080808;
+    background:
+        radial-gradient(circle at top, #3a0028 0%, #12000d 35%, #050005 75%);
     color: white;
     overflow-x: hidden;
 }
@@ -19,70 +20,75 @@ body {
    PASSWORD
 ========================= */
 
-#passwordScreen {
+.screen {
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
-    background:
-        radial-gradient(circle at top, #ff4fa3 0%, #180914 35%, #080808 70%);
 }
 
 .password-box {
-    width: min(420px, 100%);
+    width: 100%;
+    max-width: 420px;
     text-align: center;
-    padding: 40px 25px;
+    padding: 35px 25px;
+    border: 2px solid #ff4fa3;
     border-radius: 25px;
-    background: rgba(20, 20, 20, 0.9);
-    border: 1px solid rgba(255, 105, 180, 0.5);
-    box-shadow: 0 0 40px rgba(255, 50, 160, 0.35);
+    background: rgba(20, 0, 15, .9);
+    box-shadow:
+        0 0 20px #ff1493,
+        0 0 60px rgba(255, 20, 147, .35);
 }
 
 .lock-icon {
     font-size: 55px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .password-box h1 {
-    color: #ff7fc5;
-    margin-bottom: 15px;
+    color: #ff70ba;
+    text-shadow: 0 0 15px #ff1493;
+    margin-bottom: 12px;
 }
 
 .password-box p {
     line-height: 1.6;
+    color: #ffd6eb;
 }
 
 #passwordInput {
     width: 100%;
-    margin: 25px 0 12px;
-    padding: 15px;
+    margin-top: 20px;
+    padding: 14px;
+    border: 2px solid #ff70ba;
+    border-radius: 12px;
+    background: #16000f;
+    color: white;
     text-align: center;
     font-size: 22px;
-    letter-spacing: 8px;
-    color: white;
-    background: #111;
-    border: 1px solid #ff4fa3;
-    border-radius: 12px;
     outline: none;
 }
 
 #passwordInput:focus {
-    box-shadow: 0 0 15px rgba(255, 79, 163, 0.5);
+    box-shadow: 0 0 20px #ff1493;
+}
+
+button {
+    border: none;
+    cursor: pointer;
 }
 
 #passwordButton,
 .main-button {
-    border: none;
-    padding: 14px 25px;
+    margin-top: 15px;
+    padding: 13px 25px;
     border-radius: 30px;
-    background: linear-gradient(135deg, #ff4fa3, #ff1493);
+    background: linear-gradient(135deg, #ff1493, #ff70ba);
     color: white;
-    font-size: 16px;
     font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 0 20px rgba(255, 20, 147, 0.4);
-    transition: 0.3s;
+    font-size: 16px;
+    box-shadow: 0 0 20px rgba(255, 20, 147, .6);
 }
 
 #passwordButton:hover,
@@ -91,17 +97,16 @@ body {
 }
 
 .password-hint {
-    margin-top: 18px;
+    margin-top: 14px;
     font-size: 12px;
-    color: #aaa;
+    color: #ffb6d9 !important;
 }
 
 #wrongPassword {
     display: none;
-    color: #ff6b9d;
     margin-top: 12px;
+    color: #ff6b9d !important;
 }
-
 
 /* =========================
    WEBSITE
@@ -111,43 +116,55 @@ body {
     display: none;
 }
 
-
-/* =========================
-   HERO
-========================= */
-
 .hero {
     min-height: 100vh;
-    padding: 70px 20px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     text-align: center;
-    background:
-        radial-gradient(circle at center, #42102c 0%, #10070d 45%, #080808 80%);
+    padding: 50px 20px;
 }
 
 .small-title {
-    color: #ff91c9;
-    letter-spacing: 4px;
-    font-size: 13px;
-    margin-bottom: 10px;
+    color: #ffb6d9;
+    letter-spacing: 3px;
 }
 
 .hero h1 {
-    font-size: clamp(60px, 15vw, 120px);
+    font-size: clamp(60px, 15vw, 130px);
     color: #ff4fa3;
-    text-shadow: 0 0 30px rgba(255, 79, 163, 0.8);
-    letter-spacing: 10px;
+    text-shadow:
+        0 0 10px #ff1493,
+        0 0 30px #ff1493,
+        0 0 60px #ff1493;
+    margin: 10px 0;
 }
 
+.hero h2 {
+    color: #ffb6d9;
+    margin-top: 25px;
+}
+
+.hero p {
+    color: #ffd6eb;
+}
+
+/* =========================
+   FOTO UTAMA
+========================= */
+
 .love-photo {
-    width: min(330px, 80vw);
-    height: min(330px, 80vw);
-    margin: 25px auto;
+    width: 230px;
+    height: 230px;
     position: relative;
-    filter: drop-shadow(0 0 30px rgba(255, 50, 160, 0.6));
+    padding: 8px;
+    background: linear-gradient(135deg, #ff1493, white, #ff70ba);
+    box-shadow:
+        0 0 20px #ff1493,
+        0 0 50px rgba(255, 20, 147, .6);
+    transform: rotate(-2deg);
+    margin: 25px 0;
 }
 
 .love-photo img {
@@ -159,181 +176,159 @@ body {
     /* bentuk hati */
     clip-path: polygon(
         50% 100%,
-        8% 58%,
-        3% 45%,
-        4% 30%,
-        12% 17%,
-        24% 9%,
-        37% 11%,
-        50% 25%,
-        63% 11%,
-        76% 9%,
-        88% 17%,
-        96% 30%,
-        97% 45%,
-        92% 58%
+        0% 40%,
+        0% 25%,
+        8% 10%,
+        23% 3%,
+        38% 8%,
+        50% 20%,
+        62% 8%,
+        77% 3%,
+        92% 10%,
+        100% 25%,
+        100% 40%
     );
 }
 
-.hero h2 {
-    color: #fff;
-    margin: 15px 0 8px;
-    font-size: clamp(24px, 5vw, 38px);
+.love-photo::before {
+    content: "🎀";
+    position: absolute;
+    left: -20px;
+    top: -25px;
+    font-size: 40px;
+    z-index: 5;
+    animation: floatSticker 2s infinite ease-in-out;
 }
 
-.hero > p:not(.small-title) {
-    color: #ff9dca;
+.love-photo::after {
+    content: "✨ 💗 ✨";
+    position: absolute;
+    right: -30px;
+    bottom: -20px;
+    font-size: 22px;
+    white-space: nowrap;
+    z-index: 5;
 }
-
-.scroll-text {
-    margin-top: 45px;
-    color: #bbb;
-    animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-    50% {
-        transform: translateY(8px);
-    }
-}
-
 
 /* =========================
    SECTION
 ========================= */
 
 .section {
-    min-height: 70vh;
-    padding: 80px 20px;
+    width: min(1100px, 92%);
+    margin: auto;
+    padding: 80px 0;
     text-align: center;
-    position: relative;
 }
 
 .section h2 {
-    color: #ff76ba;
-    font-size: clamp(28px, 6vw, 42px);
-    margin-bottom: 15px;
+    color: #ff70ba;
+    font-size: 32px;
+    text-shadow: 0 0 15px #ff1493;
 }
 
 .section-subtitle {
-    color: #aaa;
-    margin-bottom: 35px;
+    color: #ffc1df;
+    margin-top: 10px;
 }
-
 
 /* =========================
    COUNTDOWN
 ========================= */
 
-.countdown-section {
-    background: #0d0d0d;
-}
-
 .countdown {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
     gap: 15px;
-    margin-top: 40px;
+    flex-wrap: wrap;
+    margin-top: 30px;
 }
 
 .time-box {
-    width: 100px;
-    padding: 20px 10px;
+    min-width: 110px;
+    padding: 20px 15px;
+    border: 2px solid #ff4fa3;
     border-radius: 18px;
-    background: #151515;
-    border: 1px solid rgba(255, 79, 163, 0.4);
-    box-shadow: 0 0 20px rgba(255, 79, 163, 0.12);
+    background: rgba(255, 20, 147, .08);
+    box-shadow: 0 0 20px rgba(255, 20, 147, .3);
 }
 
 .time-box span {
     display: block;
-    color: #ff62b1;
-    font-size: 35px;
+    font-size: 38px;
+    color: #ff70ba;
     font-weight: bold;
 }
 
 .time-box small {
-    color: #aaa;
+    color: #ffd6eb;
 }
-
 
 /* =========================
    GIFT
 ========================= */
 
 .gift-section {
-    background:
-        radial-gradient(circle, #2c0c20, #080808 65%);
-}
-
-#giftStatus {
-    color: #ff9aca;
-    margin-bottom: 15px;
-}
-
-#giftInstruction {
-    color: #999;
-    margin-top: 15px;
+    min-height: 500px;
 }
 
 .gift {
-    width: 180px;
-    height: 180px;
-    margin: 40px auto 20px;
+    width: 150px;
+    height: 140px;
     position: relative;
+    margin: 50px auto 25px;
     cursor: pointer;
-    transition: 0.5s;
-    user-select: none;
+    transition: .5s;
 }
 
 .gift-body {
-    width: 150px;
-    height: 120px;
     position: absolute;
     bottom: 0;
-    left: 15px;
-    border-radius: 10px;
-    background: linear-gradient(135deg, #ff4fa3, #b80062);
+    width: 150px;
+    height: 105px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #ff1493, #ff70ba);
     display: flex;
-    align-items: center;
     justify-content: center;
-    font-size: 70px;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+    align-items: center;
+    font-size: 50px;
+    box-shadow: 0 0 30px rgba(255, 20, 147, .6);
 }
 
 .gift-lid {
     position: absolute;
-    width: 170px;
-    height: 45px;
-    left: 5px;
-    top: 25px;
-    border-radius: 10px;
-    background: #ff70ba;
-    font-size: 35px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    top: 10px;
+    left: -8px;
+    width: 166px;
+    height: 35px;
+    border-radius: 8px;
+    background: #ff4fa3;
     z-index: 2;
+    font-size: 25px;
+    transition: .7s;
 }
 
 .gift-lock {
     position: absolute;
-    right: 0;
-    bottom: 0;
-    font-size: 35px;
     z-index: 5;
+    left: 50%;
+    top: 55px;
+    transform: translateX(-50%);
+    font-size: 25px;
+    transition: .3s;
 }
 
-.gift.locked {
-    opacity: 0.75;
-    filter: grayscale(0.25);
+.gift.opened .gift-lid {
+    transform: translateY(-70px) rotate(-8deg);
 }
 
-.gift:not(.locked):hover {
+.gift.opened .gift-lock {
+    opacity: 0;
+}
+
+.gift.opened {
     transform: scale(1.08);
 }
-
 
 /* =========================
    BIRTHDAY REVEAL
@@ -341,334 +336,106 @@ body {
 
 .birthday-reveal {
     display: none;
-    min-height: 100vh;
-    background:
-        radial-gradient(circle, #4d1236, #10070d 65%);
-    overflow: hidden;
+    position: relative;
 }
 
 .cake {
-    font-size: 100px;
-    animation: cakePop 1s ease;
-    margin-bottom: 20px;
-}
-
-@keyframes cakePop {
-    0% {
-        transform: scale(0);
-    }
-
-    70% {
-        transform: scale(1.2);
-    }
-
-    100% {
-        transform: scale(1);
-    }
+    font-size: 90px;
+    animation: cakeBounce 1.5s infinite ease-in-out;
 }
 
 .birthday-reveal h1 {
     color: #ff70ba;
-    font-size: clamp(35px, 8vw, 70px);
-    text-shadow: 0 0 25px rgba(255, 50, 160, 0.7);
+    font-size: 42px;
+    text-shadow: 0 0 20px #ff1493;
+    margin: 20px 0;
 }
 
 .birthday-reveal h2 {
     color: white;
 }
 
-
-/* =========================
-   CONFETTI
-========================= */
-
-.confetti {
-    position: fixed;
-    top: -20px;
-    width: 10px;
-    height: 15px;
-    animation: fall 4s linear forwards;
-    z-index: 9999;
-    pointer-events: none;
-}
-
-@keyframes fall {
-    to {
-        transform:
-            translateY(110vh)
-            rotate(720deg);
-    }
-}
-
-
 /* =========================
    MESSAGE
 ========================= */
 
 .message-section {
-    background: #0b0b0b;
+    display: none;
 }
 
 .message-card {
     max-width: 750px;
     margin: 30px auto;
-    padding: 35px 25px;
+    padding: 30px;
+    border: 2px solid #ff70ba;
     border-radius: 25px;
-    background: rgba(255, 79, 163, 0.08);
-    border: 1px solid rgba(255, 79, 163, 0.35);
-    box-shadow: 0 0 30px rgba(255, 79, 163, 0.12);
+    background: rgba(255, 20, 147, .08);
+    box-shadow:
+        0 0 20px rgba(255, 20, 147, .3),
+        inset 0 0 30px rgba(255, 20, 147, .05);
+    text-align: left;
+    line-height: 1.8;
+    color: #ffe1ef;
 }
 
 .message-card p {
-    color: #ddd;
-    line-height: 1.8;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
-
 
 /* =========================
    GALLERY
 ========================= */
 
-.gallery-section {
-    background: #101010;
-}
-
 .gallery {
-    max-width: 1000px;
-    margin: 40px auto;
+    margin-top: 35px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 25px;
 }
 
 .photo-card {
+    position: relative;
     background: white;
-    padding: 10px 10px 30px;
-    border-radius: 3px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-    transform: rotate(-2deg);
-    transition: 0.3s;
+    padding: 10px 10px 38px;
+    border: 3px solid #ff70ba;
+    border-radius: 8px;
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, .7),
+        0 0 20px rgba(255, 20, 147, .35);
+    transition: .4s;
 }
 
 .photo-card:nth-child(even) {
     transform: rotate(2deg);
 }
 
+.photo-card:nth-child(odd) {
+    transform: rotate(-2deg);
+}
+
 .photo-card:hover {
-    transform: scale(1.05) rotate(0);
-    z-index: 3;
+    transform: rotate(0deg) scale(1.05);
+    z-index: 5;
+    box-shadow:
+        0 0 25px #ff1493,
+        0 15px 35px rgba(0, 0, 0, .7);
 }
 
 .photo-card img {
     width: 100%;
-    aspect-ratio: 1 / 1;
+    height: 220px;
     object-fit: cover;
     display: block;
+    border: 2px solid #ffb6d9;
+    border-radius: 4px;
 }
 
-
-/* =========================
-   MUSIC
-========================= */
-
-.music-section {
-    background:
-        radial-gradient(circle at center, #281020, #080808 70%);
-}
-
-#birthdayMusic {
-    width: min(500px, 100%);
-    margin-top: 30px;
-}
-
-
-/* =========================
-   VIDEO
-========================= */
-
-.video-section {
-    background: #0c0c0c;
-}
-
-#birthdayVideo {
-    display: block;
-    width: min(850px, 100%);
-    max-height: 600px;
-    margin: 35px auto 0;
-    border-radius: 20px;
-    box-shadow: 0 0 35px rgba(255, 79, 163, 0.25);
-}
-
-
-/* =========================
-   CLOSING
-========================= */
-
-.closing {
-    min-height: 100vh;
-    padding: 80px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background:
-        radial-gradient(circle, #45122f, #080808 70%);
-}
-
-.closing-heart {
-    font-size: 100px;
-    animation: heartbeat 1.5s infinite;
-}
-
-@keyframes heartbeat {
-    50% {
-        transform: scale(1.15);
-    }
-}
-
-.closing h1 {
-    color: #ff70ba;
-    font-size: clamp(35px, 8vw, 65px);
-}
-
-.closing h2 {
-    margin: 15px 0;
-}
-
-.closing p {
-    color: #bbb;
-}
-
-.closing-small {
-    margin-top: 50px;
-}
-
-
-/* =========================
-   MUSIC BUTTON
-========================= */
-
-.music-button {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    width: 50px;
-    height: 50px;
-    border: none;
-    border-radius: 50%;
-    background: #ff4fa3;
-    color: white;
-    font-size: 22px;
-    cursor: pointer;
-    z-index: 999;
-    box-shadow: 0 0 20px rgba(255, 79, 163, 0.5);
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 700px) {
-
-    .gallery {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-    }
-
-    .time-box {
-        width: 75px;
-    }
-
-    .time-box span {
-        font-size: 25px;
-    }
-
-    .hero {
-        padding-top: 50px;
-    }
-
-    .love-photo {
-        width: 280px;
-        height: 280px;
-    }
-
-    .gift {
-        transform: scale(0.9);
-    }
-}
-
-@media (max-width: 420px) {
-
-    .gallery {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .countdown {
-        gap: 8px;
-    }
-
-    .time-box {
-        width: 70px;
-        padding: 15px 5px; }
-    
-/* =========================================
-   DEKORASI TAMBAHAN 💗✨🎀🌸🦋
-   ========================================= */
-
-/* FOTO UTAMA - FRAME PINK GLOW */
-.love-photo {
-    padding: 10px;
-    border: 4px solid #ff70ba;
-    border-radius: 30px;
-    background: linear-gradient(135deg, #ff4fa3, #ffffff, #ff1493);
-    box-shadow:
-        0 0 15px #ff4fa3,
-        0 0 35px rgba(255, 79, 163, 0.7),
-        0 0 70px rgba(255, 20, 147, 0.4);
-}
-
-/* Hiasan di sekitar foto utama */
-.love-photo::before {
-    content: "🎀";
-    position: absolute;
-    top: -30px;
-    left: -25px;
-    font-size: 45px;
-    z-index: 10;
-    transform: rotate(-15deg);
-}
-
-.love-photo::after {
-    content: "✨ 💗 ✨";
-    position: absolute;
-    bottom: -25px;
-    right: -35px;
-    font-size: 25px;
-    z-index: 10;
-    white-space: nowrap;
-}
-
-/* FOTO GALLERY - FRAME POLAROID */
-.photo-card {
-    position: relative;
-    background: #fff;
-    padding: 10px 10px 35px;
-    border: 3px solid #ff70ba;
-    border-radius: 8px;
-    box-shadow:
-        0 8px 20px rgba(0, 0, 0, 0.5),
-        0 0 15px rgba(255, 79, 163, 0.35);
-}
-
-/* Stiker berbeda di tiap foto */
 .photo-card::after {
     position: absolute;
-    font-size: 25px;
-    bottom: 4px;
-    right: 8px;
+    right: 10px;
+    bottom: 5px;
+    font-size: 22px;
+    animation: floatSticker 2.5s infinite ease-in-out;
 }
 
 .photo-card:nth-child(1)::after {
@@ -703,148 +470,179 @@ body {
     content: "💖";
 }
 
-/* Bingkai gambar */
-.photo-card img {
-    border: 2px solid #ffb6d9;
-    border-radius: 4px;
-}
+/* =========================
+   MUSIC & VIDEO
+========================= */
 
-/* Efek hover foto */
-.photo-card:hover {
-    box-shadow:
-        0 15px 35px rgba(0, 0, 0, 0.6),
-        0 0 30px rgba(255, 79, 163, 0.7);
-}
-
-/* DEKORASI JUDUL */
-.section h2::after {
-    content: " ✨";
-}
-
-.section h2::before {
-    content: "💗 ";
-}
-
-/* Judul hero */
-.hero h2::before {
-    content: "🎀 ";
-}
-
-.hero h2::after {
-    content: " 🎀";
-}
-
-/* Countdown */
-.time-box {
-    position: relative;
-}
-
-.time-box::after {
-    content: "✨";
-    position: absolute;
-    top: -12px;
-    right: -8px;
-    font-size: 18px;
-}
-
-/* Gift */
-.gift-section::before {
-    content: "💗 ✨ 🎀 ✨ 💗";
-    display: block;
-    font-size: 25px;
-    margin-bottom: 15px;
-}
-
-/* Pesan */
-.message-card {
-    position: relative;
-}
-
-.message-card::before {
-    content: "💌";
-    position: absolute;
-    top: -25px;
-    left: 20px;
-    font-size: 40px;
-}
-
-.message-card::after {
-    content: "🌸 ✨ 💗 ✨ 🌸";
-    position: absolute;
-    bottom: -20px;
-    right: 20px;
-    font-size: 20px;
-}
-
-/* Musik */
-.music-section::before {
-    content: "🎀 💗 🎵 💗 🎀";
-    display: block;
-    font-size: 25px;
-    margin-bottom: 15px;
-}
-
-/* Video */
-.video-section::before {
-    content: "🎬 ✨ 💗 ✨ 🎬";
-    display: block;
-    font-size: 25px;
-    margin-bottom: 15px;
-}
-
-/* Closing */
-.closing::before {
-    content: "✨ 💗 🌸 💗 ✨";
-    font-size: 28px;
-    margin-bottom: 20px;
-}
-
-.closing::after {
-    content: "🎀 🦋 💕 🦋 🎀";
-    font-size: 25px;
+.music-section audio {
+    width: min(500px, 100%);
     margin-top: 25px;
 }
 
-/* Animasi lembut untuk dekorasi */
-.love-photo::before,
-.love-photo::after,
-.photo-card::after {
-    animation: stickerFloat 2.5s ease-in-out infinite;
+.video-section video {
+    width: min(750px, 100%);
+    margin-top: 25px;
+    border: 3px solid #ff70ba;
+    border-radius: 18px;
+    box-shadow: 0 0 30px rgba(255, 20, 147, .5);
 }
 
-@keyframes stickerFloat {
+/* =========================
+   CLOSING
+========================= */
+
+.closing {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.closing-heart {
+    font-size: 80px;
+    animation: heartBeat 1.5s infinite;
+}
+
+.closing h1 {
+    color: #ff70ba;
+    font-size: 45px;
+}
+
+.closing h2 {
+    margin-top: 10px;
+}
+
+.closing p {
+    margin-top: 10px;
+    color: #ffc1df;
+}
+
+.closing-small {
+    font-size: 12px;
+}
+
+/* =========================
+   MUSIC BUTTON
+========================= */
+
+.music-button {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #ff1493;
+    color: white;
+    font-size: 22px;
+    box-shadow: 0 0 20px #ff1493;
+    z-index: 9999;
+}
+
+/* =========================
+   ANIMASI
+========================= */
+
+@keyframes floatSticker {
     0%, 100% {
-        transform: translateY(0) rotate(-3deg);
+        transform: translateY(0) rotate(-5deg);
     }
 
     50% {
-        transform: translateY(-7px) rotate(3deg);
+        transform: translateY(-8px) rotate(5deg);
     }
 }
 
-/* HP */
-@media (max-width: 700px) {
-
-    .love-photo::before {
-        font-size: 35px;
-        top: -25px;
-        left: -15px;
+@keyframes cakeBounce {
+    0%, 100% {
+        transform: translateY(0);
     }
 
-    .love-photo::after {
-        font-size: 20px;
-        right: -20px;
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes heartBeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+/* =========================
+   RESPONSIVE HP
+========================= */
+
+@media (max-width: 700px) {
+
+    .hero {
+        min-height: 90vh;
+    }
+
+    .love-photo {
+        width: 190px;
+        height: 190px;
+    }
+
+    .hero h1 {
+        font-size: 70px;
+    }
+
+    .hero h2 {
+        font-size: 22px;
+    }
+
+    .section {
+        padding: 55px 0;
+    }
+
+    .section h2 {
+        font-size: 27px;
+    }
+
+    .countdown {
+        gap: 8px;
+    }
+
+    .time-box {
+        min-width: 75px;
+        padding: 15px 8px;
+    }
+
+    .time-box span {
+        font-size: 27px;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
     }
 
     .photo-card {
-        padding: 7px 7px 28px;
-        border-width: 2px;
+        padding: 7px 7px 30px;
     }
 
-    .photo-card::after {
-        font-size: 20px;
-       body {
-    background: lime !important;
-}
-    } 
+    .photo-card img {
+        height: 170px;
+    }
 
+    .birthday-reveal h1 {
+        font-size: 30px;
+    }
+
+    .message-card {
+        padding: 20px;
+        font-size: 14px;
+    }
+
+    .closing h1 {
+        font-size: 35px;
+    }
+}
