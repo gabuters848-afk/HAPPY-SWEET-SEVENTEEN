@@ -1,3 +1,7 @@
+/* ==========================================
+   RESET
+========================================== */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -11,34 +15,201 @@ html {
 body {
     font-family: Arial, sans-serif;
     background:
-        radial-gradient(circle at top, #3a0028 0%, #12000d 35%, #050005 75%);
+        radial-gradient(
+            circle at top,
+            #3a0028 0%,
+            #12000d 35%,
+            #050005 75%
+        );
     color: white;
     overflow-x: hidden;
 }
 
-/* =========================
-   PASSWORD
-========================= */
 
-.screen {
-    min-height: 100vh;
+/* ==========================================
+   COMING SOON LOCK SCREEN
+========================================== */
+
+#comingSoonScreen {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
+    min-height: 100vh;
+    padding: 20px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #3b0028 0%,
+            #160013 45%,
+            #050005 100%
+        );
+
+    color: white;
+    text-align: center;
+}
+
+.coming-soon-box {
+    width: 100%;
+    max-width: 700px;
+
+    animation: comingAppear 1s ease;
+}
+
+.coming-lock {
+    font-size: 70px;
+    margin-bottom: 10px;
+
+    animation: lockPulse 1.5s infinite;
+}
+
+.coming-soon-box h1 {
+    margin: 0;
+
+    font-size: 48px;
+    letter-spacing: 5px;
+
+    color: #ff4fa3;
+
+    text-shadow:
+        0 0 10px #ff4fa3,
+        0 0 25px #ff1493,
+        0 0 50px #ff1493;
+}
+
+.coming-soon-box h2 {
+    margin: 15px 0;
+
+    font-size: 25px;
+    color: #ffffff;
+}
+
+.coming-soon-box p {
+    color: #dddddd;
+    line-height: 1.6;
+}
+
+.coming-date {
+    margin: 20px 0;
+
+    font-size: 25px;
+    font-weight: bold;
+
+    color: #ff8acb;
+
+    text-shadow:
+        0 0 10px #ff1493,
+        0 0 20px #ff1493;
+}
+
+.coming-countdown {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+
+    margin: 30px 0;
+}
+
+.coming-countdown .time-box {
+    min-width: 85px;
+
+    padding: 15px 10px;
+
+    border: 1px solid #ff4fa3;
+    border-radius: 15px;
+
+    background: rgba(255, 20, 147, 0.12);
+
+    box-shadow:
+        0 0 15px rgba(255, 20, 147, 0.4);
+}
+
+.coming-countdown .time-box span {
+    display: block;
+
+    font-size: 30px;
+    font-weight: bold;
+
+    color: white;
+}
+
+.coming-countdown .time-box small {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #ff8acb;
+    font-size: 11px;
+}
+
+.coming-wait {
+    margin-top: 25px;
+
+    font-size: 16px;
+
+    color: #ffb7dc !important;
+}
+
+@keyframes lockPulse {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+    }
+}
+
+@keyframes comingAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* ==========================================
+   PASSWORD
+========================================== */
+
+.screen {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     padding: 20px;
 }
 
 .password-box {
     width: 100%;
     max-width: 420px;
+
     text-align: center;
+
     padding: 35px 25px;
+
     border: 2px solid #ff4fa3;
     border-radius: 25px;
-    background: rgba(20, 0, 15, .9);
+
+    background: rgba(20, 0, 15, 0.9);
+
     box-shadow:
         0 0 20px #ff1493,
-        0 0 60px rgba(255, 20, 147, .35);
+        0 0 60px rgba(255, 20, 147, 0.35);
 }
 
 .lock-icon {
@@ -48,7 +219,10 @@ body {
 
 .password-box h1 {
     color: #ff70ba;
-    text-shadow: 0 0 15px #ff1493;
+
+    text-shadow:
+        0 0 15px #ff1493;
+
     margin-bottom: 12px;
 }
 
@@ -59,19 +233,28 @@ body {
 
 #passwordInput {
     width: 100%;
+
     margin-top: 20px;
+
     padding: 14px;
+
     border: 2px solid #ff70ba;
     border-radius: 12px;
+
     background: #16000f;
+
     color: white;
+
     text-align: center;
+
     font-size: 22px;
+
     outline: none;
 }
 
 #passwordInput:focus {
-    box-shadow: 0 0 20px #ff1493;
+    box-shadow:
+        0 0 20px #ff1493;
 }
 
 button {
@@ -82,13 +265,27 @@ button {
 #passwordButton,
 .main-button {
     margin-top: 15px;
+
     padding: 13px 25px;
+
     border-radius: 30px;
-    background: linear-gradient(135deg, #ff1493, #ff70ba);
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff1493,
+            #ff70ba
+        );
+
     color: white;
+
     font-weight: bold;
     font-size: 16px;
-    box-shadow: 0 0 20px rgba(255, 20, 147, .6);
+
+    box-shadow:
+        0 0 20px rgba(255, 20, 147, 0.6);
+
+    transition: 0.3s;
 }
 
 #passwordButton:hover,
@@ -98,31 +295,45 @@ button {
 
 .password-hint {
     margin-top: 14px;
+
     font-size: 12px;
+
     color: #ffb6d9 !important;
 }
 
 #wrongPassword {
     display: none;
+
     margin-top: 12px;
+
     color: #ff6b9d !important;
 }
 
-/* =========================
+
+/* ==========================================
    WEBSITE
-========================= */
+========================================== */
 
 #website {
     display: none;
 }
 
+
+/* ==========================================
+   HERO
+========================================== */
+
 .hero {
     min-height: 100vh;
+
     display: flex;
     flex-direction: column;
+
     justify-content: center;
     align-items: center;
+
     text-align: center;
+
     padding: 50px 20px;
 }
 
@@ -133,11 +344,14 @@ button {
 
 .hero h1 {
     font-size: clamp(60px, 15vw, 130px);
+
     color: #ff4fa3;
+
     text-shadow:
         0 0 10px #ff1493,
         0 0 30px #ff1493,
         0 0 60px #ff1493;
+
     margin: 10px 0;
 }
 
@@ -150,81 +364,114 @@ button {
     color: #ffd6eb;
 }
 
-/* =========================
+
+/* ==========================================
    FOTO UTAMA
-========================= */
+========================================== */
 
 .love-photo {
     width: 230px;
     height: 230px;
+
     position: relative;
+
     padding: 8px;
-    background: linear-gradient(135deg, #ff1493, white, #ff70ba);
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff1493,
+            white,
+            #ff70ba
+        );
+
     box-shadow:
         0 0 20px #ff1493,
-        0 0 50px rgba(255, 20, 147, .6);
+        0 0 50px rgba(255, 20, 147, 0.6);
+
     transform: rotate(-2deg);
+
     margin: 25px 0;
 }
 
 .love-photo img {
     width: 100%;
     height: 100%;
+
     object-fit: cover;
+
     display: block;
 
-    /* bentuk hati */
-    clip-path: polygon(
-        50% 100%,
-        0% 40%,
-        0% 25%,
-        8% 10%,
-        23% 3%,
-        38% 8%,
-        50% 20%,
-        62% 8%,
-        77% 3%,
-        92% 10%,
-        100% 25%,
-        100% 40%
-    );
+    clip-path:
+        polygon(
+            50% 100%,
+            0% 40%,
+            0% 25%,
+            8% 10%,
+            23% 3%,
+            38% 8%,
+            50% 20%,
+            62% 8%,
+            77% 3%,
+            92% 10%,
+            100% 25%,
+            100% 40%
+        );
 }
 
 .love-photo::before {
     content: "🎀";
+
     position: absolute;
+
     left: -20px;
     top: -25px;
+
     font-size: 40px;
+
     z-index: 5;
-    animation: floatSticker 2s infinite ease-in-out;
+
+    animation:
+        floatSticker 2s infinite ease-in-out;
 }
 
 .love-photo::after {
     content: "✨ 💗 ✨";
+
     position: absolute;
+
     right: -30px;
     bottom: -20px;
+
     font-size: 22px;
+
     white-space: nowrap;
+
     z-index: 5;
 }
 
-/* =========================
+
+/* ==========================================
    SECTION
-========================= */
+========================================== */
 
 .section {
     width: min(1100px, 92%);
+
     margin: auto;
+
     padding: 80px 0;
+
     text-align: center;
 }
 
 .section h2 {
     color: #ff70ba;
+
     font-size: 32px;
-    text-shadow: 0 0 15px #ff1493;
+
+    text-shadow:
+        0 0 15px #ff1493;
 }
 
 .section-subtitle {
@@ -232,41 +479,57 @@ button {
     margin-top: 10px;
 }
 
-/* =========================
-   COUNTDOWN
-========================= */
+
+/* ==========================================
+   COUNTDOWN WEBSITE
+========================================== */
 
 .countdown {
     display: flex;
+
     justify-content: center;
+
     gap: 15px;
+
     flex-wrap: wrap;
+
     margin-top: 30px;
 }
 
-.time-box {
+.countdown .time-box {
     min-width: 110px;
+
     padding: 20px 15px;
+
     border: 2px solid #ff4fa3;
+
     border-radius: 18px;
-    background: rgba(255, 20, 147, .08);
-    box-shadow: 0 0 20px rgba(255, 20, 147, .3);
+
+    background:
+        rgba(255, 20, 147, 0.08);
+
+    box-shadow:
+        0 0 20px rgba(255, 20, 147, 0.3);
 }
 
-.time-box span {
+.countdown .time-box span {
     display: block;
+
     font-size: 38px;
+
     color: #ff70ba;
+
     font-weight: bold;
 }
 
-.time-box small {
+.countdown .time-box small {
     color: #ffd6eb;
 }
 
-/* =========================
+
+/* ==========================================
    GIFT
-========================= */
+========================================== */
 
 .gift-section {
     min-height: 500px;
@@ -275,51 +538,83 @@ button {
 .gift {
     width: 150px;
     height: 140px;
+
     position: relative;
+
     margin: 50px auto 25px;
+
     cursor: pointer;
-    transition: .5s;
+
+    transition: 0.5s;
 }
 
 .gift-body {
     position: absolute;
+
     bottom: 0;
+
     width: 150px;
     height: 105px;
+
     border-radius: 8px;
-    background: linear-gradient(135deg, #ff1493, #ff70ba);
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff1493,
+            #ff70ba
+        );
+
     display: flex;
+
     justify-content: center;
     align-items: center;
+
     font-size: 50px;
-    box-shadow: 0 0 30px rgba(255, 20, 147, .6);
+
+    box-shadow:
+        0 0 30px rgba(255, 20, 147, 0.6);
 }
 
 .gift-lid {
     position: absolute;
+
     top: 10px;
     left: -8px;
+
     width: 166px;
     height: 35px;
+
     border-radius: 8px;
+
     background: #ff4fa3;
+
     z-index: 2;
+
     font-size: 25px;
-    transition: .7s;
+
+    transition: 0.7s;
 }
 
 .gift-lock {
     position: absolute;
+
     z-index: 5;
+
     left: 50%;
     top: 55px;
+
     transform: translateX(-50%);
+
     font-size: 25px;
-    transition: .3s;
+
+    transition: 0.3s;
 }
 
 .gift.opened .gift-lid {
-    transform: translateY(-70px) rotate(-8deg);
+    transform:
+        translateY(-70px)
+        rotate(-8deg);
 }
 
 .gift.opened .gift-lock {
@@ -330,24 +625,32 @@ button {
     transform: scale(1.08);
 }
 
-/* =========================
+
+/* ==========================================
    BIRTHDAY REVEAL
-========================= */
+========================================== */
 
 .birthday-reveal {
     display: none;
+
     position: relative;
 }
 
 .cake {
     font-size: 90px;
-    animation: cakeBounce 1.5s infinite ease-in-out;
+
+    animation:
+        cakeBounce 1.5s infinite ease-in-out;
 }
 
 .birthday-reveal h1 {
     color: #ff70ba;
+
     font-size: 42px;
-    text-shadow: 0 0 20px #ff1493;
+
+    text-shadow:
+        0 0 20px #ff1493;
+
     margin: 20px 0;
 }
 
@@ -355,9 +658,10 @@ button {
     color: white;
 }
 
-/* =========================
+
+/* ==========================================
    MESSAGE
-========================= */
+========================================== */
 
 .message-section {
     display: none;
@@ -365,16 +669,26 @@ button {
 
 .message-card {
     max-width: 750px;
+
     margin: 30px auto;
+
     padding: 30px;
+
     border: 2px solid #ff70ba;
+
     border-radius: 25px;
-    background: rgba(255, 20, 147, .08);
+
+    background:
+        rgba(255, 20, 147, 0.08);
+
     box-shadow:
-        0 0 20px rgba(255, 20, 147, .3),
-        inset 0 0 30px rgba(255, 20, 147, .05);
+        0 0 20px rgba(255, 20, 147, 0.3),
+        inset 0 0 30px rgba(255, 20, 147, 0.05);
+
     text-align: left;
+
     line-height: 1.8;
+
     color: #ffe1ef;
 }
 
@@ -382,27 +696,40 @@ button {
     margin-bottom: 15px;
 }
 
-/* =========================
+
+/* ==========================================
    GALLERY
-========================= */
+========================================== */
 
 .gallery {
     margin-top: 35px;
+
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
     gap: 25px;
 }
 
 .photo-card {
     position: relative;
+
     background: white;
-    padding: 10px 10px 38px;
-    border: 3px solid #ff70ba;
+
+    padding:
+        10px 10px 38px;
+
+    border:
+        3px solid #ff70ba;
+
     border-radius: 8px;
+
     box-shadow:
-        0 10px 25px rgba(0, 0, 0, .7),
-        0 0 20px rgba(255, 20, 147, .35);
-    transition: .4s;
+        0 10px 25px rgba(0, 0, 0, 0.7),
+        0 0 20px rgba(255, 20, 147, 0.35);
+
+    transition: 0.4s;
 }
 
 .photo-card:nth-child(even) {
@@ -414,28 +741,42 @@ button {
 }
 
 .photo-card:hover {
-    transform: rotate(0deg) scale(1.05);
+    transform:
+        rotate(0deg)
+        scale(1.05);
+
     z-index: 5;
+
     box-shadow:
         0 0 25px #ff1493,
-        0 15px 35px rgba(0, 0, 0, .7);
+        0 15px 35px rgba(0, 0, 0, 0.7);
 }
 
 .photo-card img {
     width: 100%;
+
     height: 220px;
+
     object-fit: cover;
+
     display: block;
-    border: 2px solid #ffb6d9;
+
+    border:
+        2px solid #ffb6d9;
+
     border-radius: 4px;
 }
 
 .photo-card::after {
     position: absolute;
+
     right: 10px;
     bottom: 5px;
+
     font-size: 22px;
-    animation: floatSticker 2.5s infinite ease-in-out;
+
+    animation:
+        floatSticker 2.5s infinite ease-in-out;
 }
 
 .photo-card:nth-child(1)::after {
@@ -470,44 +811,62 @@ button {
     content: "💖";
 }
 
-/* =========================
+
+/* ==========================================
    MUSIC & VIDEO
-========================= */
+========================================== */
 
 .music-section audio {
     width: min(500px, 100%);
+
     margin-top: 25px;
 }
 
 .video-section video {
     width: min(750px, 100%);
+
     margin-top: 25px;
-    border: 3px solid #ff70ba;
+
+    border:
+        3px solid #ff70ba;
+
     border-radius: 18px;
-    box-shadow: 0 0 30px rgba(255, 20, 147, .5);
+
+    box-shadow:
+        0 0 30px rgba(255, 20, 147, 0.5);
 }
 
-/* =========================
+
+/* ==========================================
    CLOSING
-========================= */
+========================================== */
 
 .closing {
     min-height: 70vh;
+
     display: flex;
+
     flex-direction: column;
+
     justify-content: center;
+
     align-items: center;
+
     text-align: center;
+
     padding: 50px 20px;
 }
 
 .closing-heart {
     font-size: 80px;
-    animation: heartBeat 1.5s infinite;
+
+    animation:
+        heartBeat 1.5s infinite;
 }
 
 .closing h1 {
     color: #ff70ba;
+
     font-size: 45px;
 }
 
@@ -517,6 +876,7 @@ button {
 
 .closing p {
     margin-top: 10px;
+
     color: #ffc1df;
 }
 
@@ -524,61 +884,84 @@ button {
     font-size: 12px;
 }
 
-/* =========================
+
+/* ==========================================
    MUSIC BUTTON
-========================= */
+========================================== */
 
 .music-button {
     position: fixed;
+
     right: 20px;
     bottom: 20px;
+
     width: 50px;
     height: 50px;
+
     border-radius: 50%;
+
     background: #ff1493;
+
     color: white;
+
     font-size: 22px;
-    box-shadow: 0 0 20px #ff1493;
+
+    box-shadow:
+        0 0 20px #ff1493;
+
     z-index: 9999;
 }
 
-/* =========================
+
+/* ==========================================
    ANIMASI
-========================= */
+========================================== */
 
 @keyframes floatSticker {
-    0%, 100% {
-        transform: translateY(0) rotate(-5deg);
+    0%,
+    100% {
+        transform:
+            translateY(0)
+            rotate(-5deg);
     }
 
     50% {
-        transform: translateY(-8px) rotate(5deg);
+        transform:
+            translateY(-8px)
+            rotate(5deg);
     }
 }
 
 @keyframes cakeBounce {
-    0%, 100% {
-        transform: translateY(0);
+    0%,
+    100% {
+        transform:
+            translateY(0);
     }
 
     50% {
-        transform: translateY(-12px);
+        transform:
+            translateY(-12px);
     }
 }
 
 @keyframes heartBeat {
-    0%, 100% {
-        transform: scale(1);
+    0%,
+    100% {
+        transform:
+            scale(1);
     }
 
     50% {
-        transform: scale(1.2);
+        transform:
+            scale(1.2);
     }
 }
 
-/* =========================
+
+/* ==========================================
    RESPONSIVE HP
-========================= */
+========================================== */
 
 @media (max-width: 700px) {
 
@@ -611,22 +994,25 @@ button {
         gap: 8px;
     }
 
-    .time-box {
+    .countdown .time-box {
         min-width: 75px;
         padding: 15px 8px;
     }
 
-    .time-box span {
+    .countdown .time-box span {
         font-size: 27px;
     }
 
     .gallery {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+            repeat(2, 1fr);
+
         gap: 15px;
     }
 
     .photo-card {
-        padding: 7px 7px 30px;
+        padding:
+            7px 7px 30px;
     }
 
     .photo-card img {
@@ -644,145 +1030,14 @@ button {
 
     .closing h1 {
         font-size: 35px;
-        /* ==========================================
-   COMING SOON LOCK SCREEN
-========================================== */
-
-#comingSoonScreen {
-    position: fixed;
-    inset: 0;
-    z-index: 99999;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    min-height: 100vh;
-    padding: 20px;
-
-    background:
-        radial-gradient(
-            circle at center,
-            #3b0028 0%,
-            #160013 45%,
-            #050005 100%
-        );
-
-    color: white;
-    text-align: center;
-}
-
-.coming-soon-box {
-    width: 100%;
-    max-width: 700px;
-}
-
-.coming-lock {
-    font-size: 70px;
-    margin-bottom: 10px;
-
-    animation: lockPulse 1.5s infinite;
-}
-
-.coming-soon-box h1 {
-    margin: 0;
-
-    font-size: 48px;
-    letter-spacing: 5px;
-
-    color: #ff4fa3;
-
-    text-shadow:
-        0 0 10px #ff4fa3,
-        0 0 25px #ff1493,
-        0 0 50px #ff1493;
-}
-
-.coming-soon-box h2 {
-    margin: 15px 0;
-
-    font-size: 25px;
-}
-
-.coming-soon-box p {
-    color: #dddddd;
-}
-
-.coming-date {
-    margin: 20px 0;
-
-    font-size: 25px;
-    font-weight: bold;
-
-    color: #ff8acb;
-
-    text-shadow:
-        0 0 10px #ff1493;
-}
-
-.coming-countdown {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-
-    margin: 30px 0;
-}
-
-.time-box {
-    min-width: 85px;
-
-    padding: 15px 10px;
-
-    border: 1px solid #ff4fa3;
-    border-radius: 15px;
-
-    background: rgba(255, 20, 147, 0.12);
-
-    box-shadow:
-        0 0 15px rgba(255, 20, 147, 0.4);
-}
-
-.time-box span {
-    display: block;
-
-    font-size: 30px;
-    font-weight: bold;
-
-    color: white;
-}
-
-.time-box small {
-    display: block;
-
-    margin-top: 5px;
-
-    color: #ff8acb;
-}
-
-.coming-wait {
-    margin-top: 25px;
-
-    font-size: 16px;
-
-    color: #ffb7dc !important;
-}
-
-@keyframes lockPulse {
-
-    0%,
-    100% {
-        transform: scale(1);
     }
 
-    50% {
-        transform: scale(1.12);
+
+    /* COMING SOON HP */
+
+    .coming-lock {
+        font-size: 55px;
     }
-}
-
-
-/* HP */
-
-@media (max-width: 600px) {
 
     .coming-soon-box h1 {
         font-size: 34px;
@@ -801,21 +1056,20 @@ button {
         gap: 6px;
     }
 
-    .time-box {
+    .coming-countdown .time-box {
         min-width: 65px;
         padding: 12px 5px;
     }
 
-    .time-box span {
+    .coming-countdown .time-box span {
         font-size: 22px;
     }
 
-    .time-box small {
+    .coming-countdown .time-box small {
         font-size: 10px;
     }
 
-    .coming-lock {
-        font-size: 55px;
-    
+    .coming-wait {
+        font-size: 14px;
     }
 }
