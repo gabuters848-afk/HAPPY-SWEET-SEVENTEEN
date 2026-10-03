@@ -1,0 +1,617 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #080808;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* =========================
+   PASSWORD
+========================= */
+
+#passwordScreen {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background:
+        radial-gradient(circle at top, #ff4fa3 0%, #180914 35%, #080808 70%);
+}
+
+.password-box {
+    width: min(420px, 100%);
+    text-align: center;
+    padding: 40px 25px;
+    border-radius: 25px;
+    background: rgba(20, 20, 20, 0.9);
+    border: 1px solid rgba(255, 105, 180, 0.5);
+    box-shadow: 0 0 40px rgba(255, 50, 160, 0.35);
+}
+
+.lock-icon {
+    font-size: 55px;
+    margin-bottom: 15px;
+}
+
+.password-box h1 {
+    color: #ff7fc5;
+    margin-bottom: 15px;
+}
+
+.password-box p {
+    line-height: 1.6;
+}
+
+#passwordInput {
+    width: 100%;
+    margin: 25px 0 12px;
+    padding: 15px;
+    text-align: center;
+    font-size: 22px;
+    letter-spacing: 8px;
+    color: white;
+    background: #111;
+    border: 1px solid #ff4fa3;
+    border-radius: 12px;
+    outline: none;
+}
+
+#passwordInput:focus {
+    box-shadow: 0 0 15px rgba(255, 79, 163, 0.5);
+}
+
+#passwordButton,
+.main-button {
+    border: none;
+    padding: 14px 25px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #ff4fa3, #ff1493);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255, 20, 147, 0.4);
+    transition: 0.3s;
+}
+
+#passwordButton:hover,
+.main-button:hover {
+    transform: scale(1.05);
+}
+
+.password-hint {
+    margin-top: 18px;
+    font-size: 12px;
+    color: #aaa;
+}
+
+#wrongPassword {
+    display: none;
+    color: #ff6b9d;
+    margin-top: 12px;
+}
+
+
+/* =========================
+   WEBSITE
+========================= */
+
+#website {
+    display: none;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+    padding: 70px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background:
+        radial-gradient(circle at center, #42102c 0%, #10070d 45%, #080808 80%);
+}
+
+.small-title {
+    color: #ff91c9;
+    letter-spacing: 4px;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.hero h1 {
+    font-size: clamp(60px, 15vw, 120px);
+    color: #ff4fa3;
+    text-shadow: 0 0 30px rgba(255, 79, 163, 0.8);
+    letter-spacing: 10px;
+}
+
+.love-photo {
+    width: min(330px, 80vw);
+    height: min(330px, 80vw);
+    margin: 25px auto;
+    position: relative;
+    filter: drop-shadow(0 0 30px rgba(255, 50, 160, 0.6));
+}
+
+.love-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+
+    /* bentuk hati */
+    clip-path: polygon(
+        50% 100%,
+        8% 58%,
+        3% 45%,
+        4% 30%,
+        12% 17%,
+        24% 9%,
+        37% 11%,
+        50% 25%,
+        63% 11%,
+        76% 9%,
+        88% 17%,
+        96% 30%,
+        97% 45%,
+        92% 58%
+    );
+}
+
+.hero h2 {
+    color: #fff;
+    margin: 15px 0 8px;
+    font-size: clamp(24px, 5vw, 38px);
+}
+
+.hero > p:not(.small-title) {
+    color: #ff9dca;
+}
+
+.scroll-text {
+    margin-top: 45px;
+    color: #bbb;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    50% {
+        transform: translateY(8px);
+    }
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+.section {
+    min-height: 70vh;
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
+}
+
+.section h2 {
+    color: #ff76ba;
+    font-size: clamp(28px, 6vw, 42px);
+    margin-bottom: 15px;
+}
+
+.section-subtitle {
+    color: #aaa;
+    margin-bottom: 35px;
+}
+
+
+/* =========================
+   COUNTDOWN
+========================= */
+
+.countdown-section {
+    background: #0d0d0d;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.time-box {
+    width: 100px;
+    padding: 20px 10px;
+    border-radius: 18px;
+    background: #151515;
+    border: 1px solid rgba(255, 79, 163, 0.4);
+    box-shadow: 0 0 20px rgba(255, 79, 163, 0.12);
+}
+
+.time-box span {
+    display: block;
+    color: #ff62b1;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.time-box small {
+    color: #aaa;
+}
+
+
+/* =========================
+   GIFT
+========================= */
+
+.gift-section {
+    background:
+        radial-gradient(circle, #2c0c20, #080808 65%);
+}
+
+#giftStatus {
+    color: #ff9aca;
+    margin-bottom: 15px;
+}
+
+#giftInstruction {
+    color: #999;
+    margin-top: 15px;
+}
+
+.gift {
+    width: 180px;
+    height: 180px;
+    margin: 40px auto 20px;
+    position: relative;
+    cursor: pointer;
+    transition: 0.5s;
+    user-select: none;
+}
+
+.gift-body {
+    width: 150px;
+    height: 120px;
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #ff4fa3, #b80062);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 70px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+}
+
+.gift-lid {
+    position: absolute;
+    width: 170px;
+    height: 45px;
+    left: 5px;
+    top: 25px;
+    border-radius: 10px;
+    background: #ff70ba;
+    font-size: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.gift-lock {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 35px;
+    z-index: 5;
+}
+
+.gift.locked {
+    opacity: 0.75;
+    filter: grayscale(0.25);
+}
+
+.gift:not(.locked):hover {
+    transform: scale(1.08);
+}
+
+
+/* =========================
+   BIRTHDAY REVEAL
+========================= */
+
+.birthday-reveal {
+    display: none;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle, #4d1236, #10070d 65%);
+    overflow: hidden;
+}
+
+.cake {
+    font-size: 100px;
+    animation: cakePop 1s ease;
+    margin-bottom: 20px;
+}
+
+@keyframes cakePop {
+    0% {
+        transform: scale(0);
+    }
+
+    70% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.birthday-reveal h1 {
+    color: #ff70ba;
+    font-size: clamp(35px, 8vw, 70px);
+    text-shadow: 0 0 25px rgba(255, 50, 160, 0.7);
+}
+
+.birthday-reveal h2 {
+    color: white;
+}
+
+
+/* =========================
+   CONFETTI
+========================= */
+
+.confetti {
+    position: fixed;
+    top: -20px;
+    width: 10px;
+    height: 15px;
+    animation: fall 4s linear forwards;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+@keyframes fall {
+    to {
+        transform:
+            translateY(110vh)
+            rotate(720deg);
+    }
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message-section {
+    background: #0b0b0b;
+}
+
+.message-card {
+    max-width: 750px;
+    margin: 30px auto;
+    padding: 35px 25px;
+    border-radius: 25px;
+    background: rgba(255, 79, 163, 0.08);
+    border: 1px solid rgba(255, 79, 163, 0.35);
+    box-shadow: 0 0 30px rgba(255, 79, 163, 0.12);
+}
+
+.message-card p {
+    color: #ddd;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   GALLERY
+========================= */
+
+.gallery-section {
+    background: #101010;
+}
+
+.gallery {
+    max-width: 1000px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.photo-card {
+    background: white;
+    padding: 10px 10px 30px;
+    border-radius: 3px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    transform: rotate(-2deg);
+    transition: 0.3s;
+}
+
+.photo-card:nth-child(even) {
+    transform: rotate(2deg);
+}
+
+.photo-card:hover {
+    transform: scale(1.05) rotate(0);
+    z-index: 3;
+}
+
+.photo-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* =========================
+   MUSIC
+========================= */
+
+.music-section {
+    background:
+        radial-gradient(circle at center, #281020, #080808 70%);
+}
+
+#birthdayMusic {
+    width: min(500px, 100%);
+    margin-top: 30px;
+}
+
+
+/* =========================
+   VIDEO
+========================= */
+
+.video-section {
+    background: #0c0c0c;
+}
+
+#birthdayVideo {
+    display: block;
+    width: min(850px, 100%);
+    max-height: 600px;
+    margin: 35px auto 0;
+    border-radius: 20px;
+    box-shadow: 0 0 35px rgba(255, 79, 163, 0.25);
+}
+
+
+/* =========================
+   CLOSING
+========================= */
+
+.closing {
+    min-height: 100vh;
+    padding: 80px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background:
+        radial-gradient(circle, #45122f, #080808 70%);
+}
+
+.closing-heart {
+    font-size: 100px;
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+.closing h1 {
+    color: #ff70ba;
+    font-size: clamp(35px, 8vw, 65px);
+}
+
+.closing h2 {
+    margin: 15px 0;
+}
+
+.closing p {
+    color: #bbb;
+}
+
+.closing-small {
+    margin-top: 50px;
+}
+
+
+/* =========================
+   MUSIC BUTTON
+========================= */
+
+.music-button {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: #ff4fa3;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 999;
+    box-shadow: 0 0 20px rgba(255, 79, 163, 0.5);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .time-box {
+        width: 75px;
+    }
+
+    .time-box span {
+        font-size: 25px;
+    }
+
+    .hero {
+        padding-top: 50px;
+    }
+
+    .love-photo {
+        width: 280px;
+        height: 280px;
+    }
+
+    .gift {
+        transform: scale(0.9);
+    }
+}
+
+@media (max-width: 420px) {
+
+    .gallery {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .countdown {
+        gap: 8px;
+    }
+
+    .time-box {
+        width: 70px;
+        padding: 15px 5px;
+    }
+}
