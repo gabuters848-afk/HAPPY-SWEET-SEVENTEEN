@@ -28,46 +28,33 @@ body {
         );
 }
 
-
-/* =====================================================
-   HIDDEN
-===================================================== */
-
 .hidden {
     display: none !important;
 }
 
 
 /* =====================================================
-   FALLING EMOJIS
+   EMOJI BERJATUHAN
 ===================================================== */
 
 #falling-emojis {
     position: fixed;
     inset: 0;
-
     pointer-events: none;
     overflow: hidden;
-
     z-index: 999;
 }
 
 .falling-emoji {
     position: absolute;
     top: -60px;
-
     animation: emojiFall linear forwards;
-
     opacity: 0.9;
 }
 
 @keyframes emojiFall {
-
     0% {
-        transform:
-            translateY(-60px)
-            rotate(0deg);
-
+        transform: translateY(-60px) rotate(0deg);
         opacity: 0;
     }
 
@@ -76,10 +63,7 @@ body {
     }
 
     100% {
-        transform:
-            translateY(110vh)
-            rotate(360deg);
-
+        transform: translateY(110vh) rotate(360deg);
         opacity: 0;
     }
 }
@@ -108,9 +92,7 @@ body {
 
     background: rgba(20, 0, 15, 0.9);
 
-    border:
-        1px solid
-        rgba(255, 105, 180, 0.5);
+    border: 1px solid rgba(255, 105, 180, 0.5);
 
     border-radius: 25px;
 
@@ -148,16 +130,12 @@ body {
 
     padding: 14px;
 
-    border:
-        1px solid
-        #ff69b4;
-
+    border: 1px solid #ff69b4;
     border-radius: 12px;
 
     background: rgba(255, 255, 255, 0.07);
 
     color: white;
-
     outline: none;
 
     font-size: 16px;
@@ -170,9 +148,7 @@ body {
 }
 
 #password:focus {
-    box-shadow:
-        0 0 20px
-        rgba(255, 20, 147, 0.5);
+    box-shadow: 0 0 20px rgba(255, 20, 147, 0.5);
 }
 
 #unlock-button {
@@ -198,8 +174,7 @@ body {
     cursor: pointer;
 
     box-shadow:
-        0 0 20px
-        rgba(255, 20, 147, 0.4);
+        0 0 20px rgba(255, 20, 147, 0.4);
 
     transition: 0.25s;
 }
@@ -208,8 +183,7 @@ body {
     transform: translateY(-2px);
 
     box-shadow:
-        0 0 30px
-        rgba(255, 20, 147, 0.7);
+        0 0 30px rgba(255, 20, 147, 0.7);
 }
 
 #password-error {
@@ -226,7 +200,7 @@ body {
 
 
 /* =====================================================
-   MAIN PAGE
+   MAIN
 ===================================================== */
 
 #main-page {
@@ -236,7 +210,7 @@ body {
 
 
 /* =====================================================
-   HERO
+   HERO / HALAMAN UTAMA
 ===================================================== */
 
 .hero {
@@ -257,19 +231,21 @@ body {
 }
 
 
-/* FOTO LOVE UTAMA */
+/* =====================================================
+   FOTO LOVE UTAMA
+===================================================== */
 
 .main-heart-photo {
-    width: 260px;
-    height: 260px;
+    width: 300px;
+    height: 300px;
 
     position: relative;
 
     margin-bottom: 35px;
 
     filter:
-        drop-shadow(0 0 12px #ff69b4)
-        drop-shadow(0 0 35px rgba(255, 20, 147, 0.85));
+        drop-shadow(0 0 15px #ff69b4)
+        drop-shadow(0 0 40px rgba(255, 20, 147, 0.9));
 
     clip-path: polygon(
         50% 92%,
@@ -346,7 +322,6 @@ body {
 
 .countdown-section h2 {
     color: #ff8fc8;
-
     margin-bottom: 25px;
 }
 
@@ -400,7 +375,6 @@ body {
 
 #countdown-text {
     margin-top: 25px;
-
     color: #ffc5e2;
 }
 
@@ -439,37 +413,35 @@ body {
 
 
 /* =====================================================
-   SMALL GIFT BOX
+   KADO KECIL
 ===================================================== */
 
 .surprise-box {
     position: relative;
 
-    width: 210px;
-    height: 155px;
+    width: 100%;
+    height: 160px;
 
     margin:
-        0 auto;
-
-    transition:
-        width 0.8s ease;
+        0 auto
+        30px;
 }
 
 
 /* =====================================================
-   BOX BODY
+   BADAN KADO
 ===================================================== */
 
 .box-body {
     position: absolute;
 
-    left: 50%;
-    bottom: 0;
-
-    transform: translateX(-50%);
-
     width: 210px;
     height: 130px;
+
+    left: 50%;
+    top: 30px;
+
+    transform: translateX(-50%);
 
     background:
         linear-gradient(
@@ -481,11 +453,11 @@ body {
     border-radius: 8px;
 
     box-shadow:
-        0 15px 40px
-        rgba(0, 0, 0, 0.5),
+        0 10px 35px
+        rgba(255, 20, 147, 0.45),
 
         0 0 30px
-        rgba(255, 20, 147, 0.4);
+        rgba(255, 20, 147, 0.35);
 
     overflow: visible;
 
@@ -494,24 +466,20 @@ body {
 
 
 /* =====================================================
-   BOX LID
+   TUTUP KADO
 ===================================================== */
 
 .box-lid {
     position: absolute;
 
-    left: 50%;
-    top: 5px;
-
-    transform:
-        translateX(-50%);
-
     width: 225px;
     height: 35px;
 
-    z-index: 10;
+    left: 50%;
+    top: 20px;
 
-    border-radius: 7px;
+    transform:
+        translateX(-50%);
 
     background:
         linear-gradient(
@@ -520,12 +488,15 @@ body {
             #ff1493
         );
 
+    border-radius: 7px;
+
+    z-index: 10;
+
     transform-origin:
         center bottom;
 
     transition:
-        transform 1s
-        cubic-bezier(.2,.8,.2,1);
+        transform 1s ease;
 }
 
 .lid-ribbon {
@@ -534,13 +505,30 @@ body {
     left: 50%;
     top: 0;
 
+    width: 25px;
+    height: 100%;
+
     transform:
         translateX(-50%);
+
+    background: #ffd6ec;
+}
+
+.vertical-ribbon {
+    position: absolute;
+
+    left: 50%;
+    top: 0;
 
     width: 25px;
     height: 100%;
 
+    transform:
+        translateX(-50%);
+
     background: #ffd6ec;
+
+    z-index: 3;
 }
 
 .bow {
@@ -552,63 +540,46 @@ body {
     transform:
         translateX(-50%);
 
-    font-size: 48px;
+    font-size: 45px;
 }
 
 
 /* =====================================================
-   VERTICAL RIBBON
-===================================================== */
-
-.vertical-ribbon {
-    position: absolute;
-
-    left: 50%;
-    top: 0;
-
-    transform:
-        translateX(-50%);
-
-    width: 25px;
-    height: 100%;
-
-    background:
-        rgba(255, 214, 236, 0.85);
-
-    z-index: 2;
-}
-
-
-/* =====================================================
-   CONTENT - DEFAULT
+   ISI KADO
 ===================================================== */
 
 .box-content {
+    position: relative;
+
     width: 100%;
+    max-width: 1000px;
+
+    margin: 0 auto;
 
     padding:
         0
-        15px
-        60px;
+        12px
+        70px;
 
     opacity: 0;
 
     pointer-events: none;
+
+    transform:
+        translateY(30px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
 }
 
 
 /* =====================================================
-   IMPORTANT:
-   AFTER GIFT OPENS
-   BOX BECOMES NORMAL FLOW
-   SO MOBILE CAN SCROLL
+   SAAT KADO TERBUKA
 ===================================================== */
 
 .surprise-box.opened {
-    width: min(
-        1050px,
-        100%
-    );
+    width: 100%;
 
     height: auto;
 
@@ -616,109 +587,88 @@ body {
 }
 
 
-/* Body becomes normal-flow container */
+/* KOTAK FISIK TETAP KECIL */
 
 .surprise-box.opened .box-body {
-    position: relative;
+    position: absolute;
 
-    left: auto;
-    bottom: auto;
+    width: 210px;
+    height: 130px;
 
-    transform: none;
+    left: 50%;
+    top: 30px;
 
-    width: 100%;
+    transform:
+        translateX(-50%);
 
-    height: auto;
+    background:
+        linear-gradient(
+            135deg,
+            #ff1493,
+            #d90072
+        );
 
-    min-height: 155px;
+    box-shadow:
+        0 10px 35px
+        rgba(255, 20, 147, 0.5),
 
-    padding-top: 170px;
-
-    background: transparent;
-
-    box-shadow: none;
-
-    border-radius: 0;
-
-    overflow: visible;
+        0 0 35px
+        rgba(255, 20, 147, 0.4);
 }
 
 
-/* Hide physical ribbon after opening */
-
-.surprise-box.opened .vertical-ribbon {
-    display: none;
-}
-
-
-/* Open lid */
+/* TUTUP TERBUKA */
 
 .surprise-box.opened .box-lid {
     transform:
         translateX(-50%)
         translateY(-80px)
-        rotateX(-125deg);
+        rotateX(-120deg);
 }
 
 
-/* Show content */
+/* ISI MUNCUL */
 
 .surprise-box.opened .box-content {
     opacity: 1;
 
     pointer-events: auto;
 
-    animation:
-        contentAppear
-        1s
-        ease
-        0.5s
-        both;
-}
+    transform:
+        translateY(0);
 
-@keyframes contentAppear {
-
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(30px);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0);
-    }
+    padding-top: 200px;
 }
 
 
 /* =====================================================
-   MAIN PHOTO INSIDE
+   FOTO UTAMA SETELAH KADO
 ===================================================== */
 
 .inside-main-photo {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
     margin-bottom: 45px;
 }
 
 .main-photo-frame {
-    width: min(280px, 80vw);
-    height: min(350px, 100vw);
+    width: 260px;
+    height: 330px;
 
-    margin:
-        0 auto;
-
-    padding: 10px;
+    padding: 9px;
 
     background: white;
 
     border-radius: 20px;
 
     box-shadow:
-        0 0 20px #ff69b4,
-        0 0 50px
-        rgba(255, 20, 147, 0.5);
+        0 0 15px #ff69b4,
+        0 0 40px rgba(255, 20, 147, 0.65);
 
     transform:
         rotate(-2deg);
@@ -727,6 +677,8 @@ body {
 .main-photo-frame img {
     width: 100%;
     height: 100%;
+
+    display: block;
 
     object-fit: cover;
 
@@ -755,22 +707,20 @@ body {
 
 
 /* =====================================================
-   MESSAGE
+   UCAPAN
 ===================================================== */
 
 .message-card {
-    width: min(
-        850px,
-        100%
-    );
+    width: 100%;
+    max-width: 850px;
 
     margin:
         0 auto
-        60px;
+        55px;
 
-    padding: 30px;
-
-    text-align: left;
+    padding:
+        25px
+        20px;
 
     background:
         rgba(255, 20, 147, 0.09);
@@ -779,98 +729,92 @@ body {
         1px solid
         rgba(255, 105, 180, 0.35);
 
-    border-radius: 22px;
+    border-radius: 20px;
 
-    box-shadow:
-        0 0 30px
-        rgba(255, 20, 147, 0.12);
+    text-align: left;
 
-    backdrop-filter: blur(10px);
+    overflow-wrap: break-word;
 }
 
 .message-card h2 {
-    color: #ff69b4;
-
     text-align: center;
+
+    color: #ff69b4;
 
     margin-bottom: 25px;
 }
 
 .typing-text {
+    width: 100%;
+
     white-space: pre-line;
 
     color: #ffe1ef;
 
-    line-height: 1.9;
+    font-size: 15px;
 
-    font-size: 16px;
+    line-height: 1.8;
 
-    min-height: 100px;
+    overflow-wrap: break-word;
 }
 
 
 /* =====================================================
-   GALLERY
+   GALERI
 ===================================================== */
 
 .gallery-inside {
-    width: min(
-        950px,
-        100%
-    );
+    width: 100%;
+    max-width: 950px;
 
     margin:
         0 auto
-        70px;
+        60px;
 }
 
 .gallery-inside h2 {
+    text-align: center;
+
     color: #ff69b4;
 
     margin-bottom: 30px;
 }
 
 .gallery-grid {
+    width: 100%;
+
     display: grid;
 
     grid-template-columns:
         repeat(4, 1fr);
 
-    gap: 25px;
-
-    align-items: center;
+    gap: 20px;
 }
 
 .polaroid {
+    width: 100%;
+
     background: white;
 
     padding:
-        9px
-        9px
-        25px;
-
-    border-radius: 3px;
+        7px
+        7px
+        22px;
 
     box-shadow:
-        0 12px 25px
-        rgba(0, 0, 0, 0.4),
-
-        0 0 12px
-        rgba(255, 105, 180, 0.25);
+        0 10px 25px
+        rgba(0, 0, 0, 0.45);
 
     transition:
-        transform 0.3s,
-        box-shadow 0.3s;
+        transform 0.3s;
 }
 
 .polaroid:nth-child(odd) {
-    transform:
-        rotate(-3deg);
+    transform: rotate(-3deg);
 }
 
 .polaroid:nth-child(even) {
-    transform:
-        rotate(3deg);
+    transform: rotate(3deg);
 }
 
 .polaroid:hover {
@@ -878,23 +822,16 @@ body {
         translateY(-8px)
         rotate(0deg)
         scale(1.04);
-
-    box-shadow:
-        0 20px 35px
-        rgba(0, 0, 0, 0.5),
-
-        0 0 25px
-        rgba(255, 105, 180, 0.5);
 }
 
 .polaroid img {
-    display: block;
-
     width: 100%;
 
     aspect-ratio: 1 / 1;
 
     object-fit: cover;
+
+    display: block;
 }
 
 
@@ -903,24 +840,26 @@ body {
 ===================================================== */
 
 .video-inside {
-    width: min(
-        850px,
-        100%
-    );
+    width: 100%;
+    max-width: 850px;
 
     margin:
         0 auto
-        70px;
+        60px;
 }
 
 .video-inside h2 {
+    text-align: center;
+
     color: #ff69b4;
 
     margin-bottom: 25px;
 }
 
 .video-frame {
-    padding: 10px;
+    width: 100%;
+
+    padding: 7px;
 
     background:
         rgba(255, 255, 255, 0.08);
@@ -929,34 +868,33 @@ body {
         1px solid
         rgba(255, 105, 180, 0.4);
 
-    border-radius: 20px;
-
-    box-shadow:
-        0 0 30px
-        rgba(255, 20, 147, 0.2);
+    border-radius: 18px;
 }
 
 .video-frame video {
     display: block;
 
     width: 100%;
+    height: auto;
 
-    max-height: 600px;
+    max-width: 100%;
 
-    border-radius: 14px;
+    border-radius: 12px;
 
     background: black;
 }
 
 
 /* =====================================================
-   CLOSING
+   PENUTUP
 ===================================================== */
 
 .closing {
     width: 100%;
 
-    padding: 50px 20px;
+    padding:
+        50px
+        20px;
 
     text-align: center;
 
@@ -1013,7 +951,7 @@ body {
 
 
 /* =====================================================
-   MUSIC
+   MUSIK
 ===================================================== */
 
 .music-button {
@@ -1105,24 +1043,16 @@ body {
 
     .gallery-grid {
         grid-template-columns:
-            repeat(2, 1fr);
+            repeat(2, minmax(0, 1fr));
     }
-
 }
 
 
 /* =====================================================
-   MOBILE
+   HP
 ===================================================== */
 
 @media (max-width: 600px) {
-
-    body {
-        width: 100%;
-    }
-
-
-    /* PASSWORD */
 
     .password-page {
         padding: 15px;
@@ -1135,7 +1065,17 @@ body {
     }
 
 
-    /* HERO */
+    /* =========================
+       FOTO LOVE UTAMA
+    ========================= */
+
+    .main-heart-photo {
+        width: 280px;
+        height: 280px;
+
+        margin-bottom: 30px;
+    }
+
 
     .hero {
         min-height: 90vh;
@@ -1145,17 +1085,6 @@ body {
             15px
             40px;
     }
-
-
-    /* LOVE PHOTO */
-
-    .main-heart-photo {
-        width: 210px;
-        height: 210px;
-
-        margin-bottom: 30px;
-    }
-
 
     .hero h1 {
         font-size: 40px;
@@ -1170,7 +1099,9 @@ body {
     }
 
 
-    /* COUNTDOWN */
+    /* =========================
+       COUNTDOWN
+    ========================= */
 
     .countdown-section {
         padding:
@@ -1196,13 +1127,19 @@ body {
     }
 
 
-    /* SURPRISE */
+    /* =========================
+       SURPRISE
+    ========================= */
 
     .surprise-section {
+        width: 100%;
+
         padding:
             20px
             8px
             80px;
+
+        overflow: visible;
     }
 
     .surprise-heading {
@@ -1210,11 +1147,13 @@ body {
     }
 
 
-    /* SMALL BOX */
+    /* =========================
+       KADO KECIL
+    ========================= */
 
     .surprise-box {
-        width: 190px;
-        height: 145px;
+        width: 100%;
+        height: 155px;
     }
 
     .box-body {
@@ -1224,78 +1163,78 @@ body {
 
     .box-lid {
         width: 205px;
+        height: 34px;
     }
 
 
-    /* AFTER OPEN */
+    /* =========================
+       KADO TERBUKA
+    ========================= */
 
     .surprise-box.opened {
         width: 100%;
+        height: auto;
     }
 
     .surprise-box.opened .box-body {
+        width: 190px;
+        height: 120px;
+    }
+
+    .surprise-box.opened .box-content {
         width: 100%;
 
-        padding-top: 160px;
+        padding-top: 185px;
 
-        min-height: 145px;
+        padding-left: 8px;
+        padding-right: 8px;
     }
 
 
-    /* CONTENT */
-
-    .box-content {
-        width: 100%;
-
-        padding:
-            0
-            8px
-            50px;
-    }
-
-
-    /* MAIN PHOTO */
+    /* =========================
+       FOTO DALAM KADO
+    ========================= */
 
     .main-photo-frame {
-        width: min(
-            260px,
-            82vw
-        );
-
-        height: min(
-            330px,
-            105vw
-        );
+        width: 245px;
+        height: 310px;
     }
 
 
-    /* MESSAGE */
+    /* =========================
+       PESAN
+    ========================= */
 
     .message-card {
+        width: 100%;
+
         padding:
             22px
             16px;
-
-        margin-bottom: 50px;
     }
 
     .typing-text {
         font-size: 15px;
-
         line-height: 1.8;
     }
 
 
-    /* GALLERY */
+    /* =========================
+       GALERI
+    ========================= */
 
     .gallery-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
+        width: 100%;
 
-        gap: 15px;
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 14px;
     }
 
     .polaroid {
+        min-width: 0;
+
         padding:
             6px
             6px
@@ -1303,31 +1242,36 @@ body {
     }
 
 
-    /* VIDEO */
+    /* =========================
+       VIDEO
+    ========================= */
 
     .video-inside {
-        margin-bottom: 55px;
+        width: 100%;
     }
 
     .video-frame {
-        padding: 6px;
-
-        border-radius: 15px;
+        width: 100%;
     }
 
     .video-frame video {
         width: 100%;
-
-        max-height: none;
+        height: auto;
     }
 
 
-    /* CLOSING */
+    /* =========================
+       PENUTUP
+    ========================= */
 
     .closing {
+        width: 100%;
+
         padding:
             40px
             15px;
+
+        overflow-wrap: break-word;
     }
 
     .closing h2 {
@@ -1339,7 +1283,9 @@ body {
     }
 
 
-    /* MUSIC */
+    /* =========================
+       MUSIK
+    ========================= */
 
     .music-button {
         right: 12px;
@@ -1353,14 +1299,14 @@ body {
 
 
 /* =====================================================
-   VERY SMALL PHONE
+   HP KECIL
 ===================================================== */
 
 @media (max-width: 380px) {
 
     .main-heart-photo {
-        width: 190px;
-        height: 190px;
+        width: 250px;
+        height: 250px;
     }
 
     .hero h1 {
@@ -1376,16 +1322,20 @@ body {
     }
 
     .gallery-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
 
-        max-width: 270px;
+        gap: 10px;
+    }
 
-        margin:
-            0 auto;
+    .message-card {
+        padding:
+            20px
+            14px;
     }
 
     .main-photo-frame {
-        width: 230px;
-        height: 290px;
+        width: 220px;
+        height: 285px;
     }
 }
