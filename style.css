@@ -1,7 +1,6 @@
-/* =========================================================
+/* =========================
    RESET
-========================================================= */
-
+========================= */
 * {
     margin: 0;
     padding: 0;
@@ -13,892 +12,587 @@ html {
 }
 
 body {
-    width: 100%;
     min-height: 100vh;
-    overflow-x: hidden;
-
     font-family: Arial, Helvetica, sans-serif;
-
-    color: #fff;
-
+    color: white;
     background:
-        radial-gradient(
-            circle at 50% 0%,
-            #4b0b3d 0%,
-            #1c0016 35%,
-            #050005 100%
-        );
+        radial-gradient(circle at top, #3b0927 0%, #160014 45%, #050005 100%);
+    overflow-x: hidden;
 }
 
-
-/* =========================================================
+/* =========================
    HIDDEN
-========================================================= */
-
+========================= */
 .hidden {
     display: none !important;
 }
 
-
-/* =========================================================
-   PASSWORD PAGE
-========================================================= */
-
-.password-page {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    padding: 20px;
-
-    background:
-        radial-gradient(
-            circle at center,
-            #4b123b 0%,
-            #1c0016 50%,
-            #050005 100%
-        );
-}
-
-.password-card {
-    width: min(390px, 92vw);
-
-    padding: 35px 25px;
-
-    text-align: center;
-
-    background: rgba(20, 0, 15, 0.92);
-
-    border: 1px solid #ff69b4;
-    border-radius: 24px;
-
-    box-shadow:
-        0 0 25px rgba(255, 20, 147, 0.55),
-        0 0 70px rgba(255, 20, 147, 0.2);
-
-    backdrop-filter: blur(12px);
-}
-
-.lock-icon {
-    font-size: 48px;
-    margin-bottom: 10px;
-}
-
-.password-card h1 {
-    color: #ff69b4;
-
-    font-size: 32px;
-
-    margin-bottom: 10px;
-
-    text-shadow:
-        0 0 10px #ff69b4,
-        0 0 25px #ff1493;
-}
-
-.password-card p {
-    color: #ffd6ec;
-
-    line-height: 1.5;
-
-    margin-bottom: 18px;
-}
-
-.password-card small {
-    display: block;
-
-    margin-top: 15px;
-
-    color: #c995b2;
-
-    line-height: 1.5;
-}
-
-#password {
-    width: 100%;
-    height: 46px;
-
-    padding: 10px 15px;
-
-    background: #10000d;
-
-    border: 1px solid #ff69b4;
-    border-radius: 12px;
-
-    color: white;
-
-    outline: none;
-
-    text-align: center;
-
-    font-size: 16px;
-}
-
-#password:focus {
-    box-shadow:
-        0 0 15px rgba(255, 20, 147, 0.4);
-}
-
-#password::placeholder {
-    color: #b985a2;
-}
-
-#unlock-button {
-    width: 100%;
-    height: 46px;
-
-    margin-top: 13px;
-
-    border: none;
-    border-radius: 12px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff69b4,
-            #d9006c
-        );
-
-    color: white;
-
-    font-size: 16px;
-    font-weight: bold;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 0 20px rgba(255, 20, 147, 0.5);
-
-    transition: transform 0.25s ease;
-}
-
-#unlock-button:hover {
-    transform: scale(1.03);
-}
-
-#password-error {
-    min-height: 20px;
-
-    margin-top: 10px;
-
-    color: #ff8bc7;
-}
-
-
-/* =========================================================
+/* =========================
    FALLING EMOJIS
-========================================================= */
-
+========================= */
 #falling-emojis {
     position: fixed;
     inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    overflow: hidden;
-
     pointer-events: none;
-
-    z-index: 5000;
+    overflow: hidden;
+    z-index: 999;
 }
 
 .falling-emoji {
-    position: fixed;
-
+    position: absolute;
     top: -50px;
-
-    pointer-events: none;
-
-    animation: emojiFall linear forwards;
-
-    filter:
-        drop-shadow(0 0 5px #ff69b4);
+    animation: fall linear forwards;
+    opacity: 0.9;
 }
 
-@keyframes emojiFall {
-
+@keyframes fall {
     0% {
-        transform:
-            translateY(-50px)
-            rotate(0deg);
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 0;
+    }
 
+    10% {
         opacity: 1;
     }
 
     100% {
-        transform:
-            translateY(110vh)
-            rotate(360deg);
-
+        transform: translateY(110vh) rotate(360deg);
         opacity: 0;
     }
 }
 
+/* =========================
+   PASSWORD PAGE
+========================= */
+.password-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    position: relative;
+    z-index: 10;
+}
 
-/* =========================================================
-   MAIN WEBSITE
-========================================================= */
+.password-card {
+    width: min(430px, 100%);
+    padding: 40px 30px;
+    text-align: center;
 
+    background: rgba(20, 0, 15, 0.88);
+    border: 1px solid rgba(255, 105, 180, 0.5);
+    border-radius: 25px;
+
+    box-shadow:
+        0 0 25px rgba(255, 20, 147, 0.25),
+        0 0 70px rgba(255, 20, 147, 0.12);
+
+    backdrop-filter: blur(15px);
+}
+
+.lock-icon {
+    font-size: 55px;
+    margin-bottom: 15px;
+}
+
+.password-card h1 {
+    font-size: clamp(32px, 7vw, 48px);
+    color: #ff69b4;
+    text-shadow: 0 0 15px #ff1493;
+    margin-bottom: 12px;
+}
+
+.password-card p {
+    color: #ffd6ec;
+    margin-bottom: 20px;
+}
+
+#password {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #ff69b4;
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    outline: none;
+
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+#password::placeholder {
+    color: #d8a5bd;
+}
+
+#password:focus {
+    box-shadow: 0 0 15px rgba(255, 20, 147, 0.5);
+}
+
+#unlock-button {
+    width: 100%;
+    padding: 14px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: linear-gradient(135deg, #ff1493, #ff69b4);
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+
+    box-shadow: 0 0 20px rgba(255, 20, 147, 0.35);
+    transition: 0.25s;
+}
+
+#unlock-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(255, 20, 147, 0.65);
+}
+
+#password-error {
+    min-height: 20px;
+    color: #ff8fc8;
+    margin-top: 12px;
+    margin-bottom: 8px;
+}
+
+.password-card small {
+    color: #c9a7b9;
+}
+
+/* =========================
+   MAIN
+========================= */
 #main-page {
     width: 100%;
     min-height: 100vh;
-
-    padding-bottom: 100px;
-
-    background:
-        radial-gradient(
-            circle at 50% 0%,
-            #420a32 0%,
-            #180012 40%,
-            #050005 100%
-        );
+    position: relative;
+    z-index: 2;
 }
 
-
-/* =========================================================
+/* =========================
    HERO
-========================================================= */
-
+========================= */
 .hero {
-    width: 100%;
     min-height: 100vh;
-
-    padding: 60px 20px;
+    padding: 70px 20px 40px;
 
     display: flex;
     flex-direction: column;
-
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
     text-align: center;
 }
 
-.hero h1 {
-    margin-top: 25px;
-
-    color: #ff69b4;
-
-    font-size: clamp(38px, 8vw, 72px);
-
-    line-height: 1.1;
-
-    text-shadow:
-        0 0 10px #ff69b4,
-        0 0 25px #ff1493,
-        0 0 50px #ff1493;
-}
-
-.hero h2 {
-    margin-top: 8px;
-
-    font-size: clamp(28px, 5vw, 45px);
-
-    color: white;
-}
-
-.hero p {
-    margin-top: 12px;
-
-    color: #ffd6ec;
-
-    font-size: 18px;
-}
-
-
-/* =========================================================
-   HEART PHOTO
-========================================================= */
-
 .main-heart-photo {
+    width: 190px;
+    height: 190px;
+
     position: relative;
-
-    width: 240px;
-    height: 240px;
-
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
-
-    flex-shrink: 0;
+    margin-bottom: 30px;
 
     filter:
-        drop-shadow(0 0 8px #ff69b4)
-        drop-shadow(0 0 25px #ff1493);
-
-    animation: heartGlow 2s ease-in-out infinite alternate;
-}
-
-.main-heart-photo::before {
-    content: "";
-
-    position: absolute;
-
-    width: 230px;
-    height: 230px;
-
-    background: #ff1493;
+        drop-shadow(0 0 10px #ff69b4)
+        drop-shadow(0 0 30px rgba(255, 20, 147, 0.8));
 
     clip-path: polygon(
-        50% 92%,
-        8% 52%,
-        5% 34%,
-        10% 20%,
-        22% 11%,
-        35% 13%,
-        50% 28%,
-        65% 13%,
-        78% 11%,
-        90% 20%,
-        95% 34%,
-        92% 52%
+        50% 90%,
+        8% 48%,
+        8% 28%,
+        18% 12%,
+        34% 8%,
+        50% 22%,
+        66% 8%,
+        82% 12%,
+        92% 28%,
+        92% 48%
     );
 }
 
 .main-heart-photo img {
-    position: relative;
-    z-index: 2;
-
-    width: 215px;
-    height: 215px;
-
-    display: block;
-
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-
-    clip-path: polygon(
-        50% 92%,
-        8% 52%,
-        5% 34%,
-        10% 20%,
-        22% 11%,
-        35% 13%,
-        50% 28%,
-        65% 13%,
-        78% 11%,
-        90% 20%,
-        95% 34%,
-        92% 52%
-    );
 }
 
-@keyframes heartGlow {
-
-    from {
-        filter:
-            drop-shadow(0 0 7px #ff69b4)
-            drop-shadow(0 0 15px #ff1493);
-    }
-
-    to {
-        filter:
-            drop-shadow(0 0 15px #ff69b4)
-            drop-shadow(0 0 35px #ff1493);
-    }
-}
-
-
-/* =========================================================
-   COUNTDOWN
-========================================================= */
-
-.countdown-section {
-    width: 100%;
-
-    padding: 70px 20px;
-
-    text-align: center;
-}
-
-.countdown-section h2 {
-    width: 100%;
-
-    margin-bottom: 30px;
-
+.hero h1 {
     color: #ff69b4;
-
-    font-size: clamp(22px, 5vw, 34px);
-
+    font-size: clamp(38px, 8vw, 72px);
     text-shadow:
-        0 0 10px #ff69b4,
-        0 0 25px #ff1493;
+        0 0 10px #ff1493,
+        0 0 30px rgba(255, 20, 147, 0.7);
+
+    margin-bottom: 10px;
+}
+
+.hero h2 {
+    font-size: clamp(30px, 6vw, 48px);
+    color: white;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    color: #ffb6d9;
+    font-size: 18px;
+}
+
+/* =========================
+   COUNTDOWN
+========================= */
+.countdown-section {
+    text-align: center;
+    padding: 50px 20px 80px;
+}
+
+.countdown-section > h2 {
+    color: #ff8fc8;
+    margin-bottom: 25px;
 }
 
 .countdown {
-    width: 100%;
-
     display: flex;
-
     justify-content: center;
-    align-items: center;
-
     flex-wrap: wrap;
-
-    gap: 14px;
+    gap: 12px;
 }
 
 .time-box {
-    width: 82px;
-    min-width: 82px;
+    width: 90px;
+    padding: 18px 10px;
 
-    padding: 15px 8px;
-
-    background:
-        rgba(255, 105, 180, 0.08);
-
-    border:
-        1px solid rgba(255, 105, 180, 0.5);
-
+    background: rgba(255, 20, 147, 0.12);
+    border: 1px solid rgba(255, 105, 180, 0.45);
     border-radius: 16px;
 
-    box-shadow:
-        0 0 18px rgba(255, 20, 147, 0.25);
+    box-shadow: 0 0 20px rgba(255, 20, 147, 0.12);
 }
 
 .time-box strong {
     display: block;
-
+    font-size: 30px;
     color: #ff69b4;
-
-    font-size: 29px;
-
-    line-height: 1.2;
-
-    text-shadow:
-        0 0 10px #ff1493;
 }
 
 .time-box span {
     display: block;
-
     margin-top: 5px;
-
-    color: #ffd6ec;
-
+    color: #e9b5ce;
     font-size: 13px;
 }
 
 #countdown-text {
-    width: 100%;
-
     margin-top: 25px;
-
-    color: #ffd6ec;
-
-    line-height: 1.5;
+    color: #ffc5e2;
 }
 
-
-/* =========================================================
+/* =========================
    SURPRISE SECTION
-========================================================= */
-
+========================= */
 .surprise-section {
-    width: 100%;
-
-    padding: 70px 15px 100px;
-
+    padding: 30px 15px 100px;
     text-align: center;
 }
 
 .surprise-heading {
+    color: #ff69b4;
+    font-size: clamp(25px, 5vw, 40px);
     margin-bottom: 50px;
 
-    color: #ff69b4;
-
-    font-size: clamp(28px, 6vw, 45px);
-
-    text-shadow:
-        0 0 10px #ff69b4,
-        0 0 25px #ff1493;
+    text-shadow: 0 0 15px rgba(255, 20, 147, 0.8);
 }
 
-
-/* =========================================================
+/* =========================
    SMALL GIFT BOX
-========================================================= */
-
+========================= */
 .surprise-box {
-    position: relative;
-
-    width: 180px;
-    height: 140px;
+    width: 210px;
+    height: 155px;
 
     margin: 0 auto;
 
-    display: block;
+    position: relative;
+    perspective: 800px;
+
+    transition:
+        margin-bottom 1s ease;
 }
-
-
-/* BODY */
 
 .box-body {
     position: absolute;
-
     left: 0;
     bottom: 0;
 
-    width: 180px;
-    height: 105px;
+    width: 210px;
+    height: 130px;
 
     background:
         linear-gradient(
             135deg,
-            #ff4fa3,
-            #d9006c
+            #ff1493,
+            #d90072
         );
 
     border-radius: 8px;
 
     box-shadow:
-        0 0 15px #ff4fa3,
-        0 0 35px rgba(255, 20, 147, 0.6);
+        0 15px 40px rgba(0, 0, 0, 0.5),
+        0 0 30px rgba(255, 20, 147, 0.4);
 
-    /*
-       Penting:
-       jangan hidden karena box-content
-       harus bisa keluar dari badan kotak.
-    */
     overflow: visible;
 }
-
-
-/* VERTICAL RIBBON */
-
-.vertical-ribbon {
-    position: absolute;
-
-    left: 75px;
-    top: 0;
-
-    width: 30px;
-    height: 105px;
-
-    background: #ffd6ec;
-
-    z-index: 3;
-}
-
-
-/* HORIZONTAL RIBBON */
-
-.box-body::after {
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    top: 35px;
-
-    width: 180px;
-    height: 25px;
-
-    background: #ffd6ec;
-
-    z-index: 2;
-}
-
-
-/* =========================================================
-   LID
-========================================================= */
 
 .box-lid {
     position: absolute;
 
-    left: -8px;
+    width: 225px;
+    height: 35px;
+
+    left: -7px;
     top: 5px;
 
-    width: 196px;
-    height: 38px;
-
-    z-index: 20;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff69b4,
-            #e00070
-        );
+    z-index: 5;
 
     border-radius: 7px;
 
-    box-shadow:
-        0 0 12px #ff4fa3,
-        0 0 25px rgba(255, 20, 147, 0.6);
+    background: linear-gradient(
+        135deg,
+        #ff69b4,
+        #ff1493
+    );
 
-    transform-origin: left center;
+    transform-origin: bottom center;
 
     transition:
-        transform 1s ease;
+        transform 1s cubic-bezier(.2,.8,.2,1),
+        top 1s;
 }
-
-
-/* LID RIBBON */
 
 .lid-ribbon {
     position: absolute;
-
-    left: 83px;
+    left: 50%;
     top: 0;
 
-    width: 30px;
-    height: 38px;
+    width: 25px;
+    height: 100%;
+
+    transform: translateX(-50%);
 
     background: #ffd6ec;
 }
 
-
-/* BOW */
-
 .bow {
+    position: absolute;
+    left: 50%;
+    top: -42px;
+
+    transform: translateX(-50%);
+
+    font-size: 48px;
+}
+
+/* ribbon */
+.vertical-ribbon {
     position: absolute;
 
     left: 50%;
-    top: -36px;
+    top: 0;
 
     transform: translateX(-50%);
 
-    z-index: 30;
+    width: 25px;
+    height: 100%;
 
-    font-size: 40px;
+    background: rgba(255, 214, 236, 0.85);
 }
 
+/* =========================
+   OPEN ANIMATION
+========================= */
+.surprise-box.opened {
+    height: auto;
+    width: min(1100px, 100%);
 
-/* OPEN ANIMATION */
+    margin-bottom: 30px;
+}
 
 .surprise-box.opened .box-lid {
     transform:
-        rotate(-35deg)
-        translateY(-45px);
+        translateY(-85px)
+        rotateX(-125deg);
 }
 
+.surprise-box.opened .box-body {
+    box-shadow:
+        0 0 50px rgba(255, 20, 147, 0.8);
+}
 
-/* =========================================================
-   CONTENT INSIDE SURPRISE
-========================================================= */
-
-/*
-   Karena .box-content berada DI DALAM .box-body,
-   kita tidak boleh memakai position:absolute.
-
-   Content dibuat normal-flow supaya:
-   - tidak membuat kotak hadiah menjadi raksasa
-   - isi tetap muncul setelah kotak
-   - halaman tetap bisa di-scroll
-*/
-
+/* =========================
+   CONTENT
+========================= */
 .box-content {
     position: relative;
 
-    width: min(900px, 94vw);
+    width: min(1000px, calc(100vw - 30px));
 
     margin-left: 50%;
-    margin-top: 220px;
-
     transform: translateX(-50%);
 
+    margin-top: 170px;
+
+    padding: 30px 15px 60px;
+
     opacity: 0;
-
-    visibility: hidden;
-
     pointer-events: none;
 
     transition:
-        opacity 1s ease,
-        visibility 1s ease;
+        opacity 1s ease 0.8s,
+        transform 1s ease 0.8s;
+
+    transform:
+        translateX(-50%)
+        translateY(30px);
 }
 
 .surprise-box.opened .box-content {
     opacity: 1;
-
-    visibility: visible;
-
     pointer-events: auto;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
 }
 
-
-/* =========================================================
-   MAIN PHOTO INSIDE
-========================================================= */
-
+/* =========================
+   MAIN PHOTO
+========================= */
 .inside-main-photo {
-    width: 100%;
-
-    margin-bottom: 40px;
-
-    text-align: center;
+    margin-bottom: 45px;
 }
 
 .main-photo-frame {
-    display: inline-block;
+    width: min(260px, 75vw);
+    height: min(320px, 95vw);
+
+    margin: 0 auto;
 
     padding: 10px;
 
     background: white;
 
-    border-radius: 10px;
+    border-radius: 20px;
 
     box-shadow:
-        0 0 20px rgba(255, 20, 147, 0.6);
+        0 0 20px #ff69b4,
+        0 0 50px rgba(255, 20, 147, 0.5);
+
+    transform: rotate(-2deg);
 }
 
 .main-photo-frame img {
-    width: 220px;
-    height: 220px;
-
-    display: block;
+    width: 100%;
+    height: 100%;
 
     object-fit: cover;
 
-    border-radius: 6px;
+    border-radius: 13px;
 }
 
 .floating-hearts {
-    margin-top: 12px;
+    margin-top: 20px;
+    font-size: 25px;
 
-    font-size: 22px;
+    animation: floatHearts 2s infinite ease-in-out;
 }
 
+@keyframes floatHearts {
+    50% {
+        transform: translateY(-8px);
+    }
+}
 
-/* =========================================================
+/* =========================
    MESSAGE
-========================================================= */
-
+========================= */
 .message-card {
-    width: 100%;
-    max-width: 750px;
+    width: min(850px, 100%);
+    margin: 0 auto 60px;
 
-    margin: 35px auto;
-
-    padding: 30px 25px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255, 105, 180, 0.14),
-            rgba(0, 0, 0, 0.45)
-        );
-
-    border:
-        1px solid rgba(255, 105, 180, 0.5);
-
-    border-radius: 22px;
+    padding: 30px;
 
     text-align: left;
 
+    background: rgba(255, 20, 147, 0.09);
+
+    border: 1px solid rgba(255, 105, 180, 0.35);
+
+    border-radius: 22px;
+
     box-shadow:
-        0 0 25px rgba(255, 20, 147, 0.2);
+        0 0 30px rgba(255, 20, 147, 0.12);
+
+    backdrop-filter: blur(10px);
 }
 
 .message-card h2 {
-    margin-bottom: 20px;
-
     color: #ff69b4;
-
     text-align: center;
-
-    text-shadow:
-        0 0 10px #ff1493;
+    margin-bottom: 25px;
 }
 
 .typing-text {
-    color: #ffe5f1;
-
-    line-height: 1.8;
-
     white-space: pre-line;
+
+    color: #ffe1ef;
+
+    line-height: 1.9;
+    font-size: 16px;
+
+    min-height: 100px;
 }
 
-
-/* =========================================================
+/* =========================
    GALLERY
-========================================================= */
-
+========================= */
 .gallery-inside {
-    width: 100%;
-
-    margin-top: 65px;
+    width: min(950px, 100%);
+    margin: 0 auto 70px;
 }
 
 .gallery-inside h2 {
-    margin-bottom: 30px;
-
     color: #ff69b4;
-
-    text-align: center;
-
-    text-shadow:
-        0 0 10px #ff1493;
+    margin-bottom: 30px;
 }
 
 .gallery-grid {
-    width: 100%;
-
     display: grid;
 
     grid-template-columns:
-        repeat(4, minmax(0, 1fr));
+        repeat(4, 1fr);
 
     gap: 25px;
 
-    align-items: start;
+    align-items: center;
 }
-
-
-/* POLAROID */
 
 .polaroid {
-    width: 100%;
+    background: white;
 
-    min-width: 0;
+    padding: 9px 9px 25px;
 
-    padding:
-        8px
-        8px
-        25px;
-
-    background: #fff;
-
-    border-radius: 4px;
-
-    overflow: hidden;
+    border-radius: 3px;
 
     box-shadow:
-        0 8px 20px rgba(0, 0, 0, 0.6);
+        0 12px 25px rgba(0, 0, 0, 0.4),
+        0 0 12px rgba(255, 105, 180, 0.25);
 
     transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+        transform 0.3s,
+        box-shadow 0.3s;
 }
-
-
-/*
-   FOTO THUMBNAIL:
-   Selalu kotak 1:1 dan tidak gepeng.
-*/
-
-.polaroid img {
-    width: 100%;
-    height: auto;
-
-    aspect-ratio: 1 / 1;
-
-    display: block;
-
-    object-fit: cover;
-
-    border: none;
-}
-
-
-/* POLAROID ROTATION */
 
 .polaroid:nth-child(odd) {
     transform: rotate(-3deg);
@@ -910,293 +604,205 @@ body {
 
 .polaroid:hover {
     transform:
+        translateY(-8px)
         rotate(0deg)
         scale(1.04);
 
-    z-index: 10;
-
     box-shadow:
-        0 0 30px rgba(255, 20, 147, 0.6);
+        0 20px 35px rgba(0, 0, 0, 0.5),
+        0 0 25px rgba(255, 105, 180, 0.5);
 }
 
+.polaroid img {
+    display: block;
 
-/* =========================================================
-   VIDEO
-========================================================= */
-
-.video-inside {
     width: 100%;
+    aspect-ratio: 1 / 1;
 
-    margin-top: 75px;
+    object-fit: cover;
+}
+
+/* =========================
+   VIDEO
+========================= */
+.video-inside {
+    width: min(850px, 100%);
+    margin: 0 auto 70px;
 }
 
 .video-inside h2 {
-    margin-bottom: 25px;
-
     color: #ff69b4;
-
-    text-align: center;
-
-    text-shadow:
-        0 0 10px #ff1493;
+    margin-bottom: 25px;
 }
 
 .video-frame {
-    width: 100%;
+    padding: 10px;
 
-    padding: 7px;
+    background: rgba(255, 255, 255, 0.08);
 
-    background:
-        linear-gradient(
-            135deg,
-            #ff69b4,
-            #97004e
-        );
+    border: 1px solid rgba(255, 105, 180, 0.4);
 
     border-radius: 20px;
 
     box-shadow:
-        0 0 30px rgba(255, 20, 147, 0.4);
+        0 0 30px rgba(255, 20, 147, 0.2);
 }
 
 .video-frame video {
-    width: 100%;
-    height: auto;
-
-    max-height: 550px;
-
     display: block;
 
-    background: #000;
+    width: 100%;
+    max-height: 600px;
 
-    border-radius: 13px;
+    border-radius: 14px;
+    background: black;
 }
 
-
-/* =========================================================
+/* =========================
    CLOSING
-========================================================= */
-
+========================= */
 .closing {
-    width: 100%;
-
-    margin-top: 75px;
-
-    padding:
-        45px
-        20px;
+    padding: 50px 20px;
 
     text-align: center;
 
-    border-top:
-        1px solid rgba(255, 105, 180, 0.3);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 20, 147, 0.12),
+            rgba(0, 0, 0, 0.15)
+        );
+
+    border-radius: 25px;
+
+    border: 1px solid rgba(255, 105, 180, 0.25);
 }
 
 .closing-heart {
-    margin-bottom: 15px;
-
-    font-size: 55px;
+    font-size: 60px;
 
     animation:
-        heartbeat 1.5s infinite;
+        heartBeat 1.3s infinite;
 }
 
-@keyframes heartbeat {
-
-    0%,
-    100% {
-        transform: scale(1);
-    }
-
+@keyframes heartBeat {
     50% {
-        transform: scale(1.15);
+        transform: scale(1.18);
     }
 }
 
 .closing h2 {
-    margin-bottom: 18px;
-
     color: #ff69b4;
-
-    font-size: clamp(25px, 5vw, 40px);
-
-    text-shadow:
-        0 0 15px #ff1493;
+    margin: 20px 0 15px;
 }
 
 .closing p {
-    color: #ffd6ec;
-
+    color: #ffd4e8;
     line-height: 1.7;
 }
 
 .closing-emojis {
-    margin-top: 20px;
-
+    margin-top: 25px;
     font-size: 25px;
-
-    letter-spacing: 6px;
 }
 
-
-/* =========================================================
+/* =========================
    MUSIC BUTTON
-========================================================= */
-
+========================= */
 .music-button {
     position: fixed;
 
     right: 20px;
     bottom: 20px;
 
-    z-index: 6000;
+    z-index: 1000;
 
-    padding:
-        12px
-        18px;
+    padding: 12px 18px;
 
-    border:
-        1px solid #ff69b4;
-
+    border: 1px solid rgba(255, 255, 255, 0.25);
     border-radius: 30px;
 
-    background:
-        linear-gradient(
-            135deg,
-            #ff69b4,
-            #d9006c
-        );
+    background: rgba(255, 20, 147, 0.8);
 
     color: white;
 
+    font-size: 15px;
     font-weight: bold;
 
     cursor: pointer;
 
     box-shadow:
-        0 0 20px rgba(255, 20, 147, 0.7);
+        0 0 20px rgba(255, 20, 147, 0.45);
 
-    transition:
-        transform 0.25s ease;
+    backdrop-filter: blur(10px);
 }
 
-.music-button:hover {
-    transform: scale(1.06);
-}
-
-
-/* =========================================================
+/* =========================
    CONFETTI
-========================================================= */
-
+========================= */
 #confetti {
     position: fixed;
-
     inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    overflow: hidden;
 
     pointer-events: none;
 
-    z-index: 8000;
+    z-index: 2000;
+
+    overflow: hidden;
 }
 
 .confetti-piece {
     position: absolute;
 
-    width: 8px;
-    height: 14px;
+    width: 9px;
+    height: 15px;
 
     animation:
-        confettiFall 3s linear forwards;
+        confettiFall 4s linear forwards;
 }
 
 @keyframes confettiFall {
-
     from {
         transform:
-            translateY(-20px)
+            translateY(-30px)
             rotate(0deg);
-
-        opacity: 1;
     }
 
     to {
         transform:
             translateY(110vh)
             rotate(720deg);
-
-        opacity: 0;
     }
 }
 
-
-/* =========================================================
+/* =========================
    TABLET
-========================================================= */
-
-@media (max-width: 900px) {
+========================= */
+@media (max-width: 850px) {
 
     .gallery-grid {
-        grid-template-columns:
-            repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(2, 1fr);
     }
+
 }
 
-
-/* =========================================================
+/* =========================
    MOBILE
-========================================================= */
-
+========================= */
 @media (max-width: 600px) {
+
+    .password-card {
+        padding: 32px 20px;
+    }
 
     .hero {
         min-height: 90vh;
-
-        padding:
-            40px
-            15px;
+        padding-top: 50px;
     }
 
     .main-heart-photo {
-        width: 205px;
-        height: 205px;
-    }
-
-    .main-heart-photo::before {
-        width: 195px;
-        height: 195px;
-    }
-
-    .main-heart-photo img {
-        width: 185px;
-        height: 185px;
-    }
-
-    .hero h1 {
-        margin-top: 20px;
-
-        font-size: 38px;
-    }
-
-    .hero h2 {
-        font-size: 30px;
-    }
-
-    .hero p {
-        font-size: 16px;
-    }
-
-
-    /* COUNTDOWN */
-
-    .countdown-section {
-        padding:
-            50px
-            10px;
+        width: 160px;
+        height: 160px;
     }
 
     .countdown {
@@ -1204,177 +810,78 @@ body {
     }
 
     .time-box {
-        width: 70px;
-        min-width: 70px;
-
-        padding:
-            13px
-            5px;
+        width: 75px;
+        padding: 14px 7px;
     }
 
     .time-box strong {
-        font-size: 23px;
+        font-size: 24px;
     }
-
-    .time-box span {
-        font-size: 12px;
-    }
-
-
-    /* SURPRISE */
 
     .surprise-section {
-        padding:
-            50px
-            10px
-            80px;
+        padding-left: 10px;
+        padding-right: 10px;
     }
-
-    .surprise-heading {
-        margin-bottom: 45px;
-
-        font-size: 30px;
-    }
-
-    /*
-       Kotak tetap kecil di HP.
-    */
 
     .surprise-box {
-        width: 180px;
-        height: 140px;
+        width: 190px;
     }
 
+    .box-body {
+        width: 190px;
+    }
 
-    /* CONTENT */
+    .box-lid {
+        width: 205px;
+    }
 
     .box-content {
-        width: 94vw;
-
-        margin-top: 210px;
+        width: calc(100vw - 20px);
+        padding-left: 5px;
+        padding-right: 5px;
     }
-
-
-    /* FOTO DALAM */
-
-    .main-photo-frame img {
-        width: 190px;
-        height: 190px;
-    }
-
-
-    /* MESSAGE */
 
     .message-card {
-        padding:
-            23px
-            18px;
-
-        font-size: 14px;
+        padding: 22px 18px;
     }
 
     .typing-text {
-        line-height: 1.7;
+        font-size: 15px;
+        line-height: 1.8;
     }
 
-
-    /* GALLERY */
-
     .gallery-grid {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-
-        gap: 18px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
     }
 
     .polaroid {
-        padding:
-            6px
-            6px
-            20px;
-    }
-
-
-    /* VIDEO */
-
-    .video-inside {
-        margin-top: 55px;
+        padding: 6px 6px 18px;
     }
 
     .video-frame {
-        padding: 5px;
-
-        border-radius: 15px;
+        padding: 6px;
     }
-
-    .video-frame video {
-        border-radius: 10px;
-    }
-
-
-    /* CLOSING */
-
-    .closing {
-        padding:
-            40px
-            15px;
-    }
-
-    .closing-emojis {
-        font-size: 20px;
-
-        letter-spacing: 3px;
-    }
-
-
-    /* MUSIC */
 
     .music-button {
-        right: 15px;
-        bottom: 15px;
-
-        padding:
-            10px
-            15px;
+        right: 12px;
+        bottom: 12px;
     }
 }
 
-
-/* =========================================================
+/* =========================
    VERY SMALL PHONE
-========================================================= */
-
+========================= */
 @media (max-width: 380px) {
 
-    .main-heart-photo {
-        width: 180px;
-        height: 180px;
-    }
-
-    .main-heart-photo::before {
-        width: 170px;
-        height: 170px;
-    }
-
-    .main-heart-photo img {
-        width: 160px;
-        height: 160px;
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        max-width: 260px;
+        margin: auto;
     }
 
     .time-box {
-        width: 62px;
-        min-width: 62px;
+        width: 68px;
     }
 
-    .time-box strong {
-        font-size: 20px;
-    }
-
-    .time-box span {
-        font-size: 11px;
-    }
-
-    .gallery-grid {
-        gap: 12px;
-    }
 }
