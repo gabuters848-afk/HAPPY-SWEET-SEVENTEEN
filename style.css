@@ -1,388 +1,23 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    min-height: 100vh;
-    overflow-x: hidden;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    color: white;
-
-    background:
-        radial-gradient(
-            circle at 50% 0%,
-            #d50070 0%,
-            #57002f 25%,
-            #16000c 55%,
-            #050005 100%
-        );
-}
-
-
 /* =========================
-   UTIL
-========================= */
-
-.hidden {
-    display: none !important;
-}
-
-
-/* =========================
-   PASSWORD
-========================= */
-
-.password-page {
-    min-height: 100vh;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    padding: 20px;
-}
-
-.password-card {
-    width: min(420px, 100%);
-
-    padding: 40px 25px;
-
-    text-align: center;
-
-    border-radius: 25px;
-
-    background:
-        rgba(20, 0, 15, .92);
-
-    border: 2px solid #ff4da6;
-
-    box-shadow:
-        0 0 20px #ff1493,
-        0 0 70px rgba(255, 20, 147, .4);
-}
-
-.lock-icon {
-    font-size: 65px;
-    margin-bottom: 15px;
-}
-
-.password-card h1 {
-    color: #ff86c4;
-    margin-bottom: 12px;
-
-    text-shadow:
-        0 0 15px #ff1493;
-}
-
-.password-card p {
-    margin-bottom: 20px;
-}
-
-.password-card input {
-    width: 100%;
-
-    padding: 15px;
-
-    border-radius: 12px;
-
-    border: 2px solid #ff4da6;
-
-    outline: none;
-
-    background: #12000b;
-
-    color: white;
-
-    text-align: center;
-
-    font-size: 18px;
-}
-
-.password-card button {
-    width: 100%;
-
-    margin-top: 15px;
-
-    padding: 15px;
-
-    border: none;
-
-    border-radius: 12px;
-
-    color: white;
-
-    font-weight: bold;
-    font-size: 17px;
-
-    cursor: pointer;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff087e,
-            #ff63b2
-        );
-
-    box-shadow:
-        0 0 20px rgba(255, 20, 147, .6);
-}
-
-.password-card button:hover {
-    transform: scale(1.03);
-}
-
-.password-card small {
-    color: #ffb9d9;
-}
-
-#password-error {
-    min-height: 20px;
-    margin: 10px 0;
-
-    color: #ff5f89;
-}
-
-
-/* =========================
-   HERO
-========================= */
-
-.hero {
-    padding: 60px 20px 30px;
-
-    text-align: center;
-}
-
-.main-heart-photo {
-    position: relative;
-
-    width: 220px;
-    height: 220px;
-
-    margin: auto;
-
-    filter:
-        drop-shadow(0 0 15px #ff1493)
-        drop-shadow(0 0 35px #ff1493);
-
-    animation:
-        heartPhotoGlow 2s infinite alternate;
-}
-
-
-/* membuat bentuk hati */
-
-.main-heart-photo::before,
-.main-heart-photo::after {
-    content: "";
-
-    position: absolute;
-
-    width: 110px;
-    height: 175px;
-
-    top: 25px;
-
-    border-radius:
-        110px 110px 0 0;
-
-    background: #ff1493;
-}
-
-.main-heart-photo::before {
-    left: 110px;
-
-    transform:
-        rotate(45deg);
-
-    transform-origin:
-        0 100%;
-}
-
-.main-heart-photo::after {
-    left: 0;
-
-    transform:
-        rotate(-45deg);
-
-    transform-origin:
-        100% 100%;
-}
-
-.main-heart-photo img {
-    position: absolute;
-
-    z-index: 2;
-
-    left: 12px;
-    top: 20px;
-
-    width: 196px;
-    height: 196px;
-
-    object-fit: cover;
-
-    clip-path:
-        path(
-            "M98 180 C80 160 15 120 15 65 C15 30 55 10 98 55 C141 10 181 30 181 65 C181 120 116 160 98 180Z"
-        );
-}
-
-@keyframes heartPhotoGlow {
-
-    from {
-        filter:
-            drop-shadow(0 0 10px #ff1493);
-    }
-
-    to {
-        filter:
-            drop-shadow(0 0 30px #ff1493)
-            drop-shadow(0 0 60px rgba(255, 20, 147, .6));
-    }
-}
-
-.hero h1 {
-    margin-top: 25px;
-
-    font-size:
-        clamp(30px, 7vw, 55px);
-
-    color: #ff80bd;
-
-    text-shadow:
-        0 0 20px #ff1493;
-}
-
-.hero h2 {
-    margin-top: 10px;
-
-    font-size: 35px;
-}
-
-.hero p {
-    margin-top: 10px;
-
-    color: #ffc1dd;
-}
-
-
-/* =========================
-   COUNTDOWN
-========================= */
-
-.countdown-section {
-    padding: 30px 15px;
-
-    text-align: center;
-}
-
-.countdown-section h2 {
-    color: #ff91c7;
-
-    margin-bottom: 25px;
-}
-
-.countdown {
-    display: flex;
-
-    justify-content: center;
-
-    gap: 12px;
-
-    flex-wrap: wrap;
-}
-
-.time-box {
-    min-width: 80px;
-
-    padding: 15px 10px;
-
-    border-radius: 15px;
-
-    background:
-        rgba(255, 0, 130, .13);
-
-    border: 1px solid #ff4fa3;
-
-    box-shadow:
-        0 0 20px rgba(255, 20, 147, .35);
-}
-
-.time-box strong {
-    display: block;
-
-    font-size: 30px;
-
-    color: #ff82bd;
-}
-
-.time-box span {
-    color: #ffd0e5;
-}
-
-#countdown-text {
-    margin-top: 20px;
-
-    color: #ffb4d6;
-}
-
-
-/* =========================
-   SURPRISE
-========================= */
-
-.surprise-section {
-    padding: 40px 10px 100px;
-
-    text-align: center;
-}
-
-.surprise-heading {
-    margin-bottom: 35px;
-
-    color: #ff9dcc;
-
-    text-shadow:
-        0 0 15px #ff1493;
-}
-
-
-/* =========================
-   KOTAK
+   KOTAK HADIAH KECIL
 ========================= */
 
 .surprise-box {
-    width: min(1000px, 96%);
-
-    margin: auto;
-
-    perspective: 1400px;
+    width: 320px;
+    max-width: 90%;
+    margin: 70px auto 0;
+    perspective: 1200px;
 }
 
-
-/* TUTUP */
-
+/* TUTUP KOTAK */
 .box-lid {
     position: relative;
-
-    height: 105px;
+    width: 100%;
+    height: 90px;
 
     z-index: 10;
 
-    border-radius:
-        20px 20px 8px 8px;
+    border-radius: 18px 18px 8px 8px;
 
     border: 4px solid #ffb7d9;
 
@@ -394,66 +29,22 @@ body {
             #bd005d
         );
 
-    transform-origin:
-        top center;
+    transform-origin: top center;
 
     transition:
-        transform 1.5s
-        cubic-bezier(.2, .8, .2, 1);
+        transform 1.4s
+        cubic-bezier(.2,.8,.2,1);
 
     box-shadow:
-        0 0 25px #ff1493,
-        0 0 70px rgba(255, 20, 147, .6);
+        0 0 20px #ff1493,
+        0 0 50px rgba(255,20,147,.7);
 }
 
-
-/* pita tutup */
-
-.lid-ribbon {
-    position: absolute;
-
-    left: 50%;
-
-    top: 0;
-
-    width: 75px;
-    height: 100%;
-
-    transform:
-        translateX(-50%);
-
-    background:
-        rgba(255, 200, 225, .55);
-
-    box-shadow:
-        0 0 20px #ffd0e7;
-}
-
-
-/* pita/bow */
-
-.bow {
-    position: absolute;
-
-    left: 50%;
-    top: -50px;
-
-    transform:
-        translateX(-50%);
-
-    font-size: 80px;
-
-    filter:
-        drop-shadow(0 0 10px #ff1493);
-}
-
-
-/* BADAN */
-
+/* BADAN KOTAK */
 .box-body {
     position: relative;
 
-    min-height: 500px;
+    width: 100%;
 
     overflow: hidden;
 
@@ -472,504 +63,52 @@ body {
         );
 
     box-shadow:
-        0 0 30px #ff1493,
-        0 0 90px rgba(255, 20, 147, .5);
+        0 0 25px #ff1493,
+        0 0 70px rgba(255,20,147,.6);
+
+    transition:
+        width 1.2s ease;
 }
 
-
-/* PITA TENGAH */
-
-.vertical-ribbon {
-    position: absolute;
-
-    left: 50%;
-    top: 0;
-
-    width: 75px;
-    height: 100%;
-
-    transform:
-        translateX(-50%);
-
-    background:
-        rgba(255, 195, 220, .35);
-}
-
-
-/* =========================
-   ISI KOTAK
-========================= */
-
+/* ISI AWALNYA TERSEMBUNYI */
 .box-content {
     position: relative;
 
     z-index: 2;
 
-    padding: 65px 30px;
+    padding: 45px 25px;
 
     opacity: 0;
 
     transform:
-        translateY(120px)
-        scale(.85);
+        translateY(60px);
 
     transition:
-        opacity 1.4s ease .5s,
-        transform 1.4s
-        cubic-bezier(.2, .8, .2, 1) .5s;
+        opacity 1.2s ease .5s,
+        transform 1.2s ease .5s;
 }
 
 
-/* SAAT TERBUKA */
+/* =========================
+   SAAT KOTAK DIBUKA
+========================= */
+
+.surprise-box.opened {
+    width: min(850px, 94%);
+}
 
 .surprise-box.opened .box-lid {
     transform:
-        translateY(-110px)
-        rotateX(-72deg)
-        rotateZ(-4deg);
+        translateY(-95px)
+        rotateX(-70deg)
+        rotateZ(-3deg);
 }
 
 .surprise-box.opened .box-content {
     opacity: 1;
 
     transform:
-        translateY(0)
-        scale(1);
-}
-
-
-/* =========================
-   FOTO UTAMA
-========================= */
-
-.inside-main-photo {
-    margin-bottom: 45px;
-}
-
-.main-photo-frame {
-    width: min(320px, 85vw);
-
-    margin: auto;
-
-    padding: 12px;
-
-    background: white;
-
-    border:
-        5px solid #ff9dcb;
-
-    box-shadow:
-        0 0 20px white,
-        0 0 50px #ff1493;
-
-    transform:
-        rotate(-2deg);
-}
-
-.main-photo-frame img {
-    display: block;
-
-    width: 100%;
-
-    aspect-ratio: 1 / 1;
-
-    object-fit: cover;
-}
-
-.floating-hearts {
-    margin-top: 20px;
-
-    font-size: 28px;
-
-    animation:
-        floatingHearts 1.8s
-        infinite alternate;
-}
-
-@keyframes floatingHearts {
-
-    to {
-        transform:
-            translateY(-10px);
-    }
-}
-
-
-/* =========================
-   UCAPAN
-========================= */
-
-.message-card {
-    max-width: 780px;
-
-    margin: auto;
-
-    padding: 30px;
-
-    border-radius: 22px;
-
-    background:
-        rgba(45, 0, 28, .65);
-
-    border:
-        2px solid #ff91c7;
-
-    box-shadow:
-        0 0 25px rgba(255, 100, 180, .4);
-}
-
-.message-card h2 {
-    margin-bottom: 25px;
-
-    color: #ffb5d7;
-}
-
-.typing-text {
-    text-align: left;
-
-    white-space: pre-line;
-
-    min-height: 260px;
-
-    color: #ffe5f1;
-
-    font-size: 17px;
-
-    line-height: 1.8;
-}
-
-.typing-text::after {
-    content: "|";
-
-    color: #ff72b8;
-
-    animation:
-        blink .7s infinite;
-}
-
-@keyframes blink {
-
-    0%, 50% {
-        opacity: 1;
-    }
-
-    51%, 100% {
-        opacity: 0;
-    }
-}
-
-
-/* =========================
-   GALERI
-========================= */
-
-.gallery-inside {
-    margin-top: 65px;
-}
-
-.gallery-inside h2,
-.video-inside h2 {
-    margin-bottom: 30px;
-
-    color: #ffb4d7;
-}
-
-.gallery-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 25px;
-
-    max-width: 900px;
-
-    margin: auto;
-}
-
-
-/* BINGKAI */
-
-.polaroid {
-    padding:
-        10px
-        10px
-        35px;
-
-    background: white;
-
-    border:
-        3px solid #ff9dcc;
-
-    box-shadow:
-        0 0 15px white,
-        0 0 30px rgba(255, 20, 147, .7);
-
-    transition:
-        .3s;
-}
-
-.polaroid img {
-    display: block;
-
-    width: 100%;
-
-    aspect-ratio: 1 / 1;
-
-    object-fit: cover;
-}
-
-
-/* miring */
-
-.polaroid:nth-child(1) {
-    transform: rotate(-4deg);
-}
-
-.polaroid:nth-child(2) {
-    transform: rotate(3deg);
-}
-
-.polaroid:nth-child(3) {
-    transform: rotate(-2deg);
-}
-
-.polaroid:nth-child(4) {
-    transform: rotate(4deg);
-}
-
-.polaroid:nth-child(5) {
-    transform: rotate(2deg);
-}
-
-.polaroid:nth-child(6) {
-    transform: rotate(-3deg);
-}
-
-.polaroid:nth-child(7) {
-    transform: rotate(3deg);
-}
-
-.polaroid:nth-child(8) {
-    transform: rotate(-4deg);
-}
-
-.polaroid:hover {
-    transform:
-        rotate(0)
-        scale(1.08);
-
-    z-index: 5;
-
-    box-shadow:
-        0 0 25px white,
-        0 0 55px #ff1493;
-}
-
-
-/* =========================
-   VIDEO
-========================= */
-
-.video-inside {
-    margin-top: 70px;
-}
-
-.video-frame {
-    max-width: 800px;
-
-    margin: auto;
-
-    padding: 10px;
-
-    background: white;
-
-    border:
-        4px solid #ff9dcc;
-
-    border-radius: 18px;
-
-    box-shadow:
-        0 0 20px white,
-        0 0 50px #ff1493;
-}
-
-.video-frame video {
-    width: 100%;
-
-    display: block;
-
-    border-radius: 10px;
-
-    background: black;
-}
-
-
-/* =========================
-   CLOSING
-========================= */
-
-.closing {
-    margin-top: 70px;
-
-    padding:
-        45px 20px;
-
-    border-top:
-        2px solid rgba(255, 190, 220, .5);
-}
-
-.closing-heart {
-    font-size: 80px;
-
-    animation:
-        heartbeat 1.2s infinite;
-}
-
-@keyframes heartbeat {
-
-    0%, 100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.18);
-    }
-}
-
-.closing h2 {
-    margin: 20px 0;
-
-    color: #ffacd4;
-}
-
-.closing p {
-    color: #ffd9e9;
-}
-
-.closing-emojis {
-    margin-top: 20px;
-
-    font-size: 26px;
-}
-
-
-/* =========================
-   EMOJI JATUH
-========================= */
-
-#falling-emojis {
-    position: fixed;
-
-    inset: 0;
-
-    overflow: hidden;
-
-    pointer-events: none;
-
-    z-index: 9999;
-}
-
-.falling-emoji {
-    position: absolute;
-
-    top: -70px;
-
-    animation:
-        emojiFall
-        linear
-        forwards;
-
-    filter:
-        drop-shadow(
-            0 0 7px
-            rgba(255, 255, 255, .8)
-        );
-}
-
-@keyframes emojiFall {
-
-    from {
-        transform:
-            translateY(-70px)
-            rotate(0deg);
-    }
-
-    to {
-        transform:
-            translateY(115vh)
-            rotate(360deg);
-    }
-}
-
-
-/* =========================
-   CONFETTI
-========================= */
-
-#confetti {
-    position: fixed;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    overflow: hidden;
-
-    z-index: 9998;
-}
-
-.confetti-piece {
-    position: absolute;
-
-    top: -50px;
-
-    animation:
-        confettiFall
-        linear
-        forwards;
-}
-
-@keyframes confettiFall {
-
-    to {
-        transform:
-            translateY(110vh)
-            rotate(720deg);
-
-        opacity: 0;
-    }
-}
-
-
-/* =========================
-   MUSIC
-========================= */
-
-.music-button {
-    position: fixed;
-
-    right: 20px;
-    bottom: 20px;
-
-    z-index: 10000;
-
-    padding: 12px 18px;
-
-    border-radius: 30px;
-
-    border:
-        2px solid #ff8bc5;
-
-    color: white;
-
-    background:
-        rgba(40, 0, 25, .9);
-
-    cursor: pointer;
-
-    box-shadow:
-        0 0 20px #ff1493;
+        translateY(0);
 }
 
 
@@ -977,66 +116,17 @@ body {
    MOBILE
 ========================= */
 
-@media (max-width: 700px) {
+@media (max-width: 600px) {
 
-    .hero {
-        padding-top: 40px;
+    .surprise-box {
+        width: 280px;
     }
 
-    .main-heart-photo {
-        transform: scale(.82);
-    }
-
-    .box-lid {
-        height: 75px;
-    }
-
-    .bow {
-        font-size: 55px;
-        top: -37px;
+    .surprise-box.opened {
+        width: 94%;
     }
 
     .box-content {
-        padding:
-            45px 15px;
-    }
-
-    .vertical-ribbon {
-        width: 45px;
-    }
-
-    .gallery-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
-
-        gap: 18px;
-    }
-
-    .polaroid {
-        padding:
-            7px
-            7px
-            25px;
-    }
-
-    .message-card {
-        padding: 20px;
-    }
-
-    .typing-text {
-        font-size: 15px;
-        line-height: 1.7;
-    }
-
-    .countdown {
-        gap: 7px;
-    }
-
-    .time-box {
-        min-width: 68px;
-    }
-
-    .time-box strong {
-        font-size: 24px;
+        padding: 35px 15px;
     }
 }
