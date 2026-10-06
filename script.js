@@ -1,66 +1,71 @@
 /* =====================================================
-   KONFIGURASI
+   PENGATURAN
 ===================================================== */
 
 const PASSWORD = "2504";
 
 /*
-   Untuk testing:
-   1 menit setelah website dibuka
+   Untuk testing sekarang:
+   1 menit setelah password benar.
+
+   Nanti kalau website sudah selesai,
+   bagian ini bisa diganti dengan tanggal ulang tahun asli.
 */
-const TEST_MINUTES = 1;
+const TEST_TIME = 60;
 
 
 /* =====================================================
    ELEMENT
 ===================================================== */
 
-const passwordScreen =
-    document.getElementById("passwordScreen");
+const passwordPage =
+    document.getElementById("password-page");
 
-const website =
-    document.getElementById("website");
+const mainPage =
+    document.getElementById("main-page");
 
 const passwordInput =
-    document.getElementById("passwordInput");
+    document.getElementById("password");
 
-const passwordButton =
-    document.getElementById("passwordButton");
+const unlockButton =
+    document.getElementById("unlock-button");
 
-const wrongPassword =
-    document.getElementById("wrongPassword");
+const passwordError =
+    document.getElementById("password-error");
 
-const giftBox =
-    document.getElementById("giftBox");
+const surpriseBox =
+    document.getElementById("surprise-box");
 
-const giftInstruction =
-    document.getElementById("giftInstruction");
+const countdownText =
+    document.getElementById("countdown-text");
 
-const typedMessage =
-    document.getElementById("typedMessage");
-
-const music =
-    document.getElementById("birthdayMusic");
-
-const musicButton =
-    document.getElementById("musicButton");
+const typingText =
+    document.getElementById("typing-text");
 
 const fallingEmojis =
-    document.getElementById("fallingEmojis");
+    document.getElementById("falling-emojis");
 
 const confetti =
     document.getElementById("confetti");
 
+const music =
+    document.getElementById("birthday-music");
+
+const musicButton =
+    document.getElementById("music-button");
+
 
 /* =====================================================
-   PESAN
+   PESAN UCAPAN
 ===================================================== */
 
-const birthdayMessage = `Happy Sweet Seventeen, Rara! 🎂💗
+const message = `Happy Sweet Seventeen, Rara! 🎂💗
 
 Selamat ulang tahun yang ke-17! Semoga di umur yang baru ini, semua hal baik datang ke kamu, impianmu satu per satu tercapai, dan selalu ada alasan untuk tersenyum.
 
-Semoga hari-harimu ke depan dipenuhi kebahagiaan, orang-orang baik, dan banyak momen yang bisa kamu kenang. Jangan lupa untuk selalu menikmati setiap proses dan tetap jadi diri kamu sendiri.
+Semoga hari-harimu ke depan dipenuhi kebahagiaan, orang-orang baik, dan banyak momen yang bisa kamu kenang.
+
+Jangan lupa untuk selalu menikmati setiap proses dan tetap jadi diri kamu sendiri.
 
 Nikmati hari spesialmu, Rara! Semoga 17 menjadi awal dari banyak cerita indah yang baru. ✨
 
@@ -68,94 +73,12 @@ Happy 17th Birthday! 🥳💐`;
 
 
 /* =====================================================
-   TIMER
-===================================================== */
-
-let countdownDate =
-    new Date(
-        Date.now() +
-        TEST_MINUTES * 60 * 1000
-    );
-
-
-function updateCountdown() {
-
-    const now = new Date();
-
-    const difference =
-        countdownDate - now;
-
-
-    if (difference <= 0) {
-
-        document.getElementById("days").textContent = "00";
-        document.getElementById("hours").textContent = "00";
-        document.getElementById("minutes").textContent = "00";
-        document.getElementById("seconds").textContent = "00";
-
-        openGift();
-
-        return;
-    }
-
-
-    const days =
-        Math.floor(
-            difference /
-            (1000 * 60 * 60 * 24)
-        );
-
-    const hours =
-        Math.floor(
-            (difference %
-                (1000 * 60 * 60 * 24))
-            /
-            (1000 * 60 * 60)
-        );
-
-    const minutes =
-        Math.floor(
-            (difference %
-                (1000 * 60 * 60))
-            /
-            (1000 * 60)
-        );
-
-    const seconds =
-        Math.floor(
-            (difference %
-                (1000 * 60))
-            /
-            1000
-        );
-
-
-    document.getElementById("days").textContent =
-        String(days).padStart(2, "0");
-
-    document.getElementById("hours").textContent =
-        String(hours).padStart(2, "0");
-
-    document.getElementById("minutes").textContent =
-        String(minutes).padStart(2, "0");
-
-    document.getElementById("seconds").textContent =
-        String(seconds).padStart(2, "0");
-}
-
-
-setInterval(updateCountdown, 1000);
-
-updateCountdown();
-
-
-/* =====================================================
    PASSWORD
 ===================================================== */
 
-passwordButton.addEventListener(
+unlockButton.addEventListener(
     "click",
-    checkPassword
+    unlockWebsite
 );
 
 
@@ -164,52 +87,180 @@ passwordInput.addEventListener(
     function(event) {
 
         if (event.key === "Enter") {
-            checkPassword();
+            unlockWebsite();
         }
 
     }
 );
 
 
-function checkPassword() {
+function unlockWebsite() {
 
-    if (
-        passwordInput.value.trim() ===
-        PASSWORD
-    ) {
+    const enteredPassword =
+        passwordInput.value.trim();
 
-        passwordScreen.classList.add("hidden");
 
-        website.classList.remove("hidden");
+    if (enteredPassword !== PASSWORD) {
 
-        /*
-           Timer dimulai ulang setelah password benar
-        */
-        countdownDate =
-            new Date(
-                Date.now() +
-                TEST_MINUTES * 60 * 1000
-            );
-
-        startMusic();
-
-        startFallingEmojis();
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-    } else {
-
-        wrongPassword.textContent =
+        passwordError.textContent =
             "Password salah 💔";
 
         passwordInput.value = "";
 
         passwordInput.focus();
 
+        return;
     }
+
+
+    /* buka website */
+
+    passwordPage.classList.add("hidden");
+
+    mainPage.classList.remove("hidden");
+
+
+    /* mulai emoji */
+
+    startFallingEmojis();
+
+
+    /* mulai countdown */
+
+    startCountdown();
+
+
+    /* coba musik */
+
+    playMusic();
+
+}
+
+
+/* =====================================================
+   COUNTDOWN
+===================================================== */
+
+let endTime = null;
+
+let countdownInterval = null;
+
+let boxAlreadyOpened = false;
+
+
+function startCountdown() {
+
+    /*
+       60 detik dari saat password benar
+    */
+
+    endTime =
+        Date.now() +
+        TEST_TIME * 1000;
+
+
+    updateCountdown();
+
+
+    countdownInterval =
+        setInterval(
+            updateCountdown,
+            1000
+        );
+}
+
+
+function updateCountdown() {
+
+    const remaining =
+        endTime - Date.now();
+
+
+    if (remaining <= 0) {
+
+        clearInterval(
+            countdownInterval
+        );
+
+
+        document.getElementById("days")
+            .textContent = "00";
+
+        document.getElementById("hours")
+            .textContent = "00";
+
+        document.getElementById("minutes")
+            .textContent = "00";
+
+        document.getElementById("seconds")
+            .textContent = "00";
+
+
+        openSurprise();
+
+        return;
+    }
+
+
+    const days =
+        Math.floor(
+            remaining /
+            (1000 * 60 * 60 * 24)
+        );
+
+
+    const hours =
+        Math.floor(
+            (
+                remaining %
+                (1000 * 60 * 60 * 24)
+            ) /
+            (1000 * 60 * 60)
+        );
+
+
+    const minutes =
+        Math.floor(
+            (
+                remaining %
+                (1000 * 60 * 60)
+            ) /
+            (1000 * 60)
+        );
+
+
+    const seconds =
+        Math.floor(
+            (
+                remaining %
+                (1000 * 60)
+            ) /
+            1000
+        );
+
+
+    document.getElementById("days")
+        .textContent =
+        String(days)
+            .padStart(2, "0");
+
+
+    document.getElementById("hours")
+        .textContent =
+        String(hours)
+            .padStart(2, "0");
+
+
+    document.getElementById("minutes")
+        .textContent =
+        String(minutes)
+            .padStart(2, "0");
+
+
+    document.getElementById("seconds")
+        .textContent =
+        String(seconds)
+            .padStart(2, "0");
 }
 
 
@@ -217,53 +268,62 @@ function checkPassword() {
    BUKA KOTAK
 ===================================================== */
 
-let giftOpened = false;
+function openSurprise() {
+
+    if (boxAlreadyOpened) {
+        return;
+    }
+
+    boxAlreadyOpened = true;
 
 
-function openGift() {
-
-    if (giftOpened) return;
-
-    giftOpened = true;
-
-
-    giftBox.classList.add("opened");
-
-
-    giftInstruction.textContent =
-        "Kejutannya terbuka! 💗✨";
+    countdownText.textContent =
+        "🎉 KEJUTANNYA TERBUKA! 🎉";
 
 
     /*
-       Ledakan emoji
+       buka tutup kotak
     */
+
+    surpriseBox.classList.add("opened");
+
+
+    /*
+       ledakan confetti
+    */
+
     createConfetti();
 
 
     /*
-       Tunggu isi kotak muncul
-       lalu mulai efek mengetik
+       mulai tulisan setelah
+       isi kotak muncul
     */
+
     setTimeout(
-        startTyping,
-        1700
+        function() {
+
+            typeMessage();
+
+        },
+        1800
     );
 
 
     /*
-       Scroll sedikit supaya isi kotak
-       terlihat setelah terbuka
+       scroll ke kotak
     */
+
     setTimeout(
         function() {
 
-            giftBox.scrollIntoView({
+            surpriseBox.scrollIntoView({
                 behavior: "smooth",
                 block: "start"
             });
 
         },
-        1200
+        1000
     );
 }
 
@@ -275,51 +335,63 @@ function openGift() {
 let typingStarted = false;
 
 
-function startTyping() {
+function typeMessage() {
 
-    if (typingStarted) return;
-
-    typingStarted = true;
-
-    typedMessage.textContent = "";
-
-    let index = 0;
-
-
-    function typeCharacter() {
-
-        if (
-            index <
-            birthdayMessage.length
-        ) {
-
-            typedMessage.textContent +=
-                birthdayMessage.charAt(index);
-
-            index++;
-
-            /*
-               Kecepatan mengetik
-            */
-            setTimeout(
-                typeCharacter,
-                32
-            );
-
-        }
-
+    if (typingStarted) {
+        return;
     }
 
 
-    typeCharacter();
+    typingStarted = true;
+
+    typingText.textContent = "";
+
+
+    let position = 0;
+
+
+    function writeNext() {
+
+        if (position >= message.length) {
+
+            /*
+               Setelah selesai mengetik,
+               cursor tetap berkedip.
+            */
+
+            return;
+        }
+
+
+        typingText.textContent +=
+            message[position];
+
+
+        position++;
+
+
+        /*
+           Kecepatan mengetik.
+           35ms = cukup terlihat seperti mengetik.
+        */
+
+        setTimeout(
+            writeNext,
+            35
+        );
+    }
+
+
+    writeNext();
 }
 
 
 /* =====================================================
-   EMOJI BERJATUHAN
+   EMOJI JATUH
 ===================================================== */
 
 const emojiList = [
+
     "❤️",
     "💕",
     "💗",
@@ -331,57 +403,58 @@ const emojiList = [
     "🎀",
     "🥳",
     "💐",
-    "⭐"
+    "⭐",
+    "🩷"
+
 ];
 
 
-let emojiInterval = null;
+let emojiTimer = null;
 
 
 function startFallingEmojis() {
 
     /*
-       Langsung buat beberapa emoji
+       langsung buat beberapa
+       supaya tidak kosong
     */
+
     for (
         let i = 0;
-        i < 15;
+        i < 18;
         i++
     ) {
 
         setTimeout(
-            createFallingEmoji,
-            i * 250
+            createEmoji,
+            i * 150
         );
-
     }
 
 
     /*
-       Setelah itu terus membuat emoji
+       kemudian terus menerus
     */
-    if (!emojiInterval) {
 
-        emojiInterval =
-            setInterval(
-                createFallingEmoji,
-                500
-            );
-
-    }
+    emojiTimer =
+        setInterval(
+            createEmoji,
+            450
+        );
 }
 
 
-function createFallingEmoji() {
+function createEmoji() {
 
-    const emoji =
+    const element =
         document.createElement("div");
 
-    emoji.className =
+
+    element.className =
         "falling-emoji";
 
 
-    emoji.textContent =
+    element.textContent =
         emojiList[
             Math.floor(
                 Math.random() *
@@ -391,53 +464,61 @@ function createFallingEmoji() {
 
 
     /*
-       Posisi horizontal random
+       posisi horizontal
     */
-    emoji.style.left =
+
+    element.style.left =
         Math.random() * 100 + "%";
 
 
     /*
-       Ukuran random
+       ukuran
     */
-    const size =
-        18 +
-        Math.random() * 25;
 
-    emoji.style.fontSize =
-        size + "px";
+    element.style.fontSize =
+        (
+            18 +
+            Math.random() * 24
+        ) + "px";
 
 
     /*
-       Kecepatan random
+       durasi jatuh
     */
+
     const duration =
         4 +
-        Math.random() * 6;
+        Math.random() * 5;
 
-    emoji.style.animationDuration =
+
+    element.style.animationDuration =
         duration + "s";
 
 
     /*
-       Delay sedikit random
+       sedikit variasi
     */
-    emoji.style.animationDelay =
-        Math.random() * 1 + "s";
+
+    element.style.animationDelay =
+        (
+            Math.random() * .8
+        ) + "s";
 
 
     fallingEmojis.appendChild(
-        emoji
+        element
     );
 
 
     /*
-       Hapus setelah selesai
+       hapus agar website
+       tidak semakin berat
     */
+
     setTimeout(
         function() {
 
-            emoji.remove();
+            element.remove();
 
         },
         (duration + 2) * 1000
@@ -446,84 +527,91 @@ function createFallingEmoji() {
 
 
 /* =====================================================
-   CONFETTI
+   CONFETTI SAAT KOTAK TERBUKA
 ===================================================== */
+
+const confettiItems = [
+    "💗",
+    "💕",
+    "💖",
+    "✨",
+    "🎀",
+    "🌸",
+    "⭐"
+];
+
 
 function createConfetti() {
 
-    const pieces = [
-        "💗",
-        "💕",
-        "✨",
-        "🎀",
-        "💖",
-        "🌸"
-    ];
-
-
     for (
         let i = 0;
-        i < 60;
+        i < 70;
         i++
     ) {
 
-        const piece =
+        const element =
             document.createElement("div");
 
-        piece.className =
-            "confetti";
+
+        element.className =
+            "confetti-piece";
 
 
-        piece.textContent =
-            pieces[
+        element.textContent =
+            confettiItems[
                 Math.floor(
                     Math.random() *
-                    pieces.length
+                    confettiItems.length
                 )
             ];
 
 
-        piece.style.left =
+        element.style.left =
             Math.random() * 100 + "%";
 
 
-        piece.style.fontSize =
-            15 +
-            Math.random() * 20 +
-            "px";
+        element.style.fontSize =
+            (
+                15 +
+                Math.random() * 20
+            ) + "px";
 
 
-        piece.style.animationDuration =
+        const duration =
             2 +
-            Math.random() * 3 +
-            "s";
+            Math.random() * 3;
 
 
-        piece.style.animationDelay =
-            Math.random() * .8 +
-            "s";
+        element.style.animationDuration =
+            duration + "s";
+
+
+        element.style.animationDelay =
+            Math.random() + "s";
 
 
         confetti.appendChild(
-            piece
+            element
         );
 
 
         setTimeout(
             function() {
-                piece.remove();
+
+                element.remove();
+
             },
-            5000
+            5500
         );
     }
 }
 
 
 /* =====================================================
-   MUSIC
+   MUSIK
 ===================================================== */
 
-async function startMusic() {
+async function playMusic() {
 
     try {
 
@@ -535,14 +623,12 @@ async function startMusic() {
     } catch (error) {
 
         /*
-           Browser mungkin memblokir autoplay.
-           Musik akan dimainkan setelah user
-           melakukan klik.
+           Browser bisa memblokir autoplay.
+           Tombol musik tetap bisa digunakan.
         */
 
         musicButton.textContent =
             "🎵 Putar Musik";
-
     }
 }
 
@@ -563,9 +649,8 @@ musicButton.addEventListener(
             } catch (error) {
 
                 console.log(
-                    "Musik tidak dapat diputar."
+                    "Musik belum dapat diputar."
                 );
-
             }
 
         } else {
@@ -574,9 +659,7 @@ musicButton.addEventListener(
 
             musicButton.textContent =
                 "🔇 Musik OFF";
-
         }
-
     }
 );
 
@@ -590,8 +673,7 @@ document.addEventListener(
     function() {
 
         if (
-            website &&
-            !website.classList.contains("hidden") &&
+            !mainPage.classList.contains("hidden") &&
             music.paused
         ) {
 
@@ -607,11 +689,7 @@ document.addEventListener(
                 .catch(
                     function() {}
                 );
-
         }
 
-    },
-    {
-        once: true
     }
 );
