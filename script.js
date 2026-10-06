@@ -1,22 +1,16 @@
 // ==========================================
 // BIRTHDAY WEBSITE RARA
-// LOCKED UNTIL 22 OCTOBER 2026
+// MODE TESTING: 1 MENIT
 // ==========================================
 
 document.addEventListener("DOMContentLoaded", function () {
 
     // ==========================================
-    // TANGGAL WEBSITE DIBUKA
+    // WAKTU WEBSITE DIBUKA
+    // 1 MENIT DARI SAAT HALAMAN DIBUKA
     // ==========================================
 
-    const unlockDate = new Date(
-        2026,
-        9,   // Oktober = 9
-        22,
-        0,
-        0,
-        0
-    );
+    const unlockDate = new Date(Date.now() + 1 * 60 * 1000);
 
 
     // ==========================================
@@ -64,11 +58,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 </h2>
 
                 <p>
-                    Website spesial ini akan dibuka pada
+                    Website spesial ini akan dibuka dalam
                 </p>
 
                 <div class="coming-date">
-                    22 OKTOBER 2026
+                    1 MENIT LAGI 💗
                 </div>
 
                 <div class="coming-countdown">
@@ -192,7 +186,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // ==========================================
-    // BUKA WEBSITE SETELAH 22 OKTOBER
+    // BUKA WEBSITE SETELAH 1 MENIT
     // ==========================================
 
     function unlockWebsite() {
@@ -201,19 +195,16 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("comingSoonScreen");
 
         if (comingSoon) {
-
             comingSoon.remove();
         }
 
 
         if (passwordScreen) {
-
             passwordScreen.style.display = "flex";
         }
 
 
         if (website) {
-
             website.style.display = "none";
         }
 
@@ -252,8 +243,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     } else {
 
-        // Kalau sudah 22 Oktober
         unlockWebsite();
+
     }
 
 
@@ -315,11 +306,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 wrongPassword.style.display =
                     "block";
-
             }
 
             passwordInput.value = "";
-
 
             setTimeout(function () {
 
@@ -327,7 +316,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     wrongPassword.style.display =
                         "none";
-
                 }
 
             }, 2000);
@@ -363,42 +351,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // ==========================================
     // COUNTDOWN WEBSITE
+    // 1 MENIT DARI SAAT WEBSITE TERBUKA
     // ==========================================
+
+    const birthdayDate =
+        new Date(Date.now() + 1 * 60 * 1000);
+
 
     function getBirthdayDate() {
 
-        const now = new Date();
+        return birthdayDate;
 
-        let year =
-            now.getFullYear();
-
-
-        let birthday =
-            new Date(
-                year,
-                9,
-                22,
-                0,
-                0,
-                0
-            );
-
-
-        if (now >= birthday) {
-
-            birthday =
-                new Date(
-                    year + 1,
-                    9,
-                    22,
-                    0,
-                    0,
-                    0
-                );
-        }
-
-
-        return birthday;
     }
 
 
@@ -430,31 +393,37 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!days) return;
 
 
-        const d =
-            Math.floor(
-                difference /
-                (1000 * 60 * 60 * 24)
-            );
+        let d = 0;
+        let h = 0;
+        let m = 0;
+        let s = 0;
 
 
-        const h =
-            Math.floor(
-                (difference /
-                    (1000 * 60 * 60)) % 24
-            );
+        if (difference > 0) {
 
+            d =
+                Math.floor(
+                    difference /
+                    (1000 * 60 * 60 * 24)
+                );
 
-        const m =
-            Math.floor(
-                (difference /
-                    (1000 * 60)) % 60
-            );
+            h =
+                Math.floor(
+                    (difference /
+                        (1000 * 60 * 60)) % 24
+                );
 
+            m =
+                Math.floor(
+                    (difference /
+                        (1000 * 60)) % 60
+                );
 
-        const s =
-            Math.floor(
-                (difference / 1000) % 60
-            );
+            s =
+                Math.floor(
+                    (difference / 1000) % 60
+                );
+        }
 
 
         days.textContent =
@@ -480,24 +449,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // ==========================================
-    // CEK ULANG TAHUN
+    // CEK WAKTU KADO
+    // 1 MENIT SETELAH WEBSITE TERBUKA
     // ==========================================
 
     function isBirthdayUnlocked() {
 
-        const now = new Date();
+        return new Date() >= birthdayDate;
 
-        const birthday =
-            new Date(
-                now.getFullYear(),
-                9,
-                22,
-                0,
-                0,
-                0
-            );
-
-        return now >= birthday;
     }
 
 
@@ -559,7 +518,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (giftStatus) {
 
                 giftStatus.textContent =
-                    "🔒 Kado akan terbuka pada 22 Oktober";
+                    "🔒 Kado akan terbuka setelah countdown selesai";
 
             }
 
@@ -567,7 +526,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (giftInstruction) {
 
                 giftInstruction.textContent =
-                    "Tunggu sampai tanggal ulang tahun untuk membukanya 💗";
+                    "Tunggu sampai waktunya tiba untuk membukanya 💗";
 
             }
         }
@@ -623,7 +582,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     if (giftStatus) {
 
                         giftStatus.textContent =
-                            "🔒 Sabar ya... buka pada 22 Oktober 💗";
+                            "🔒 Sabar ya... tunggu countdown selesai 💗";
 
                     }
 
@@ -632,7 +591,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                 // KADO TERBUKA
-
                 giftBox.classList.add(
                     "opened"
                 );
@@ -838,8 +796,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
 
-        if (!website ||
-            website.style.display === "none") {
+        if (
+            !website ||
+            website.style.display === "none"
+        ) {
             return;
         }
 
