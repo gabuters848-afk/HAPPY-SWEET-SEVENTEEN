@@ -1,9 +1,5 @@
 const PASSWORD = "2504";
 
-// Tanggal dan waktu website mulai bisa dibuka
-// 22 Oktober 2026, pukul 00:00 WITA
-const TARGET_DATE = new Date("2026-10-22T00:00:00+08:00");
-
 const passwordPage = document.getElementById("password-page");
 const mainPage = document.getElementById("main-page");
 const passwordInput = document.getElementById("password");
@@ -72,78 +68,45 @@ passwordInput.addEventListener("keydown", function (event) {
 
 
 /* =========================
-   COUNTDOWN MENUJU 22 OKTOBER
+   COUNTDOWN 30 DETIK
 ========================= */
 
-let countdownTimer;
+let timeLeft = 30;
 
 function startCountdown() {
 
-    function calculateCountdown() {
+    updateCountdown();
 
-        const now = new Date();
+    const timer = setInterval(function () {
 
-        const difference =
-            TARGET_DATE.getTime() - now.getTime();
+        timeLeft--;
 
+        updateCountdown();
 
-        // Kalau sudah tanggal 22 Oktober
-        if (difference <= 0) {
+        if (timeLeft <= 0) {
 
-            clearInterval(countdownTimer);
+            clearInterval(timer);
 
-            days.textContent = "00";
-            hours.textContent = "00";
-            minutes.textContent = "00";
-            seconds.textContent = "00";
-
-            countdownText.textContent =
-                "🎉 KEJUTANNYA SUDAH BISA DIBUKA! 🎉";
-
-            return;
+            openSurprise();
         }
 
-
-        // Hitung sisa waktu
-        const totalSeconds =
-            Math.floor(difference / 1000);
+    }, 1000);
+}
 
 
-        const d =
-            Math.floor(totalSeconds / 86400);
+function updateCountdown() {
 
-        const h =
-            Math.floor((totalSeconds % 86400) / 3600);
+    const m = Math.floor(timeLeft / 60);
+    const s = timeLeft % 60;
 
-        const m =
-            Math.floor((totalSeconds % 3600) / 60);
+    days.textContent = "00";
+    hours.textContent = "00";
 
-        const s =
-            totalSeconds % 60;
+    minutes.textContent =
+        String(m).padStart(2, "0");
 
-
-        // Tampilkan countdown
-        days.textContent =
-            String(d).padStart(2, "0");
-
-        hours.textContent =
-            String(h).padStart(2, "0");
-
-        minutes.textContent =
-            String(m).padStart(2, "0");
-
-        seconds.textContent =
-            String(s).padStart(2, "0");
-    }
-
-
-    // Jalankan langsung
-    calculateCountdown();
-
-
-    // Update setiap 1 detik
-    countdownTimer =
-        setInterval(calculateCountdown, 1000);
+    seconds.textContent =
+        String(s).padStart(2, "0");
 }
 
 
