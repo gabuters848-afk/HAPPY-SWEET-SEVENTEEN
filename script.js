@@ -1,5 +1,9 @@
 const PASSWORD = "2504";
 
+// Tanggal dan waktu website mulai bisa dibuka
+// 22 Oktober 2026, pukul 00:00 WITA
+const TARGET_DATE = new Date("2026-10-22T00:00:00+08:00");
+
 const passwordPage = document.getElementById("password-page");
 const mainPage = document.getElementById("main-page");
 const passwordInput = document.getElementById("password");
