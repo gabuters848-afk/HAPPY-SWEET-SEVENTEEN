@@ -1,49 +1,68 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>Happy Sweet Seventeen Rara 💗</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 </head>
 
 <body>
 
-    <!-- =========================
+    <!-- ======================================
          PASSWORD
-    ========================== -->
-    <section id="passwordScreen" class="screen">
+    ======================================= -->
+
+    <section
+        id="passwordScreen"
+        class="screen"
+    >
 
         <div class="password-box">
 
-            <div class="lock-icon">🔐</div>
+            <div class="lock-icon">
+                🔐
+            </div>
 
-            <h1>Special For Rara</h1>
+            <h1>
+                Special Website 💗
+            </h1>
 
             <p>
-                Ada sesuatu yang spesial menunggumu 💗<br>
-                Masukkan password untuk membukanya.
+                Website ini dibuat khusus
+                untuk seseorang yang spesial.
             </p>
 
             <input
                 type="password"
                 id="passwordInput"
-                maxlength="4"
-                inputmode="numeric"
-                placeholder="••••"
+                placeholder="Masukkan password"
+                maxlength="20"
             >
 
             <button id="passwordButton">
-                Buka Surprise 💖
+                Buka Website 💗
             </button>
 
-            <p class="password-hint">
-                Tanggal lahir seseorang yang mungkin anda kenal
+            <p
+                id="wrongPassword"
+            >
+                ❌ Password salah
             </p>
 
-            <p id="wrongPassword">
-                Password salah 😝 Coba lagi!
+            <p class="password-hint">
+                💡 Tanggal lahir seseorang
+                yang mungkin anda kenal
             </p>
 
         </div>
@@ -51,44 +70,59 @@
     </section>
 
 
-    <!-- =========================
+    <!-- ======================================
          WEBSITE UTAMA
-    ========================== -->
+    ======================================= -->
+
     <main id="website">
 
         <!-- HERO -->
+
         <section class="hero">
 
             <p class="small-title">
                 ✨ A SPECIAL DAY FOR ✨
             </p>
 
-            <h1>RARA</h1>
+            <h1>
+                RARA
+            </h1>
+
+            <!-- FOTO UTAMA -->
 
             <div class="love-photo">
+
                 <img
                     src="foto9.jpeg"
                     alt="Foto Rara"
                 >
+
             </div>
 
-            <h2>Happy Sweet Seventeen 🎂💗</h2>
+            <h2>
+                Happy Sweet Seventeen 🎂💗
+            </h2>
 
             <p>
-                22 Oktober
+                22 Oktober • 17 Tahun
             </p>
 
-            <div class="scroll-text">
-                ↓ Scroll untuk melihat surprise ↓
-            </div>
+            <p class="scroll-text">
+                ↓ Scroll untuk melihat kejutan ↓
+            </p>
 
         </section>
 
 
-        <!-- COUNTDOWN -->
-        <section class="section countdown-section">
+        <!-- ==================================
+             COUNTDOWN
+        =================================== -->
 
-            <h2>⏳ Menuju Hari Spesial</h2>
+        <section class="section">
+
+            <h2>
+                ⏳ Sebentar lagi...
+            </h2>
 
             <p class="section-subtitle">
                 Tunggu sampai waktunya tiba 💗
@@ -97,23 +131,51 @@
             <div class="countdown">
 
                 <div class="time-box">
-                    <span id="days">00</span>
-                    <small>Hari</small>
+
+                    <span id="days">
+                        00
+                    </span>
+
+                    <small>
+                        HARI
+                    </small>
+
                 </div>
 
                 <div class="time-box">
-                    <span id="hours">00</span>
-                    <small>Jam</small>
+
+                    <span id="hours">
+                        00
+                    </span>
+
+                    <small>
+                        JAM
+                    </small>
+
                 </div>
 
                 <div class="time-box">
-                    <span id="minutes">00</span>
-                    <small>Menit</small>
+
+                    <span id="minutes">
+                        01
+                    </span>
+
+                    <small>
+                        MENIT
+                    </small>
+
                 </div>
 
                 <div class="time-box">
-                    <span id="seconds">00</span>
-                    <small>Detik</small>
+
+                    <span id="seconds">
+                        00
+                    </span>
+
+                    <small>
+                        DETIK
+                    </small>
+
                 </div>
 
             </div>
@@ -121,16 +183,27 @@
         </section>
 
 
-        <!-- GIFT -->
-        <section class="section gift-section">
+        <!-- ==================================
+             GIFT
+        =================================== -->
 
-            <h2>🎁 Surprise</h2>
+        <section
+            class="section gift-section"
+        >
 
-            <p id="giftStatus">
-                🔒 Kado akan terbuka pada 22 Oktober
+            <h2>
+                🎁 Ada sesuatu untuk Rara
+            </h2>
+
+            <p class="section-subtitle">
+                Kado akan terbuka otomatis
+                setelah countdown selesai 💗
             </p>
 
-            <div id="giftBox" class="gift locked">
+            <div
+                class="gift locked"
+                id="giftBox"
+            >
 
                 <div class="gift-lid">
                     🎀
@@ -146,45 +219,61 @@
 
             </div>
 
+            <h3 id="giftStatus">
+                🔒 Tunggu countdown
+            </h3>
+
             <p id="giftInstruction">
-                Tunggu sampai tanggal ulang tahun untuk membukanya 💗
+                Setelah waktunya habis,
+                kado akan terbuka sendiri 💗
             </p>
 
         </section>
 
 
-        <!-- BIRTHDAY REVEAL -->
-        <section id="birthdayReveal" class="section birthday-reveal">
+        <!-- ==================================
+             BIRTHDAY REVEAL
+        =================================== -->
 
-            <div class="confetti-container" id="confettiContainer"></div>
+        <section
+            class="section birthday-reveal"
+            id="birthdayReveal"
+        >
 
             <div class="cake">
                 🎂
             </div>
 
             <h1>
-                Happy Sweet Seventeen!
+                HAPPY SWEET SEVENTEEN! 🎉
             </h1>
 
             <h2>
-                Rara 💗
+                Happy 17th Birthday, Rara! 💗
             </h2>
 
-            <p>
-                Selamat ulang tahun yang ke-17! 🥳
-            </p>
-
-            <button id="messageButton" class="main-button">
+            <button
+                class="main-button"
+                id="messageButton"
+            >
                 💌 Buka Pesan
             </button>
 
         </section>
 
 
-        <!-- MESSAGE -->
-        <section id="messageSection" class="section message-section">
+        <!-- ==================================
+             MESSAGE
+        =================================== -->
 
-            <h2>💌 Pesan Untuk Rara</h2>
+        <section
+            class="section message-section"
+            id="messageSection"
+        >
+
+            <h2>
+                💌 Untuk Rara
+            </h2>
 
             <div class="message-card">
 
@@ -194,22 +283,30 @@
 
                 <p>
                     Selamat ulang tahun yang ke-17!
-                    Semoga di umur yang baru ini, semua hal baik
-                    datang ke kamu, impianmu satu per satu tercapai,
+                    Semoga di umur yang baru ini,
+                    semua hal baik datang ke kamu,
+                    impianmu satu per satu tercapai,
                     dan selalu ada alasan untuk tersenyum.
                 </p>
 
                 <p>
-                    Semoga hari-harimu ke depan dipenuhi kebahagiaan,
-                    orang-orang baik, dan banyak momen yang bisa kamu kenang.
-                    Jangan lupa untuk selalu menikmati setiap proses
-                    dan tetap jadi diri kamu sendiri.
+                    Semoga hari-harimu ke depan
+                    dipenuhi kebahagiaan,
+                    orang-orang baik,
+                    dan banyak momen yang bisa
+                    kamu kenang.
+                </p>
+
+                <p>
+                    Jangan lupa untuk selalu menikmati
+                    setiap proses dan tetap jadi diri
+                    kamu sendiri.
                 </p>
 
                 <p>
                     Nikmati hari spesialmu, Rara!
-                    Semoga 17 menjadi awal dari banyak cerita indah
-                    yang baru. ✨
+                    Semoga 17 menjadi awal dari banyak
+                    cerita indah yang baru. ✨
                 </p>
 
                 <p>
@@ -221,47 +318,77 @@
         </section>
 
 
-        <!-- GALLERY -->
-        <section class="section gallery-section">
+        <!-- ==================================
+             GALLERY
+        =================================== -->
 
-            <h2>📸 Memories</h2>
+        <section class="section">
+
+            <h2>
+                📸 Our Little Memories
+            </h2>
 
             <p class="section-subtitle">
-                Beberapa momen yang spesial 💗
+                Beberapa foto untuk mengingat
+                momen-momen indah 💗
             </p>
 
             <div class="gallery">
 
                 <div class="photo-card">
-                    <img src="foto1.jpeg" alt="Foto 1">
+                    <img
+                        src="foto1.jpeg"
+                        alt="Foto 1"
+                    >
                 </div>
 
                 <div class="photo-card">
-                    <img src="foto2.jpeg" alt="Foto 2">
+                    <img
+                        src="foto2.jpeg"
+                        alt="Foto 2"
+                    >
                 </div>
 
                 <div class="photo-card">
-                    <img src="foto3.jpeg" alt="Foto 3">
+                    <img
+                        src="foto3.jpeg"
+                        alt="Foto 3"
+                    >
                 </div>
 
                 <div class="photo-card">
-                    <img src="foto4.jpeg" alt="Foto 4">
+                    <img
+                        src="foto4.jpeg"
+                        alt="Foto 4"
+                    >
                 </div>
 
                 <div class="photo-card">
-                    <img src="foto5.jpeg" alt="Foto 5">
+                    <img
+                        src="foto5.jpeg"
+                        alt="Foto 5"
+                    >
                 </div>
 
                 <div class="photo-card">
-                    <img src="foto6.jpeg" alt="Foto 6">
+                    <img
+                        src="foto6.jpeg"
+                        alt="Foto 6"
+                    >
                 </div>
 
                 <div class="photo-card">
-                    <img src="foto7.jpeg" alt="Foto 7">
+                    <img
+                        src="foto7.jpeg"
+                        alt="Foto 7"
+                    >
                 </div>
 
                 <div class="photo-card">
-                    <img src="foto8.jpeg" alt="Foto 8">
+                    <img
+                        src="foto8.jpeg"
+                        alt="Foto 8"
+                    >
                 </div>
 
             </div>
@@ -269,52 +396,79 @@
         </section>
 
 
-        <!-- MUSIC -->
-        <section class="section music-section">
+        <!-- ==================================
+             MUSIC
+        =================================== -->
 
-            <h2>🎵 A Little Song</h2>
+        <section
+            class="section music-section"
+        >
 
-            <p>
-                Putar lagu ini sambil melihat kenangan 💗
+            <h2>
+                🎵 A Little Music
+            </h2>
+
+            <p class="section-subtitle">
+                Putar musik sambil menikmati
+                website ini 💗
             </p>
 
-            <audio id="birthdayMusic" controls>
+            <audio
+                id="birthdayMusic"
+                controls
+                loop
+            >
                 <source
                     src="lagu.mp3"
                     type="audio/mpeg"
                 >
-                Browser tidak mendukung audio.
+
+                Browser kamu tidak mendukung
+                audio.
             </audio>
 
         </section>
 
 
-        <!-- VIDEO -->
-        <section class="section video-section">
+        <!-- ==================================
+             VIDEO
+        =================================== -->
 
-            <h2>🎬 Special Video</h2>
+        <section
+            class="section video-section"
+        >
 
-            <p>
-                Ada satu video spesial untukmu 💗
+            <h2>
+                🎬 Special Video
+            </h2>
+
+            <p class="section-subtitle">
+                Ada pesan khusus untuk Rara 💗
             </p>
 
             <video
                 id="birthdayVideo"
                 controls
                 playsinline
-                preload="metadata"
             >
+
                 <source
                     src="video.mp4"
                     type="video/mp4"
                 >
-                Browser tidak mendukung video.
+
+                Browser kamu tidak mendukung
+                video.
+
             </video>
 
         </section>
 
 
-        <!-- CLOSING -->
+        <!-- ==================================
+             CLOSING
+        =================================== -->
+
         <section class="closing">
 
             <div class="closing-heart">
@@ -326,15 +480,16 @@
             </h1>
 
             <h2>
-                Happy 17th Birthday, Rara! 🎂
+                Happy Sweet Seventeen, Rara! 🎂
             </h2>
 
             <p>
-                Semoga semua hal baik selalu menyertaimu. ✨
+                Semoga 17 menjadi awal
+                dari banyak cerita indah. ✨
             </p>
 
             <p class="closing-small">
-                Made with 💗
+                Made with 💗 specially for Rara
             </p>
 
         </section>
@@ -342,13 +497,33 @@
     </main>
 
 
-    <!-- MUSIC BUTTON -->
-    <button id="musicButton" class="music-button">
+    <!-- ======================================
+         MUSIC BUTTON
+    ======================================= -->
+
+    <button
+        id="musicButton"
+        class="music-button"
+        aria-label="Putar musik"
+    >
         🎵
     </button>
 
 
+    <!-- ======================================
+         CONFETTI
+    ======================================= -->
+
+    <div
+        id="confettiContainer"
+        class="confetti-container"
+    ></div>
+
+
+    <!-- JAVASCRIPT -->
+
     <script src="script.js"></script>
 
 </body>
+
 </html>
