@@ -1,6 +1,3 @@
-/* =========================
-   RESET
-========================= */
 * {
     margin: 0;
     padding: 0;
@@ -13,9 +10,8 @@ html {
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: #080008;
+    background: #070007;
     color: white;
-    min-height: 100vh;
     overflow-x: hidden;
 }
 
@@ -23,7 +19,8 @@ body {
 /* =========================
    PASSWORD
 ========================= */
-#password-page {
+
+.password-page {
     position: fixed;
     inset: 0;
     z-index: 9999;
@@ -33,53 +30,68 @@ body {
     align-items: center;
 
     background:
-        radial-gradient(circle at center, #4d123c 0%, #180014 45%, #050005 100%);
+        radial-gradient(circle at center, #4b123b 0%, #190014 45%, #050005 100%);
 }
 
-.password-box {
+.password-card {
     width: min(380px, 90vw);
     padding: 35px 25px;
 
     text-align: center;
 
-    background: rgba(20, 0, 15, 0.8);
+    background: rgba(20, 0, 15, 0.85);
+
     border: 1px solid #ff69b4;
-    border-radius: 22px;
+    border-radius: 24px;
 
     box-shadow:
-        0 0 20px rgba(255, 20, 147, 0.5),
-        0 0 60px rgba(255, 20, 147, 0.2);
+        0 0 25px rgba(255, 20, 147, 0.55),
+        0 0 70px rgba(255, 20, 147, 0.2);
 
     backdrop-filter: blur(12px);
 }
 
-.password-box h1 {
-    font-size: 34px;
-    color: #ff69b4;
+.lock-icon {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
 
-    margin-bottom: 12px;
+.password-card h1 {
+    color: #ff69b4;
+    font-size: 32px;
 
     text-shadow:
         0 0 10px #ff69b4,
         0 0 25px #ff1493;
+
+    margin-bottom: 10px;
 }
 
-.password-box p {
+.password-card p {
     color: #ffd6ec;
     margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.password-card small {
+    display: block;
+    margin-top: 15px;
+    color: #c994b2;
 }
 
 #password {
     width: 100%;
-    padding: 13px;
 
-    border: 1px solid #ff69b4;
-    border-radius: 10px;
-
-    outline: none;
+    padding: 14px;
 
     background: #10000d;
+
+    border: 1px solid #ff69b4;
+    border-radius: 12px;
+
     color: white;
+
+    outline: none;
 
     text-align: center;
     font-size: 16px;
@@ -93,12 +105,13 @@ body {
     width: 100%;
 
     margin-top: 14px;
-    padding: 13px;
+    padding: 14px;
 
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
 
-    background: linear-gradient(135deg, #ff69b4, #d9006c);
+    background:
+        linear-gradient(135deg, #ff69b4, #d9006c);
 
     color: white;
 
@@ -107,7 +120,8 @@ body {
 
     cursor: pointer;
 
-    box-shadow: 0 0 18px rgba(255, 20, 147, 0.5);
+    box-shadow:
+        0 0 20px rgba(255, 20, 147, 0.5);
 
     transition: 0.3s;
 }
@@ -119,7 +133,8 @@ body {
 #password-error {
     min-height: 20px;
     margin-top: 12px;
-    color: #ff80bd;
+
+    color: #ff8bc7;
 }
 
 .hidden {
@@ -128,28 +143,17 @@ body {
 
 
 /* =========================
-   MAIN
-========================= */
-#main-page {
-    min-height: 100vh;
-    position: relative;
-
-    background:
-        radial-gradient(circle at 50% 0%, #3b092d 0%, #12000f 40%, #050005 100%);
-}
-
-
-/* =========================
    FALLING EMOJIS
 ========================= */
+
 #falling-emojis {
     position: fixed;
     inset: 0;
 
-    pointer-events: none;
     overflow: hidden;
+    pointer-events: none;
 
-    z-index: 20;
+    z-index: 100;
 }
 
 .falling-emoji {
@@ -158,13 +162,13 @@ body {
 
     pointer-events: none;
 
-    animation: falling linear forwards;
+    animation: fall linear forwards;
 
     filter:
         drop-shadow(0 0 5px #ff69b4);
 }
 
-@keyframes falling {
+@keyframes fall {
     from {
         transform: translateY(-50px) rotate(0deg);
         opacity: 1;
@@ -178,12 +182,32 @@ body {
 
 
 /* =========================
+   MAIN
+========================= */
+
+#main-page {
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            #420a31 0%,
+            #180012 38%,
+            #050005 100%
+        );
+
+    padding-bottom: 100px;
+}
+
+
+/* =========================
    HERO
 ========================= */
+
 .hero {
     min-height: 100vh;
 
-    padding: 45px 20px;
+    padding: 60px 20px;
 
     display: flex;
     flex-direction: column;
@@ -195,7 +219,7 @@ body {
 }
 
 .hero h1 {
-    font-size: clamp(40px, 8vw, 75px);
+    font-size: clamp(38px, 8vw, 72px);
 
     color: #ff69b4;
 
@@ -204,23 +228,78 @@ body {
         0 0 25px #ff1493,
         0 0 50px #ff1493;
 
-    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.hero h2 {
+    color: white;
+
+    font-size: clamp(28px, 5vw, 45px);
+
+    margin-top: 5px;
 }
 
 .hero p {
-    font-size: 18px;
+    margin-top: 12px;
+
     color: #ffd6ec;
+
+    font-size: 18px;
 }
 
 
 /* =========================
    FOTO HATI
 ========================= */
-.heart-photo {
-    width: 230px;
-    height: 230px;
 
-    margin: 25px auto;
+.main-heart-photo {
+    width: 240px;
+    height: 240px;
+
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    filter:
+        drop-shadow(0 0 8px #ff69b4)
+        drop-shadow(0 0 25px #ff1493);
+
+    animation: heartGlow 2s infinite alternate;
+}
+
+.main-heart-photo::before {
+    content: "";
+
+    position: absolute;
+
+    width: 225px;
+    height: 225px;
+
+    background: #ff1493;
+
+    clip-path: polygon(
+        50% 92%,
+        8% 52%,
+        5% 34%,
+        10% 20%,
+        22% 11%,
+        35% 13%,
+        50% 28%,
+        65% 13%,
+        78% 11%,
+        90% 20%,
+        95% 34%,
+        92% 52%
+    );
+}
+
+.main-heart-photo img {
+    position: relative;
+
+    width: 215px;
+    height: 215px;
 
     object-fit: cover;
 
@@ -238,18 +317,12 @@ body {
         95% 34%,
         92% 52%
     );
-
-    filter:
-        drop-shadow(0 0 8px #ff69b4)
-        drop-shadow(0 0 25px #ff1493);
-
-    animation: heartGlow 2s infinite alternate;
 }
 
 @keyframes heartGlow {
     from {
         filter:
-            drop-shadow(0 0 6px #ff69b4)
+            drop-shadow(0 0 7px #ff69b4)
             drop-shadow(0 0 15px #ff1493);
     }
 
@@ -264,78 +337,117 @@ body {
 /* =========================
    COUNTDOWN
 ========================= */
+
+.countdown-section {
+    text-align: center;
+
+    padding: 60px 15px;
+}
+
+.countdown-section h2 {
+    color: #ff69b4;
+
+    font-size: clamp(22px, 5vw, 35px);
+
+    margin-bottom: 30px;
+
+    text-shadow: 0 0 15px #ff1493;
+}
+
 .countdown {
     display: flex;
+
     justify-content: center;
     flex-wrap: wrap;
 
     gap: 12px;
-
-    margin: 25px auto;
 }
 
-.countdown-box {
-    min-width: 75px;
+.time-box {
+    width: 85px;
 
-    padding: 13px 10px;
-
-    border-radius: 14px;
+    padding: 15px 8px;
 
     background: rgba(255, 105, 180, 0.08);
 
-    border: 1px solid rgba(255, 105, 180, 0.45);
+    border: 1px solid rgba(255, 105, 180, 0.5);
+
+    border-radius: 16px;
 
     box-shadow:
-        0 0 15px rgba(255, 20, 147, 0.2);
+        0 0 18px rgba(255, 20, 147, 0.25);
 }
 
-.countdown-box span {
+.time-box strong {
     display: block;
 
-    font-size: 28px;
-    font-weight: bold;
+    font-size: 30px;
 
     color: #ff69b4;
+
+    text-shadow:
+        0 0 10px #ff1493;
 }
 
-.countdown-box small {
+.time-box span {
+    display: block;
+
+    margin-top: 5px;
+
     color: #ffd6ec;
+
+    font-size: 13px;
+}
+
+#countdown-text {
+    margin-top: 25px;
+
+    color: #ffd6ec;
+
+    font-size: 16px;
 }
 
 
 /* =========================
    SURPRISE
 ========================= */
+
 .surprise-section {
+    padding: 60px 15px;
+
     text-align: center;
-    padding: 50px 15px;
 }
 
-.surprise-section h2 {
+.surprise-heading {
     color: #ff69b4;
 
     font-size: clamp(28px, 6vw, 45px);
 
-    text-shadow: 0 0 20px #ff1493;
+    margin-bottom: 30px;
 
-    margin-bottom: 15px;
+    text-shadow:
+        0 0 10px #ff69b4,
+        0 0 25px #ff1493;
 }
 
 
 /* =========================
-   KOTAK HADIAH KECIL
+   KOTAK HADIAH
+   KECIL
 ========================= */
+
 .surprise-box {
+    position: relative;
+
     width: 180px;
     height: 140px;
 
-    position: relative;
-
-    margin: 50px auto 40px;
+    margin: 60px auto 40px;
 }
 
 
-/* BADAN */
+/* BADAN KOTAK */
+
 .box-body {
     position: absolute;
 
@@ -345,8 +457,6 @@ body {
     width: 180px;
     height: 105px;
 
-    border-radius: 8px;
-
     background:
         linear-gradient(
             135deg,
@@ -354,18 +464,17 @@ body {
             #d9006c
         );
 
+    border-radius: 8px;
+
     box-shadow:
         0 0 15px #ff4fa3,
-        0 0 35px rgba(255, 20, 147, 0.5);
-
-    overflow: hidden;
+        0 0 35px rgba(255, 20, 147, 0.6);
 }
 
 
 /* PITA VERTIKAL */
-.box-body::before {
-    content: "";
 
+.vertical-ribbon {
     position: absolute;
 
     left: 75px;
@@ -375,10 +484,13 @@ body {
     height: 100%;
 
     background: #ffd6ec;
+
+    z-index: 2;
 }
 
 
 /* PITA HORIZONTAL */
+
 .box-body::after {
     content: "";
 
@@ -391,22 +503,23 @@ body {
     height: 25px;
 
     background: #ffd6ec;
+
+    z-index: 1;
 }
 
 
 /* TUTUP */
+
 .box-lid {
     position: absolute;
-
-    z-index: 5;
 
     left: -8px;
     top: 5px;
 
+    z-index: 10;
+
     width: 196px;
     height: 38px;
-
-    border-radius: 7px;
 
     background:
         linear-gradient(
@@ -415,9 +528,11 @@ body {
             #e00070
         );
 
+    border-radius: 7px;
+
     box-shadow:
         0 0 12px #ff4fa3,
-        0 0 25px rgba(255, 20, 147, 0.5);
+        0 0 25px rgba(255, 20, 147, 0.6);
 
     transform-origin: left center;
 
@@ -426,9 +541,8 @@ body {
 
 
 /* PITA TUTUP */
-.box-lid::after {
-    content: "";
 
+.lid-ribbon {
     position: absolute;
 
     left: 83px;
@@ -441,7 +555,24 @@ body {
 }
 
 
+/* PITA BOW */
+
+.bow {
+    position: absolute;
+
+    left: 50%;
+    top: -35px;
+
+    transform: translateX(-50%);
+
+    font-size: 42px;
+
+    z-index: 5;
+}
+
+
 /* BUKA */
+
 .surprise-box.opened .box-lid {
     transform:
         rotate(-35deg)
@@ -450,19 +581,20 @@ body {
 
 
 /* =========================
-   ISI SURPRISE
+   ISI KOTAK
 ========================= */
+
 .box-content {
     position: absolute;
 
     top: 180px;
     left: 50%;
 
-    width: min(850px, 94vw);
+    width: min(900px, 94vw);
 
     transform:
         translateX(-50%)
-        translateY(20px);
+        translateY(30px);
 
     opacity: 0;
 
@@ -485,34 +617,86 @@ body {
 
 
 /* =========================
-   MESSAGE
+   FOTO UTAMA DI DALAM
 ========================= */
+
+.inside-main-photo {
+    margin: 30px auto;
+
+    position: relative;
+
+    text-align: center;
+}
+
+.main-photo-frame {
+    display: inline-block;
+
+    padding: 10px;
+
+    background: white;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 0 25px rgba(255, 20, 147, 0.6);
+}
+
+.main-photo-frame img {
+    display: block;
+
+    width: 220px;
+    height: 220px;
+
+    object-fit: cover;
+
+    border-radius: 6px;
+}
+
+.floating-hearts {
+    margin-top: 12px;
+
+    font-size: 22px;
+
+    animation: floating 2s infinite alternate;
+}
+
+@keyframes floating {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-8px);
+    }
+}
+
+
+/* =========================
+   PESAN
+========================= */
+
 .message-card {
     max-width: 750px;
 
-    margin: 30px auto;
+    margin: 35px auto;
 
     padding: 30px 25px;
-
-    text-align: left;
-
-    line-height: 1.8;
-
-    border-radius: 22px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255, 105, 180, 0.13),
-            rgba(0, 0, 0, 0.4)
+            rgba(255, 105, 180, 0.14),
+            rgba(0, 0, 0, 0.45)
         );
 
-    border: 1px solid rgba(255, 105, 180, 0.45);
+    border: 1px solid rgba(255, 105, 180, 0.5);
+
+    border-radius: 22px;
 
     box-shadow:
-        0 0 25px rgba(255, 20, 147, 0.2);
+        0 0 25px rgba(255, 20, 147, 0.25);
 
-    color: #ffe5f1;
+    text-align: left;
 }
 
 .message-card h2 {
@@ -522,73 +706,81 @@ body {
 
     margin-bottom: 20px;
 
-    text-shadow: 0 0 12px #ff1493;
+    text-shadow:
+        0 0 15px #ff1493;
 }
 
-#birthday-message {
+.typing-text {
+    color: #ffe5f1;
+
+    line-height: 1.8;
+
     white-space: pre-line;
 }
 
 
 /* =========================
-   GALLERY
+   GALERI
 ========================= */
-.gallery-title {
-    margin: 50px 0 25px;
 
-    text-align: center;
-
-    color: #ff69b4;
-
-    font-size: 32px;
-
-    text-shadow: 0 0 15px #ff1493;
+.gallery-inside {
+    margin-top: 60px;
 }
 
-.gallery {
-    max-width: 850px;
+.gallery-inside h2 {
+    color: #ff69b4;
 
-    margin: auto;
-    padding: 10px;
+    margin-bottom: 30px;
 
+    text-shadow:
+        0 0 15px #ff1493;
+}
+
+.gallery-grid {
     display: grid;
 
     grid-template-columns:
-        repeat(auto-fit, minmax(180px, 1fr));
+        repeat(4, 1fr);
 
     gap: 25px;
+
+    align-items: center;
 }
 
-.gallery img {
-    width: 100%;
-
-    aspect-ratio: 1 / 1;
-
-    object-fit: cover;
-
-    padding: 10px 10px 30px;
+.polaroid {
+    padding: 10px 10px 28px;
 
     background: white;
 
     border-radius: 4px;
 
     box-shadow:
-        0 8px 20px rgba(0, 0, 0, 0.6),
-        0 0 15px rgba(255, 105, 180, 0.25);
+        0 10px 25px rgba(0, 0, 0, 0.6);
 
     transition: 0.4s;
 }
 
-.gallery img:nth-child(odd) {
+.polaroid:nth-child(odd) {
     transform: rotate(-3deg);
 }
 
-.gallery img:nth-child(even) {
+.polaroid:nth-child(even) {
     transform: rotate(3deg);
 }
 
-.gallery img:hover {
-    transform: rotate(0deg) scale(1.05);
+.polaroid img {
+    display: block;
+
+    width: 100%;
+    aspect-ratio: 1 / 1;
+
+    object-fit: cover;
+}
+
+.polaroid:hover {
+    transform:
+        rotate(0deg)
+        scale(1.05);
 
     box-shadow:
         0 0 30px rgba(255, 20, 147, 0.6);
@@ -600,55 +792,126 @@ body {
 /* =========================
    VIDEO
 ========================= */
-.video-section {
-    max-width: 750px;
 
-    margin: 60px auto 30px;
-
-    text-align: center;
+.video-inside {
+    margin-top: 70px;
 }
 
-.video-section h2 {
+.video-inside h2 {
     color: #ff69b4;
 
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 
-    text-shadow: 0 0 15px #ff1493;
+    text-shadow:
+        0 0 15px #ff1493;
 }
 
-.video-section video {
+.video-frame {
     width: 100%;
 
-    max-height: 500px;
+    padding: 8px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff69b4,
+            #8f0049
+        );
 
     border-radius: 20px;
 
-    border: 2px solid rgba(255, 105, 180, 0.5);
-
     box-shadow:
-        0 0 30px rgba(255, 20, 147, 0.35);
+        0 0 30px rgba(255, 20, 147, 0.4);
+}
+
+.video-frame video {
+    display: block;
+
+    width: 100%;
+
+    max-height: 520px;
 
     background: black;
+
+    border-radius: 14px;
 }
 
 
 /* =========================
-   MUSIC
+   CLOSING
 ========================= */
-#music-button {
+
+.closing {
+    margin-top: 70px;
+
+    padding: 45px 20px;
+
+    text-align: center;
+
+    border-top:
+        1px solid rgba(255, 105, 180, 0.35);
+}
+
+.closing-heart {
+    font-size: 55px;
+
+    margin-bottom: 15px;
+
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+.closing h2 {
+    color: #ff69b4;
+
+    font-size: clamp(25px, 5vw, 40px);
+
+    text-shadow:
+        0 0 15px #ff1493;
+
+    margin-bottom: 18px;
+}
+
+.closing p {
+    color: #ffd6ec;
+
+    line-height: 1.7;
+}
+
+.closing-emojis {
+    margin-top: 20px;
+
+    font-size: 25px;
+
+    letter-spacing: 8px;
+}
+
+
+/* =========================
+   MUSIK
+========================= */
+
+.music-button {
     position: fixed;
 
     right: 20px;
     bottom: 20px;
 
-    z-index: 100;
+    z-index: 500;
 
-    width: 52px;
-    height: 52px;
+    padding: 13px 18px;
 
     border: 1px solid #ff69b4;
-
-    border-radius: 50%;
+    border-radius: 30px;
 
     background:
         linear-gradient(
@@ -659,55 +922,27 @@ body {
 
     color: white;
 
-    font-size: 22px;
+    font-weight: bold;
 
     cursor: pointer;
 
     box-shadow:
         0 0 20px rgba(255, 20, 147, 0.7);
+
+    transition: 0.3s;
 }
 
-
-/* =========================
-   CLOSING
-========================= */
-.closing {
-    max-width: 750px;
-
-    margin: 60px auto 20px;
-
-    padding: 40px 20px;
-
-    text-align: center;
-
-    border-top:
-        1px solid rgba(255, 105, 180, 0.3);
-}
-
-.closing h2 {
-    color: #ff69b4;
-
-    font-size: 35px;
-
-    margin-bottom: 15px;
-
-    text-shadow:
-        0 0 20px #ff1493;
-}
-
-.closing p {
-    color: #ffd6ec;
-
-    line-height: 1.7;
+.music-button:hover {
+    transform: scale(1.06);
 }
 
 
 /* =========================
    CONFETTI
 ========================= */
+
 #confetti {
     position: fixed;
-
     inset: 0;
 
     pointer-events: none;
@@ -745,55 +980,65 @@ body {
 
 
 /* =========================
-   HP
+   RESPONSIVE HP
 ========================= */
-@media (max-width: 600px) {
+
+@media (max-width: 700px) {
 
     .hero {
-        padding: 30px 15px;
+        padding: 40px 15px;
     }
 
-    .hero h1 {
-        font-size: 42px;
+    .main-heart-photo {
+        width: 200px;
+        height: 200px;
     }
 
-    .heart-photo {
+    .main-heart-photo::before {
         width: 190px;
         height: 190px;
     }
 
-    .countdown {
-        gap: 7px;
+    .main-heart-photo img {
+        width: 180px;
+        height: 180px;
     }
 
-    .countdown-box {
-        min-width: 65px;
-        padding: 11px 7px;
+    .time-box {
+        width: 70px;
     }
 
-    .countdown-box span {
-        font-size: 22px;
+    .time-box strong {
+        font-size: 23px;
     }
 
-    .gallery {
+    .surprise-box {
+        width: 180px;
+        height: 140px;
+    }
+
+    .box-content {
+        width: 94vw;
+    }
+
+    .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-    }
 
-    .gallery img {
-        padding: 7px 7px 22px;
+        gap: 16px;
     }
 
     .message-card {
         padding: 22px 18px;
+
         font-size: 14px;
     }
 
-    .video-section {
-        width: 94vw;
+    .main-photo-frame img {
+        width: 190px;
+        height: 190px;
     }
 
-    .closing h2 {
-        font-size: 28px;
+    .closing-emojis {
+        letter-spacing: 4px;
     }
 }
