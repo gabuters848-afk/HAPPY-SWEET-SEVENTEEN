@@ -72,45 +72,78 @@ passwordInput.addEventListener("keydown", function (event) {
 
 
 /* =========================
-   COUNTDOWN
+   COUNTDOWN MENUJU 22 OKTOBER
 ========================= */
 
-let timeLeft = 60;
+let countdownTimer;
 
 function startCountdown() {
 
-    updateCountdown();
+    function calculateCountdown() {
 
-    const timer = setInterval(function () {
+        const now = new Date();
 
-        timeLeft--;
+        const difference =
+            TARGET_DATE.getTime() - now.getTime();
 
-        updateCountdown();
 
-        if (timeLeft <= 0) {
+        // Kalau sudah tanggal 22 Oktober
+        if (difference <= 0) {
 
-            clearInterval(timer);
+            clearInterval(countdownTimer);
 
-            openSurprise();
+            days.textContent = "00";
+            hours.textContent = "00";
+            minutes.textContent = "00";
+            seconds.textContent = "00";
+
+            countdownText.textContent =
+                "🎉 KEJUTANNYA SUDAH BISA DIBUKA! 🎉";
+
+            return;
         }
 
-    }, 1000);
-}
+
+        // Hitung sisa waktu
+        const totalSeconds =
+            Math.floor(difference / 1000);
 
 
-function updateCountdown() {
+        const d =
+            Math.floor(totalSeconds / 86400);
 
-    const m = Math.floor(timeLeft / 60);
-    const s = timeLeft % 60;
+        const h =
+            Math.floor((totalSeconds % 86400) / 3600);
 
-    days.textContent = "00";
-    hours.textContent = "00";
+        const m =
+            Math.floor((totalSeconds % 3600) / 60);
 
-    minutes.textContent =
-        String(m).padStart(2, "0");
+        const s =
+            totalSeconds % 60;
 
-    seconds.textContent =
-        String(s).padStart(2, "0");
+
+        // Tampilkan countdown
+        days.textContent =
+            String(d).padStart(2, "0");
+
+        hours.textContent =
+            String(h).padStart(2, "0");
+
+        minutes.textContent =
+            String(m).padStart(2, "0");
+
+        seconds.textContent =
+            String(s).padStart(2, "0");
+    }
+
+
+    // Jalankan langsung
+    calculateCountdown();
+
+
+    // Update setiap 1 detik
+    countdownTimer =
+        setInterval(calculateCountdown, 1000);
 }
 
 
